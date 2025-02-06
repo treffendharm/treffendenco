@@ -1,0 +1,30 @@
+:root {
+    --color-primary-light: #F0F0EF;
+    --color-primary: #603515;
+    --color-secondary: #AD7A4C;
+
+
+    --color-white: #FFF;
+    --color-black: #000;
+
+
+
+    --text-color-primary: var(--color-black);
+
+
+    --cubic: cubic-bezier(.4, .24, .56, .77);
+    --transition-effect: var(--cubic);
+    --transition-timeing: .2s;
+    --transition: var(--transition-timeing) var(--transition-effect);
+
+
+
+    --font-default: "Montserrat", sans-serif; 
+
+
+
+    --section-spaceing: clamp(5rem, calc(0.625rem + 10vw), 10rem); /* min: 80px, max: 160px */
+
+
+    --border-radius: 1rem;
+}

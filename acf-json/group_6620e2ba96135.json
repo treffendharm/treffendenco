@@ -1,0 +1,212 @@
+{
+    "key": "group_6620e2ba96135",
+    "title": "Util | Video of afbeelding",
+    "fields": [
+        {
+            "key": "field_6620e2bb3bdf9",
+            "label": "Video of Afbeelding",
+            "name": "video_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "Video",
+            "ui_off_text": "Afbeelding",
+            "ui": 1
+        },
+        {
+            "key": "field_6620e2de3bdfa",
+            "label": "Afbeelding",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6620e2bb3bdf9",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_6620e2ee3bdfb",
+            "label": "Youtube of bestand",
+            "name": "youtube_file",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6620e2bb3bdf9",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "Youtube",
+            "ui_off_text": "Bestand",
+            "ui": 1
+        },
+        {
+            "key": "field_6620e31f3bdfc",
+            "label": "Youtube url",
+            "name": "youtube_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Door een youtube url te gebruiken kan er niet gebruik gemaakt worden van de thumbnail afbeelding. Dit kom omdat de browser een probleem heeft met hoe de video worden geladen, waardoor de code om het te bedienen niet werkt. Dus een thumbnail afbeelding klikbaar maken om vervolgens de youtube video af te spelen is onmogenlijk.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6620e2bb3bdf9",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6620e2ee3bdfb",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "https:\/\/www.youtube.com\/watch?v=dQw4w9WgXcQ",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6620e3503bdfe",
+            "label": "Video bestand",
+            "name": "video_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6620e2bb3bdf9",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6620e2ee3bdfb",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_6620e3793be00",
+            "label": "Thumbnail",
+            "name": "thumbnail",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Afbeelding voor als de video nog niet geladen is.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6620e2bb3bdf9",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6620e2ee3bdfb",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "multisite_blog_id": 1,
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1738591033
+}

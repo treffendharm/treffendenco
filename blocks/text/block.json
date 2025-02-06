@@ -1,0 +1,25 @@
+{
+  "name": "acf/text",
+  "title": "Tekst",
+  "description": "Hier kun je tekst invoeren.",
+  "style": "file:../../dist/css/blocks/text.css",
+  "category": "treffend",
+  "icon": "media-text",
+  "keywords": ["body", "text"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php",
+    "postTypes": []
+  },
+  "render_callback": "treffend_acf_block_render_callback",
+  "align": "full",
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "title": "Tekst",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "acf/double",
+    "title": "2 kolommen",
+    "description": "Een flexibel twee-koloms blok met tekst en media (afbeelding of video). De media kan links of rechts geplaatst worden.",
+    "style": [ "" ],
+    "category": "treffend",
+    "icon": "columns",
+    "keywords": ["body", "text"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php",
+        "postTypes": []
+    },
+    "render_callback": "treffend_acf_block_render_callback",
+    "align": "full"
+}

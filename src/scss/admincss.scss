@@ -1,0 +1,26 @@
+
+
+@use 'admin/blocks';
+
+
+
+// Clean up some upsell stuff from all in one seo. Now only whats needed is visible
+#wp-admin-bar-aioseo-main,
+.toplevel_page_aioseo,
+.aioseo-taxonomy-upsell,
+#aioseo-primary-term-category,
+.snippet-additional-keyphrases-row,
+.aioseo-row:has(.aioseo-pro-badge),
+.var-tab:has(:is(.aioseo-link-suggestion, .aioseo-crossed-arrows)),
+.var-tab:has(svg[fill="currentColor"]) {
+    display: none;
+}
+
+
+// .rank-math-page #wpwrap{
+//     overflow: unset !important;
+// }
+
+// #wpwrap{
+//     min-height: unset!important;
+// }

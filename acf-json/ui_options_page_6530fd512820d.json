@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_6530fd512820d",
+    "title": "Website opties",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Website opties",
+    "menu_slug": "website-opties",
+    "parent_slug": "thema-opties",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "",
+    "position": 0,
+    "redirect": false,
+    "description": "",
+    "update_button": "Opslaan",
+    "updated_message": "Opties opgeslagen",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "_parent": 63,
+    "modified": 1697709429
+}

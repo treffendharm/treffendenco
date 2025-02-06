@@ -1,0 +1,16 @@
+{
+    "name": "acf/posts",
+    "title": "Berichten",
+    "description": "Toon de 3 gekozen berichten.",
+    "style": [ "" ],
+    "category": "treffend",
+    "icon": "admin-post",
+    "keywords": ["body", "text"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php",
+        "postTypes": []
+    },
+    "render_callback": "treffend_acf_block_render_callback",
+    "align": "full"
+}

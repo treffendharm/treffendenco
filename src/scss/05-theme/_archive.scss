@@ -1,0 +1,5 @@
+.cards-wrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(20rem, calc(15.25rem + 4vw), 22rem), 1fr));
+    gap: 3rem
+}

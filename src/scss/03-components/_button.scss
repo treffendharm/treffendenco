@@ -1,0 +1,118 @@
+@use "../02-base/mixins";
+
+.mce-content-body {
+    .button {
+        text-decoration: none;
+        &[data-mce-selected="inline-boundary"] {
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--_border-color);
+            color: var(--_text-color);
+            // line-height: 100%;
+            // transition: var(--transition);
+            // width: fit-content;
+        }
+    }
+}
+
+.button {
+    --_border-color: var(--color-white);
+    --_text-color: var(--color-white);
+    --_hover-color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--_border-color);
+    color: var(--_text-color);
+    line-height: 100%;
+    transition: var(--transition);
+    width: fit-content;
+
+
+
+
+
+    &:hover {
+        --_border-color: var(--_hover-color);
+        --_text-color: var(--color-white);
+        background-color: var(--_hover-color);
+    }
+
+
+    &__primary {
+        @extend .button;
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+
+        &:hover {
+            border-color: var(--color-secondary);
+            background-color: var(--color-secondary);
+        }
+    }
+
+    &__secondary {
+        @extend .button;
+        --_border-color: var(--color-primary);
+        --_text-color: var(--color-primary);
+    }
+
+    &__white-outline {
+        @extend .button;
+    }
+
+    &__outline {
+        @extend .button;
+        color: var(--color-primary-light);
+        border-color: var(--color-primary-light);
+
+        &:hover {
+            background-color: var(--color-primary-light);
+            color: var(--color-primary);
+        }
+
+    }
+
+    &__download {
+        @extend .button__primary;
+
+        // padding: 1rem 2rem;
+
+
+
+        @include mixins.icon('download', 'after', 1em, 1rem, 2.5rem, var(--color-primary-light));
+
+        &:hover {
+            --_background: var(--_hover);
+            --_color: var(--_hover-color);
+
+            &::after {
+                transform: translateY(calc(-50% + .2em));
+            }
+        }
+    }
+
+    &__link {
+        @extend .button;
+        display: inline-block;
+        border: none;
+        padding: 0;
+        color: var(--color-secondary);
+
+        @include mixins.icon('outgoing', 'after', 1em, .5rem, 2rem, var(--color-secondary));
+
+        &:hover {
+            background-color: transparent;
+
+            &::after {
+                transform: translate(.2em, calc(-50% - .2em));
+            }
+        }
+    }
+
+
+}

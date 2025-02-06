@@ -1,0 +1,107 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+$breakpoints-grid: (
+  xs: 476px,
+  s: 636px,
+  sm: 768px,
+  md: 992px, // Main breakpoint
+  lg: 1160px,
+  xlg: 1340px,
+  xl: 1450px,
+  xxl: 1640px,
+);
+
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints-grid, $breakpoint) {
+    @media (max-width: map.get($breakpoints-grid, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else if meta.type-of($breakpoint)==number {
+    @media (max-width: #{$breakpoint}px) {
+      @content;
+    }
+  }
+
+  // if it alrady includes px
+  @else if meta.type-of($breakpoint)==string {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  } 
+
+  @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+
+@mixin respond-from($breakpoint) {
+  @if map.has-key($breakpoints-grid, $breakpoint) {
+    @media (min-width: map.get($breakpoints-grid, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else if meta.type-of($breakpoint)==number {
+    @media (min-width: #{$breakpoint}px) {
+      @content;
+    }
+  }
+
+  // if it alrady includes px
+  @else if meta.type-of($breakpoint)==string {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+
+// Between
+@mixin respond-between($min, $max) {
+  @if map.has-key($breakpoints-grid, $min) and map.has-key($breakpoints-grid, $max) {
+    @media (min-width: map.get($breakpoints-grid, $min)) and (max-width: map.get($breakpoints-grid, $max)) {
+      @content;
+    }
+  }
+
+  @else if meta.type-of($min)==number and meta.type-of($max)==number {
+    @media (min-width: #{$min}px) and (max-width: #{$max}px) {
+      @content;
+    }
+  }
+
+  @else if meta.type-of($min)==number and meta.type-of($max)==string {
+    @media (min-width: #{$min}px) and (max-width: map.get($breakpoints-grid, $max)) {
+      @content;
+    }
+  }
+
+  @else if meta.type-of($min)==string and meta.type-of($max)==number {
+    @media (min-width: map.get($breakpoints-grid, $min)) and (max-width: #{$max}px) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Invalid breakpoints: #{$min} and #{$max}.";
+  }
+}
+
+
+
+
+@function strip-unit($number) {
+  @if meta.type-of($number)=='number' and not math.is-unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}

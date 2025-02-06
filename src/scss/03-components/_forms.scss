@@ -1,0 +1,102 @@
+@use "../03-components/button";
+
+body {
+
+    .gform-theme--api,
+    .gform-theme--framework {
+        --gf-form-validation-color: var(--color-secondary);
+        --gf-color-danger: var(--gf-form-validation-color);
+    }
+
+}
+
+body div.gform_wrapper.gform_wrapper.gform_wrapper.gform_wrapper {
+
+    .gform_confirmation_message {
+
+    }
+
+    form {
+
+
+
+        .gform_footer {
+            justify-content: flex-end;
+        }
+
+
+        button[id*="gform_submit_button"] {
+            all: unset;
+            @extend .button__primary;
+            cursor: pointer;
+
+        }
+
+        .gform_body .gform_fields {
+
+
+            .gfield_required {
+                display: none;
+            }
+
+
+            input[type=text],
+            input[type=email],
+            input[type=tel],
+            input[type=url],
+            input[type=number],
+            input[type=date],
+            input[type=time],
+            textarea,
+            select {
+                all: unset;
+                box-sizing: border-box;
+                
+
+                &::placeholder {
+                    opacity: .6;
+                }
+
+
+            }
+
+
+            input[type=radio],
+            input[type=checkbox] {}
+
+            input[type=radio]::before {
+                border-radius: 50%;
+            }
+
+
+            input[type=file] {
+                padding: 0.75rem;
+
+                border-radius: 0;
+                height: fit-content;
+                background-color: transparent;
+                border: 1px solid var(--color-black);
+                box-shadow: none;
+                // border: 1px dashed #60A5FA;
+
+                color: var(--color-grey-dark);
+
+                &::file-selector-button {
+                    background-color: transparent;
+                    cursor: pointer;
+                }
+            }
+
+            label {
+                cursor: pointer;
+
+                &:has(.gfield_required) {
+                    &::after {
+                        content: '*';
+                        color: var(--color-red);
+                    }
+                }
+            }
+        }
+    }
+}

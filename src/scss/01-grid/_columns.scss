@@ -1,0 +1,70 @@
+@use "containers";
+
+/* clean-css ignore:start */
+@layer col, start, end, responsive;
+
+@layer col {
+    .content {
+        grid-column: col-1 / content;
+    }
+
+    .breakout {
+        grid-column: breakout;
+    }
+
+    .full-width {
+        grid-column: full-width;
+    }
+
+    // Add column classes within the same layer
+    @for $i from 1 through containers.$max-columns {
+        .col-#{$i} {
+            grid-column: col-1 / span $i;
+        }
+    }
+}
+
+// ----- Starting point ----- \\
+@layer start {
+    .start-full {
+        grid-column-start: full-width-start;
+    }
+
+    .start-breakout {
+        grid-column-start: breakout-start;
+    }
+
+    .start-content {
+        grid-column-start: col-1;
+    }
+
+    // Add start classes within the same layer
+    @for $i from 1 through containers.$max-columns {
+        .start-#{$i} {
+            grid-column-start: col-#{$i};
+        }
+    }
+}
+
+// ----- Ending point ----- \\
+@layer end {
+
+    .end-full {
+        grid-column-end: full-width-end;
+    }
+
+    .end-breakout {
+        grid-column-end: breakout-end;
+    }
+
+    .end-content {
+        grid-column-end: content;
+    }
+
+    // Add end classes within the same layer
+    @for $i from 1 through containers.$max-columns {
+        .end-#{$i} {
+            grid-column-end: col-#{$i};
+        }
+    }
+}

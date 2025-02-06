@@ -1,0 +1,54 @@
+@mixin mask($svg: 'block-blob') {
+    -webkit-mask: url('../images/svg/' + $svg + '.svg') no-repeat 50% 50%;
+    mask: url('../images/svg/' + $svg + '.svg') no-repeat 50% 50%;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    transition: var(--transition);
+}
+
+
+@mixin bg-mask($svg: 'block-blob') {
+    background-image: url('../images/svg/' + $svg + '.svg');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+}
+
+
+@mixin icon($svg, $position: 'before', $width: 1em, $offset: 0, $padding: 1em, $color: currentColor) {
+    position: relative;
+
+    // If the position is 'before'
+    @if $position =='before' {
+        padding-left: $padding;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: $offset;
+            transform: translateY(-50%);
+            width: $width;
+            aspect-ratio: 1;
+            background-color: $color;
+            @include mask($svg);
+        }
+    }
+
+    // If the position is 'after'
+    @else if $position =='after' {
+        padding-right: $padding;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: $offset;
+            transform: translateY(-50%);
+            width: $width;
+            aspect-ratio: 1;
+            background-color: $color;
+            @include mask($svg);
+        }
+    }
+}

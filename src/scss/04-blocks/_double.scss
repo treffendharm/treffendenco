@@ -1,0 +1,116 @@
+@use "../01-grid/responsive";
+@use "../02-base/mixins";
+
+.block-2-col {
+    margin-block: var(--section-spaceing);
+    .content-wrapper {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-column: full-width;
+        gap: 2rem;
+        align-items: center;
+        margin-top: calc(var(--_image-offset) * -1);
+    }
+
+
+    // Media positioning
+    &.media-right {
+        .content {
+            grid-column: col-1 / span 5;
+            grid-row: 1;
+        }
+
+        .media {
+            grid-column: col-7 / full-width-end;
+            grid-row: 1;
+        }
+
+
+    }
+
+    &.media-left {
+        .media {
+            grid-column: full-width-start / col-6;
+            grid-row: 1;
+        }
+
+        .content {
+            grid-column: col-7 / span 5;
+            grid-row: 1;
+        }
+    }
+
+    &.no-media {
+        .content-wrapper {
+            // margin-top: 0;
+
+        }
+
+    }
+
+    // Responsive
+    @include responsive.respond-to(md) {
+
+        .media {
+            margin-top: 0;
+        }
+
+        .content-wrapper {
+            grid-column: col-1 / content;
+        }
+        
+        
+        &.media-right,
+        &.media-left {
+            .content-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .content,
+            .media {
+                width: 100%;
+            }
+        }
+    }
+
+
+
+    // Iets een andere style voor de single-page-section
+    .single-page-section {
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        p,
+        a:not([class*="button"]),
+        span,
+        li,
+        ul,
+        ol,
+        blockquote,
+        strong,
+        em,
+        i,
+        b,
+        u,
+        s {
+            color: var(--color-primary);
+            font-size: clamp(1rem, calc(0.781rem + 0.5vw), 1.25rem); /* min: 16px, max: 20px */
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+    }
+}

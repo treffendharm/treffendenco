@@ -1,0 +1,96 @@
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.subgrid {
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+
+.word {
+    display: inline-flex;
+    overflow: hidden;
+    color: inherit;
+    line-height: 1.2;
+
+    .letter {
+        color: inherit;
+    }
+}
+
+.split-text {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.subgrid-with {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+}
+
+
+@keyframes ring {
+
+    10%,
+    90% {
+        transform: translateY(-50%) rotate(-3deg);
+    }
+
+    20%,
+    80% {
+        transform: translateY(-50%) rotate(3deg);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translateY(-50%) rotate(-3deg);
+    }
+
+    40%,
+    60% {
+        transform: translateY(-50%) rotate(3deg);
+    }
+
+    100% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translateY(-50%) translateX(-1px);
+    }
+
+    20%,
+    80% {
+        transform: translateY(-50%) translateX(1px);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translateY(-50%) translateX(-1px);
+    }
+
+    40%,
+    60% {
+        transform: translateY(-50%) translateX(1px);
+    }
+
+    100% {
+        transform: translateY(-50%) translateX(0px);
+    }
+}

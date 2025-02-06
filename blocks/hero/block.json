@@ -1,10 +1,10 @@
 {
-    "name": "acf/posts",
-    "title": "Berichten",
-    "description": "Toon de 3 gekozen berichten.",
+    "name": "acf/hero",
+    "title": "Hero",
+    "description": "Toon de hero voor de homepage. Er zit ook de tekst slider in.",
     "style": [ "" ],
     "category": "treffend",
-    "icon": "grid-view",
+    "icon": "align-wide",
     "keywords": ["body", "text"],
     "acf": {
         "mode": "auto",

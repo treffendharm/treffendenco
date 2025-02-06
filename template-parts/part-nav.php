@@ -1,6 +1,11 @@
 <header class="content-grid" data-open="false">
     <nav class="content">
 
+
+        <a href="<?php home_url(); ?>/" title="logo" class="nav-logo">
+            <?= wp_get_img(get_field('logo_light', 'option')); ?>
+        </a>
+
         <div class="navigation-menu-wrapper">
             <div class="inner">
                 <ul class="menu">
@@ -22,12 +27,8 @@
                 <div class="line"></div>
                 <div class="line"></div>
             </div>
-            <p>Menu</p>
         </div>
 
-        <a href="<?php home_url(); ?>/" title="logo" class="nav-logo">
-            <?php include get_template_directory() . "/dist/images/svg/logo-100.svg"; ?>
-        </a>
 
     </nav>
 </header>

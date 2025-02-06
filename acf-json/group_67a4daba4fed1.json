@@ -1,11 +1,11 @@
 {
-    "key": "group_67a0e0425ace4",
-    "title": "TEST",
+    "key": "group_67a4daba4fed1",
+    "title": "Block | Hero",
     "fields": [
         {
-            "key": "field_67a0e042980e7",
-            "label": "hello",
-            "name": "hello",
+            "key": "field_67a4dabafa005",
+            "label": "Titel",
+            "name": "title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -22,6 +22,27 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_67a4dad4fa006",
+            "label": "Tekst",
+            "name": "text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -29,7 +50,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/body"
+                "value": "acf\/hero"
             }
         ]
     ],
@@ -42,5 +63,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738596429
+    "modified": 1738857203
 }

@@ -8,8 +8,6 @@
         bottom: 0rem;
         left: 2.5rem;
         font-size: 3rem;
-        font-weight: 700;
-        color: var(--color-primary-light);
         z-index: 2;
     }
 
@@ -40,9 +38,7 @@
     }
 
     .card-post__title {
-        font-weight: 700;
         font-size: 1.25rem;
-        color: var(--color-primary-light);
     }
 
     .card-post__category {
@@ -50,8 +46,6 @@
 
         a {
             font-size: 1.25rem;
-            font-weight: 400;
-            color: var(--color-primary-light);
         }
     }
 }

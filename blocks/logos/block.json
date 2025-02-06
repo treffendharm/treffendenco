@@ -1,10 +1,10 @@
 {
-    "name": "acf/double",
-    "title": "2 kolommen",
-    "description": "Een flexibel twee-koloms blok met tekst en media (afbeelding of video). De media kan links of rechts geplaatst worden.",
+    "name": "acf/logos",
+    "title": "Logos",
+    "description": "Toon de logos. Als je het leeg laat, worden ze uit de thema optie gehaald.",
     "style": [ "" ],
     "category": "treffend",
-    "icon": "columns",
+    "icon": "images-alt2",
     "keywords": ["body", "text"],
     "acf": {
         "mode": "auto",

@@ -44,12 +44,17 @@ function treffend_admin_files()
 {
     wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/dist/css/admincss.css');
 
-    wp_enqueue_script(
-        'gutenberg-filters',
-        get_template_directory_uri() . '/dist/js/filter-gutenberg-blocks.js',
-        ['wp-blocks', 'wp-dom-ready', 'wp-edit-post'],
-        filemtime(get_template_directory() . '/dist/js/filter-gutenberg-blocks.js')
-    );
+    // Only load Gutenberg filters on post edit screens
+    $current_screen = get_current_screen();
+    if ($current_screen && $current_screen->is_block_editor()) {
+        wp_enqueue_script(
+            'gutenberg-filters',
+            get_template_directory_uri() . '/dist/js/filter-gutenberg-blocks.js',
+            ['wp-blocks', 'wp-dom-ready', 'wp-edit-post'],
+            filemtime(get_template_directory() . '/dist/js/filter-gutenberg-blocks.js'),
+            true
+        );
+    }
 }
 add_action('admin_enqueue_scripts', 'treffend_admin_files');
 

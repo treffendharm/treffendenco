@@ -22,7 +22,7 @@
         },
         {
             "key": "field_6530fdeede20e",
-            "label": "Header light",
+            "label": "Logo header",
             "name": "logo_light",
             "aria-label": "",
             "type": "image",
@@ -48,7 +48,7 @@
         },
         {
             "key": "field_67064dbfa2ac7",
-            "label": "Footer donker",
+            "label": "Logo footer",
             "name": "logo_dark",
             "aria-label": "",
             "type": "image",
@@ -406,5 +406,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738573122
+    "modified": 1738855856
 }

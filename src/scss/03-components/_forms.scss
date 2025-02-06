@@ -27,7 +27,7 @@ body div.gform_wrapper.gform_wrapper.gform_wrapper.gform_wrapper {
 
         button[id*="gform_submit_button"] {
             all: unset;
-            @extend .button__primary;
+            @extend %button;
             cursor: pointer;
 
         }

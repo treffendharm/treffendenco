@@ -1,12 +1,16 @@
 :root {
-    --color-primary-light: #F0F0EF;
-    --color-primary: #603515;
-    --color-secondary: #AD7A4C;
+    --color-primary: var(--color-brand-5);
+    --color-secondary: var(--color-brand-2);
 
+    --color-white: #FFFFFF;
+    --color-black: #000000;
 
-    --color-white: #FFF;
-    --color-black: #000;
-
+    // Extra brand colors
+    --color-brand-1: #FF8D74;
+    --color-brand-2: #F0E7A8;
+    --color-brand-3: #86D4EE;
+    --color-brand-4: #81C88A;
+    --color-brand-5: #D1C2FF;
 
 
     --text-color-primary: var(--color-black);
@@ -19,12 +23,13 @@
 
 
 
-    --font-default: "Montserrat", sans-serif; 
+    --font-default: "neue-haas-grotesk-text", sans-serif;
+    --font-title: "neue-haas-grotesk-display", sans-serif;
 
 
 
-    --section-spaceing: clamp(5rem, calc(0.625rem + 10vw), 10rem); /* min: 80px, max: 160px */
+    --section-spaceing: clamp(3.125rem, calc(-2.344rem + 12.5vw), 9.375rem); /* min: 50px, max: 150px */
 
 
-    --border-radius: 1rem;
+    --border-radius: 100px;
 }

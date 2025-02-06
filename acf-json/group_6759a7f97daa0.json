@@ -3,6 +3,27 @@
     "title": "Block | Posts",
     "fields": [
         {
+            "key": "field_67a4d9cb467d7",
+            "label": "Toon knop naar overzicht",
+            "name": "show_button",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_67a21e40583ae",
             "label": "Titel",
             "name": "title",
@@ -25,12 +46,12 @@
         },
         {
             "key": "field_67a218931fad6",
-            "label": "Uitgelichte projecten",
-            "name": "featured_projects",
+            "label": "Projecten",
+            "name": "projects",
             "aria-label": "",
             "type": "post_object",
             "instructions": "<b>LET OP: <\/b> Voeg er altijd minimaal en maximaal 3 toe!",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -69,5 +90,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738677830
+    "modified": 1738856931
 }

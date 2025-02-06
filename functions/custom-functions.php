@@ -15,7 +15,7 @@ function input_to_button($button, $form)
         $attribute_value = $attribute->value;
         $new_button->setAttribute($attribute_name, $attribute_value);
     }
-    $new_button->setAttribute('class', 'button__primary button__icon_right');
+    $new_button->setAttribute('class', 'button');
     $input->parentNode->replaceChild($new_button, $input);
 
     return $dom->saveHtml($new_button);

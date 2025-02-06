@@ -4,7 +4,7 @@
       <div class="wrapper">
          <div class="col footer-logo">
             <a href="<?php home_url(); ?>/" title="<?= get_bloginfo() ?>">
-               <?php include get_template_directory() . "/dist/images/svg/logo-100.svg"; ?>
+               <?php include get_template_directory() . "/dist/images/svg/logo-black.svg"; ?>
             </a>
          </div>
          <div class="col">

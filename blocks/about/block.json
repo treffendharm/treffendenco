@@ -1,10 +1,10 @@
 {
-    "name": "acf/posts",
-    "title": "Berichten",
-    "description": "Toon de 3 gekozen berichten.",
+    "name": "acf/about",
+    "title": "Wie wij zijn",
+    "description": "Toon de wie wij zijn met titels en afbeeldingen.",
     "style": [ "" ],
     "category": "treffend",
-    "icon": "grid-view",
+    "icon": "groups",
     "keywords": ["body", "text"],
     "acf": {
         "mode": "auto",

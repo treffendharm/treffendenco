@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Preload the fonts -->
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+    <link rel="preload" fetchpriority="highest" href="https://use.typekit.net/gvu7pwb.css" as="style" crossorigin>
+    <link rel="stylesheet"fetchpriority="highest" href="https://use.typekit.net/gvu7pwb.css">
 
     <?php
     // Get header image from different possible sources
@@ -61,13 +64,13 @@
         </div>
     </noscript>
 
-    <?php get_template_part('template-parts/header/part', 'nav'); ?>
+    <?php get_template_part('template-parts/part', 'nav'); ?>
 
 
     <?php
     if (is_front_page()) {
     } else {
-        get_template_part('template-parts/header/part', name: 'hero-page');
+        get_template_part('template-parts/header/part', 'hero-page');
     }
     ?>
 

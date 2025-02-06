@@ -142,26 +142,26 @@ function custom_editor_formats($init_array)
         array(
             'title' => 'Knop',
             'selector' => 'a',
-            'classes' => 'button__primary',
+            'classes' => 'button',
         ),
         // array(
         //     'title' => 'Knop wit',
         //     'selector' => 'a',
         //     'classes' => 'button__white',
         // ),
-        array(
-            'title' => 'Download knop',
-            'selector' => 'a',
-            'classes' => 'button__download',
-            'attributes' => array(
-                'download' => 'download',
-            ),
-        ),
-        array(
-            'title' => 'Externe link',
-            'selector' => 'a',
-            'classes' => 'button__link',
-        ),
+        // array(
+        //     'title' => 'Download knop',
+        //     'selector' => 'a',
+        //     'classes' => 'button__download',
+        //     'attributes' => array(
+        //         'download' => 'download',
+        //     ),
+        // ),
+        // array(
+        //     'title' => 'Externe link',
+        //     'selector' => 'a',
+        //     'classes' => 'button__link',
+        // ),
     );
     $init_array['style_formats'] = json_encode($custom_formats);
 

@@ -41,12 +41,13 @@ function treffend_allowed_block_types($allowed_blocks, $editor_context)
 
     // Start with core blocks and our custom blocks
     $allowed_block_list = [
+        'core/block',
         'core/paragraph',
         'core/heading',
         'core/list',
         'core/image'
     ];
-    
+
     // Add all custom blocks automatically
     foreach ($single_blocks_directory as $directory) {
         $allowed_block = 'acf/' . basename($directory);
@@ -68,19 +69,28 @@ add_filter('allowed_block_types_all', 'treffend_allowed_block_types', 25, 2);
 function treffend_acf_block_render_callback($block_attributes, $content = '', $is_preview = false, $post_id = 0)
 {
 
-    $block_index = $block_index ?? 0;
-    $block_path = $block_attributes['path'] . '/' . $block_attributes['render_template'];
 
-    if ($anchor = $block_attributes['anchor'] ?? false) {
-        ob_start();
-        require $block_path;
-        $block_html = ob_get_clean();
-        echo preg_replace('/(<[a-z0-9]*)/', '$1 id="' . $anchor . '"', $block_html, 1);
-    } else {
-        require $block_path;
-    }
+    if ($is_preview === true) : ?>
+        <div class="treffend-block">
+            <span class="treffend-block-icon dashicons dashicons-<?= $block_attributes['icon'] ?>"></span>
+            <span class="treffend-block-title"><?= $block_attributes['title'] ?></span>
+            <span class="treffend-block-edit dashicons dashicons-edit"></span>
+        </div>
+<?php else :
+        var_dump($is_preview);
+        $block_index = $block_index ?? 0;
+        $block_path  = $block_attributes['path'] . '/' . $block_attributes['render_template'];
+        if ($anchor = $block_attributes['anchor'] ?? false) {
+            ob_start();
+            require $block_path;
+            $block_html = ob_get_clean();
+            echo preg_replace('/(<[a-z0-9]*)/', '$1 id="' . $anchor . '"', $block_html, 1);
+        } else {
+            require $block_path;
+        }
 
-    $block_index++;
+        $block_index++;
+    endif;
 }
 
 // =========================================

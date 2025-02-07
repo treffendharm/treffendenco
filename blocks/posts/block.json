@@ -2,7 +2,7 @@
     "name": "acf/posts",
     "title": "Berichten",
     "description": "Toon de 3 gekozen berichten.",
-    "style": [ "" ],
+    "style": "file:../../dist/css/blocks/posts.css",
     "category": "treffend",
     "icon": "grid-view",
     "keywords": ["body", "text"],

@@ -2,7 +2,7 @@
     "name": "acf/hero",
     "title": "Hero",
     "description": "Toon de hero voor de homepage. Er zit ook de tekst slider in.",
-    "style": [ "" ],
+   "style": "file:../../dist/css/blocks/hero.css",
     "category": "treffend",
     "icon": "align-wide",
     "keywords": ["body", "text"],

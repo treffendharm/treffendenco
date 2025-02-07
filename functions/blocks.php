@@ -21,7 +21,9 @@ function register_acf_blocks()
 {
     $blocks = glob(get_template_directory() . '/blocks/*/block.json');
     foreach ($blocks as $block) {
-        register_block_type($block);
+        register_block_type($block, array(
+            'render_callback' => 'treffend_acf_block_render_callback',
+        ));
     }
 }
 add_action('init', 'register_acf_blocks');
@@ -69,7 +71,6 @@ add_filter('allowed_block_types_all', 'treffend_allowed_block_types', 25, 2);
 function treffend_acf_block_render_callback($block_attributes, $content = '', $is_preview = false, $post_id = 0)
 {
 
-
     if ($is_preview === true) : ?>
         <div class="treffend-block">
             <span class="treffend-block-icon dashicons dashicons-<?= $block_attributes['icon'] ?>"></span>
@@ -77,7 +78,6 @@ function treffend_acf_block_render_callback($block_attributes, $content = '', $i
             <span class="treffend-block-edit dashicons dashicons-edit"></span>
         </div>
 <?php else :
-        var_dump($is_preview);
         $block_index = $block_index ?? 0;
         $block_path  = $block_attributes['path'] . '/' . $block_attributes['render_template'];
         if ($anchor = $block_attributes['anchor'] ?? false) {
@@ -108,19 +108,19 @@ function add_editor_styles()
 }
 add_action('enqueue_block_editor_assets', 'add_editor_styles');
 
-function switch_to_classic_editor_for_specific_pages($use_block_editor, $post)
-{
-    // Voeg hier de pagina-ID's toe waar je de klassieke editor wilt gebruiken
-    $exclude_pages = array(47, 174, 147); // Home, Projecten en Contact
+// function switch_to_classic_editor_for_specific_pages($use_block_editor, $post)
+// {
+//     // Voeg hier de pagina-ID's toe waar je de klassieke editor wilt gebruiken
+//     $exclude_pages = array(47, 174, 147); // Home, Projecten en Contact
 
-    if (in_array($post->ID, $exclude_pages)) {
-        return false; // Zet de klassieke editor aan
-    }
+//     if (in_array($post->ID, $exclude_pages)) {
+//         return false; // Zet de klassieke editor aan
+//     }
 
-    return $use_block_editor; // Anders gebruik de blok editor
-}
+//     return $use_block_editor; // Anders gebruik de blok editor
+// }
 
-add_filter('use_block_editor_for_post', 'switch_to_classic_editor_for_specific_pages', 10, 2);
+// add_filter('use_block_editor_for_post', 'switch_to_classic_editor_for_specific_pages', 10, 2);
 
 function treffend_setup_editor_settings()
 {

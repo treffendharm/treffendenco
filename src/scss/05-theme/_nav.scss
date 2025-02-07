@@ -3,13 +3,15 @@
 @use "../03-components/button";
 
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 10;
     transition: background-color var(--transition);
-
+    color: var(--color-black);
+    // I want the nav text to be kinda color doge or something the things below it
+    // mix-blend-mode: difference;
 
     nav {
         display: flex;
@@ -18,12 +20,14 @@ header {
         padding-block: 3rem;
         transition: padding-block var(--transition);
         --_nav-color: var(--color-primary);
+       
     }
 
     li {
         &:not(.button_menu):not(.button_pacman) {
             a {
                 position: relative;
+               
 
                 &::before {
                     content: '';
@@ -54,7 +58,7 @@ header {
 
     // Desktop menu
     @include responsive.respond-from(lg) {
-        background-color: var(--color-white);
+        // background-color: var(--color-white);
 
         .navigation-menu-wrapper {
             width: 100%;
@@ -82,6 +86,7 @@ header {
         }
 
         li {
+
         
 
             &.button_menu {

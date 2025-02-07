@@ -2,7 +2,7 @@
     "name": "acf/services",
     "title": "Services",
     "description": "Toon de services. Als je het leeg laat, worden ze uit de thema optie gehaald.",
-    "style": [ "" ],
+    "style": "file:../../dist/css/blocks/services.css",
     "category": "treffend",
     "icon": "clipboard",
     "keywords": ["body", "text"],

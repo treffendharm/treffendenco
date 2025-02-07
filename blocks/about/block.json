@@ -2,7 +2,7 @@
     "name": "acf/about",
     "title": "Wie wij zijn",
     "description": "Toon de wie wij zijn met titels en afbeeldingen.",
-    "style": [ "" ],
+    "style": "file:../../dist/css/blocks/about.css",
     "category": "treffend",
     "icon": "groups",
     "keywords": ["body", "text"],

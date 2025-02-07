@@ -2,7 +2,7 @@
     "name": "acf/showreel",
     "title": "Showreel",
     "description": "Toon een afbeelding of video.",
-    "style": [ "" ],
+    "style": "file:../../dist/css/blocks/showreel.css",
     "category": "treffend",
     "icon": "format-video",
     "keywords": ["body", "text"],

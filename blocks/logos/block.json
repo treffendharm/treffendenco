@@ -2,7 +2,7 @@
     "name": "acf/logos",
     "title": "Logos",
     "description": "Toon de logos. Als je het leeg laat, worden ze uit de thema optie gehaald.",
-    "style": [ "" ],
+   "style": "file:../../dist/css/blocks/logos.css",
     "category": "treffend",
     "icon": "images-alt2",
     "keywords": ["body", "text"],

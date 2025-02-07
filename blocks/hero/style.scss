@@ -1,3 +1,36 @@
-.block-hero{
-    height: 100svh;
+.block-hero {
+    height: 98svh; // TODO: still need to tweak this when adding the Breaking news banner code
+    align-items: center;
+    
+    .hero-wrapper {
+        grid-auto-rows: min-content;
+        margin-top: 3rem; // TODO: Same here
+        position: relative;
+        column-gap: 1.5rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+        line-height: 130%;
+        max-width: 31.6875rem;
+    }
+
+    h1 {
+        text-align: right;
+        margin-top: 2.5625rem;
+        max-width: 40.1875rem;
+    }
+
+
+    .arrow-wrapper{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: clamp(-15rem, calc(-38.125rem + 30vw), 0rem); // Hmm i like this one, it seems to line up pretty well :)
+        
+        // Can we add shadow to the svg?
+        // svg{
+        //     filter: drop-shadow(0px 74px 44px rgba(0, 0, 0, 0.20));
+        // }
+    }
 }

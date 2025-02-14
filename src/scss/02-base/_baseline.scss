@@ -57,7 +57,7 @@ img {
     display: block;
 }
 
-:focus {
+:focus-visible {
     outline: 2px solid var(--color-black);
     // rounded outline
     outline-offset: 2px;

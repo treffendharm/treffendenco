@@ -131,7 +131,7 @@ select {
     a {
         &:not(.btn) {
             &:hover,
-            &:focus {
+            &:focus-visible {
                 color: var(--color-black);
             }
         }

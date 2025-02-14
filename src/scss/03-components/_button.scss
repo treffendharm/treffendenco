@@ -20,7 +20,7 @@
     width: fit-content;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
         background-color: var(--color-primary);
     }
 }
@@ -69,7 +69,7 @@
     }
 
     &:hover,
-    &:focus {
+    &:focus-visible {
         &::after {
             left: 50%;
             transform: translateX(-50%);

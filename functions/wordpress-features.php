@@ -58,7 +58,7 @@ function treffend_theme_features()
 {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
-    add_theme_support( 'rank-math-breadcrumbs' );
+    add_theme_support('rank-math-breadcrumbs');
     // add_theme_support('woocommerce');
 
 
@@ -304,10 +304,59 @@ add_filter('get_the_excerpt', function ($excerpt, $post) {
 
 
 // Function to get critical CSS
-function get_critical_css() {
+function get_critical_css()
+{
     $critical_css_path = get_template_directory() . '/dist/css/critical.css';
     if (file_exists($critical_css_path)) {
         return file_get_contents($critical_css_path);
     }
     return '';
 }
+
+
+
+add_action('after_setup_theme', 'wpdocs_theme_setup');
+function wpdocs_theme_setup()
+{
+    add_image_size('showreel', 1500, 0, true);
+}
+
+function enqueue_block_scripts() {
+    // Enqueue GSAP
+    wp_enqueue_script(
+        'gsap',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+        array(),
+        '3.12.5',
+        true
+    );
+
+    // Enqueue Mouse Follower
+    wp_enqueue_script(
+        'mouse-follower',
+        'https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js',
+        array('gsap'),
+        '1.1.2',
+        true
+    );
+
+    // Enqueue your showreel script
+    wp_enqueue_script(
+        'showreel-script',
+        get_template_directory_uri() . '/blocks/showreel/script.js',
+        array('gsap', 'mouse-follower'),
+        '1.0.0',
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_block_scripts');
+
+function enqueue_block_styles() {
+    wp_enqueue_style(
+        'mouse-follower',
+        'https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css',
+        array(),
+        '1.1.2'
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_block_styles');

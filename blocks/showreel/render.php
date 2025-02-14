@@ -7,7 +7,6 @@ $media_data = [
     'video_file' => get_field('video_file'),
     'thumbnail' => get_field('thumbnail'),
 ];
-
 ?>
 
 <section class="content-grid block block-showreel">

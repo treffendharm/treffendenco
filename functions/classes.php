@@ -126,11 +126,14 @@ function get_video_image_output($args = [])
                     muted
                     <?php endif; ?>
                     <?php if ($thumbnail) : ?>
-                        poster="<?= wp_get_attachment_image_url($thumbnail['ID'], 'large'); ?>"
+                        poster="<?= wp_get_attachment_image_url($thumbnail['ID'], 'full'); ?>"
                         <?php endif; ?>>
                         <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>">
                         Your browser does not support the video tag.
                 </video>
+                <div class="video-wrapper-overlay">
+                    <?= wp_get_img($thumbnail['ID'], 'full', false, ['loading' => 'eager', 'decoding' => 'sync']); ?>
+                </div>
             </div>
 
             

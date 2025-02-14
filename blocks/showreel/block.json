@@ -3,6 +3,7 @@
     "title": "Showreel",
     "description": "Toon een afbeelding of video.",
     "style": "file:../../dist/css/blocks/showreel.css",
+    "viewScript": "file:./script.js",
     "category": "treffend",
     "icon": "format-video",
     "keywords": ["body", "text"],

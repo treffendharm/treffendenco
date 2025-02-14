@@ -2,7 +2,6 @@
 
 function initArrowAnimation() {
     const arrow = document.querySelector('.hero__arrow');
-    console.log(arrow);
     if (!arrow) return;
 
     let mouseX = 0;

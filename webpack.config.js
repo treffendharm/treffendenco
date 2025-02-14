@@ -53,5 +53,11 @@ module.exports = {
     ignored: /node_modules/,
     aggregateTimeout: 300,
     poll: 1000
+  },
+  resolve: {
+    alias: {
+      '@gsap': path.resolve(__dirname, 'node_modules/gsap'),
+      '@mouse-follower': path.resolve(__dirname, 'node_modules/mouse-follower'),
+    }
   }
 }; 

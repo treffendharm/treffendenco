@@ -11,9 +11,9 @@
     <meta name="description" content="<?php bloginfo('description'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Preload the fonts -->
+    <!-- Preload the fonts
     <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="preload" fetchpriority="highest" href="https://use.typekit.net/gvu7pwb.css" as="style" crossorigin>
+    <link rel="preload" fetchpriority="highest" href="https://use.typekit.net/gvu7pwb.css" as="style" crossorigin> -->
     <link rel="stylesheet"fetchpriority="highest" href="https://use.typekit.net/gvu7pwb.css">
 
     <?php

@@ -22,15 +22,18 @@ header {
         --_nav-color: var(--color-primary);
     }
 
-    .nav-logo{
+    .nav-logo {
         width: 30rem;
     }
 
     li {
+        display: flex;
+        height: min-content;
+
         &:not(.button_menu):not(.button_pacman) {
             a {
                 position: relative;
-               
+
 
                 &::before {
                     content: '';
@@ -53,8 +56,17 @@ header {
 
         &.button_menu {
             a {
-                // Make it be the %button partial, but not use @extend because we are inside a media query
                 @extend %button;
+            }
+        }
+
+        &.button_pacman {
+            margin-left: -4rem;
+            height: 100%;
+            aspect-ratio: 1;
+
+            a {
+                @extend %btn_pacman;
             }
         }
     }
@@ -82,6 +94,7 @@ header {
         .menu {
             display: flex;
             gap: 7rem;
+            align-items: center;
 
             .current-menu-item>a {
                 color: var(--color-black);
@@ -90,7 +103,7 @@ header {
 
         li {
 
-        
+
 
             &.button_menu {
                 // margin-left: 5.625rem;

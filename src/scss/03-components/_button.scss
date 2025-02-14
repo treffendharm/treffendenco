@@ -3,9 +3,8 @@
 .mce-content-body {
     .button {
         text-decoration: none;
-        &[data-mce-selected="inline-boundary"] {
- 
-        }
+
+        &[data-mce-selected="inline-boundary"] {}
     }
 }
 
@@ -24,4 +23,61 @@
 
 .btn {
     @extend %button;
+}
+
+
+%btn_pacman {
+    position: relative;
+    border-radius: 50%;
+    background-color: var(--color-black);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    font-size: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+
+    &::after {
+        content: '';
+        width: 20px;
+        height: 23px;
+        @include mixins.bg-mask('pacman');
+        transition: var(--transition);
+        position: absolute;
+        left: 1.28rem;
+    }
+
+    &::before {
+        content: '';
+        width: 11px;
+        height: 11px;
+        @include mixins.mask('star');
+        background-color: var(--color-brand-2);
+        position: absolute;
+        left: 7.52px;
+        transition: var(--transition);
+    }
+
+    &:hover {
+        &::after {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 22.90px;
+            height: 23.08px;
+            @include mixins.bg-mask('pacman-closed');
+        }
+
+        &::before {
+            left: 40%;
+            transform: translateX(-50%) scale(.5);
+            opacity: 0;
+
+            transition: transform var(--transition), left var(--transition), opacity var(--transition) .1s;
+        }
+    }
 }

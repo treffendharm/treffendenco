@@ -1,10 +1,14 @@
+@use '../../src/scss/02-base/mixins' with (
+    $image-base-path: '../../../src/images'
+);
+
 .block-hero {
-    height: 98svh; // TODO: still need to tweak this when adding the Breaking news banner code
+    height: 86svh; // TODO: still need to tweak this when adding the Breaking news banner code
     align-items: center;
-    
+
     .hero-wrapper {
         grid-auto-rows: min-content;
-        margin-top: 3rem; // TODO: Same here
+        margin-top: 12rem; // TODO: Same here
         position: relative;
         column-gap: 1.5rem;
     }
@@ -22,15 +26,39 @@
     }
 
 
-    .arrow-wrapper{
+    .arrow-wrapper {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         margin-left: clamp(-15rem, calc(-38.125rem + 30vw), 0rem); // Hmm i like this one, it seems to line up pretty well :)
-        
-        // Can we add shadow to the svg?
-        // svg{
-        //     filter: drop-shadow(0px 74px 44px rgba(0, 0, 0, 0.20));
-        // }
+    }
+}
+
+.marquee {
+    background-color: var(--color-primary);
+    padding-block: 1.5rem;
+    margin-bottom: 4.5rem;
+
+    display: flex;
+    gap: 3.38rem;
+
+    p {
+        white-space: nowrap;
+        line-height: normal;
+        position: relative;
+        padding-right: 3rem;
+        display: block;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background-color: var(--color-black);
+            width: 1.5rem;
+            aspect-ratio: 1;
+            @include mixins.mask('star');
+        }
     }
 }

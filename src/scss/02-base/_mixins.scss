@@ -1,6 +1,9 @@
+// Define a variable for the base path that can be overridden
+$image-base-path: '../images' !default;
+
 @mixin mask($svg: 'block-blob') {
-    -webkit-mask: url('../images/svg/' + $svg + '.svg') no-repeat 50% 50%;
-    mask: url('../images/svg/' + $svg + '.svg') no-repeat 50% 50%;
+    -webkit-mask: url('#{$image-base-path}/svg/' + $svg + '.svg') no-repeat 50% 50%;
+    mask: url('#{$image-base-path}/svg/' + $svg + '.svg') no-repeat 50% 50%;
     -webkit-mask-size: contain;
     mask-size: contain;
     transition: var(--transition);
@@ -8,7 +11,7 @@
 
 
 @mixin bg-mask($svg: 'block-blob') {
-    background-image: url('../images/svg/' + $svg + '.svg');
+    background-image: url('#{$image-base-path}/svg/' + $svg + '.svg');
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: contain;

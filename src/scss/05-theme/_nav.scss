@@ -20,7 +20,10 @@ header {
         padding-block: 3rem;
         transition: padding-block var(--transition);
         --_nav-color: var(--color-primary);
-       
+    }
+
+    .nav-logo{
+        width: 30rem;
     }
 
     li {

@@ -1,5 +1,4 @@
 <?php
-
 $title = get_field('title');
 $text = get_field('text');
 ?>
@@ -18,3 +17,5 @@ $text = get_field('text');
         </div>
     </div>
 </section>
+
+<?php include get_template_directory() . '/template-parts/part-marquee.php'; ?>

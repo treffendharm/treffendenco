@@ -18,14 +18,14 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
             // Initialize cursor only for showreel block
             function initCursor() {
                 cursor = new MouseFollower({
-                    container: '.block-showreel',
+                    container: '.video-wrapper',
                     speed: 0.55,
                     ease: 'expo.out',
-                    skewing: 2,
+                    skewing: 0,
                     className: 'mf-cursor',
                     hideOnLeave: true,
                     hiddenState: '-hidden',
-                    visible: true
+                    visible: true,
                 });
             }
 
@@ -43,20 +43,20 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
             // Function to smoothly fade audio
             function fadeAudio(from, to, duration, callback) {
                 const start = performance.now();
-                
+
                 function updateVolume(currentTime) {
                     const elapsed = currentTime - start;
                     const progress = Math.min(elapsed / duration, 1);
-                    
+
                     video.volume = Math.min(Math.max(from + (to - from) * progress, 0), 1);
-                    
+
                     if (progress < 1) {
                         requestAnimationFrame(updateVolume);
                     } else {
                         if (callback) callback();
                     }
                 }
-                
+
                 requestAnimationFrame(updateVolume);
             }
 
@@ -96,13 +96,13 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
             // Update cursor state on hover
             video.addEventListener('mouseenter', () => {
                 if (!cursor) return;
-                cursor.addState(video.muted ? '-muted' : '-unmuted');
+                // cursor.addState(video.muted ? '-muted' : '-unmuted');
             });
 
             video.addEventListener('mouseleave', () => {
                 if (!cursor) return;
-                cursor.removeState('-muted');
-                cursor.removeState('-unmuted');
+                // cursor.removeState('-muted');
+                // cursor.removeState('-unmuted');
             });
 
             // Cleanup cursor when video is out of view
@@ -122,7 +122,7 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
                         video.muted = true;
                         video.play();
                         overlay.classList.add('is-hidden');
-                        
+
                         // Reinitialize cursor if needed
                         if (!cursor) {
                             initCursor();

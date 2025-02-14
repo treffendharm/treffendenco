@@ -1,0 +1,103 @@
+@use '../../src/scss/02-base/mixins' with ($image-base-path: '../../../src/images');
+
+.block-services {
+    background-color: var(--color-secondary);
+    padding-top: 5rem;
+    padding-bottom: 9.5rem;
+
+    .intro {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        line-height: 90%;
+        padding-top: 1.56rem;
+        margin-top: 1.56rem;
+        border-top: 1px solid var(--color-black);
+    }
+
+    .arrow-wrapper {
+        .arrow {
+            width: 56.5625rem;
+            height: 9.75rem;
+            @include mixins.mask('pijl-simpel');
+            transition: unset;
+            background-color: #E0D697;
+            margin-top: 5rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .subtitle-wrapper {
+        padding-bottom: 1.62rem;
+        border-bottom: 1px solid var(--color-black);
+    }
+
+    .service {
+        padding-block: 2.69rem;
+        border-bottom: 1px solid var(--color-black);
+
+        .service-item-hero {
+            cursor: pointer;
+
+            p {
+                font-size: 1.5rem;
+            }
+
+            .service-toggle {
+                width: 2.4375rem;
+                height: 2.4375rem;
+                position: relative;
+                margin-left: auto;
+
+                &::before,
+                &::after {
+                    content: '';
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
+                    height: 2px;
+                    background-color: var(--color-black);
+                    position: absolute;
+                    transition: transform var(--transition);
+                }
+
+                &::before {
+                    transform: translate(-50%, -50%) rotate(90deg);
+                }
+
+                &::after {
+                    transform: translate(-50%, -50%) rotate(0);
+                }
+            }
+        }
+
+        .service-content {
+            grid-template-rows: 0fr;
+            display: grid;
+            transition: grid-template-rows var(--transition);
+
+            .inner {
+                overflow: hidden;
+            }
+        }
+
+        .content-wrapper {
+            padding-top: 2.69rem;
+        }
+
+        &[data-open="true"] {
+            .service-content {
+                grid-template-rows: 1fr;
+            }
+
+            .service-toggle {
+                &::before {
+                    transform: translate(-50%, -50%) rotate(0);
+                }
+
+            }
+        }
+    }
+}

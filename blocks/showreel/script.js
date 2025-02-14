@@ -1,6 +1,7 @@
 // Initialize MouseFollower with GSAP
 if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
     MouseFollower.registerGSAP(gsap);
+    gsap.registerPlugin(ScrollTrigger);
 
     // Add a flag to prevent double initialization
     if (!window.showreelInitialized) {

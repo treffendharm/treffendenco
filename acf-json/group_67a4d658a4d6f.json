@@ -5,7 +5,7 @@
         {
             "key": "field_67a4d673a1581",
             "label": "Intro tekst",
-            "name": "intro_text",
+            "name": "intro",
             "aria-label": "",
             "type": "textarea",
             "instructions": "",
@@ -90,7 +90,7 @@
                 {
                     "key": "field_67a4d7c0a1584",
                     "label": "Kop",
-                    "name": "Title",
+                    "name": "title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -174,5 +174,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738916563
+    "modified": 1739536856
 }

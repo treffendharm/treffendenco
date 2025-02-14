@@ -25,5 +25,6 @@
     "/dist/images/svg/pijl.svg": "/dist/images/svg/pijl.svg",
     "/dist/images/svg/star.svg": "/dist/images/svg/star.svg",
     "/dist/images/svg/pacman.svg": "/dist/images/svg/pacman.svg",
-    "/dist/images/svg/pacman-closed.svg": "/dist/images/svg/pacman-closed.svg"
+    "/dist/images/svg/pacman-closed.svg": "/dist/images/svg/pacman-closed.svg",
+    "/dist/images/svg/pijl-simpel.svg": "/dist/images/svg/pijl-simpel.svg"
 }

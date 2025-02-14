@@ -17,6 +17,10 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
 
             // Initialize cursor only for showreel block
             function initCursor() {
+                const videoRect = video.getBoundingClientRect();
+                const centerX = videoRect.left + (videoRect.width / 2);
+                const centerY = videoRect.top + (videoRect.height / 2) + window.scrollY;
+
                 cursor = new MouseFollower({
                     container: '.video-wrapper',
                     speed: 0.55,
@@ -26,6 +30,7 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
                     hideOnLeave: true,
                     hiddenState: '-hidden',
                     visible: true,
+                    initialPos: [centerX, centerY] // Set initial position to center
                 });
             }
 

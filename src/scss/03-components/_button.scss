@@ -15,7 +15,8 @@
     border: 1px solid var(--color-black);
     transition: background-color var(--transition);
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: var(--color-primary);
     }
 }
@@ -63,7 +64,8 @@
         transition: var(--transition);
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
         &::after {
             left: 50%;
             transform: translateX(-50%);

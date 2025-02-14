@@ -21,12 +21,13 @@ $classes = [
 ];
 ?>
 <section class="<?= implode(' ', array_filter($classes)); ?>">
-    <?php if ($title) : ?>
-        <div class="col-10 start-2">
+    <div class="content block-header">
+        <?php if ($title) : ?>
             <h2 class="block-posts__title"><?= $title ?></h2>
-        </div>
-    <?php endif; ?>
-    <div class="col-10 start-2 archive-grid">
+            <a href="<?= get_permalink(get_option('page_for_posts')) ?>">Bekijk projecten</a>
+        <?php endif; ?>
+    </div>
+    <div class="content archive-grid">
         <div class="cards-wrapper">
             <?php
             foreach ($posts as $post):

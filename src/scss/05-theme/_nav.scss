@@ -3,7 +3,7 @@
 @use "../03-components/button";
 
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -46,7 +46,8 @@ header {
                     transition: width var(--transition);
                 }
 
-                &:hover {
+                &:hover,
+                &:focus {
                     &::before {
                         width: 100%;
                     }
@@ -241,7 +242,8 @@ header {
                                 border-radius: .1rem;
                             }
 
-                            &:hover {
+                            &:hover,
+                            &:focus {
                                 // color: var(--color-primary-light);
                                 padding-left: 2rem;
 

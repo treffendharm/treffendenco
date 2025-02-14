@@ -130,7 +130,8 @@ select {
 
     a {
         &:not(.btn) {
-            &:hover {
+            &:hover,
+            &:focus {
                 color: var(--color-black);
             }
         }

@@ -3,12 +3,12 @@
 );
 
 .block-hero {
-    height: 86svh; // TODO: still need to tweak this when adding the Breaking news banner code
+    height: 72svh;
     align-items: center;
 
     .hero-wrapper {
         grid-auto-rows: min-content;
-        margin-top: 12rem; // TODO: Same here
+        margin-top: 3rem; 
         position: relative;
         column-gap: 1.5rem;
     }

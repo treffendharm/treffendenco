@@ -20,10 +20,10 @@ $posts_page_id = get_option('page_for_posts');
     <div class="content">
         <h1><?= get_the_title($posts_page_id); ?></h1>
     </div>
-    <div class="col-10 start-2 archive-grid">
+    <div class="content archive-grid">
         <?= $projects->create_category_filter(); ?>
     </div>
-    <div class="col-10 start-2 archive-grid">
+    <div class="content archive-grid">
 
         <?= $projects->print_posts($posts); ?>
         <div class="pagination">

@@ -57,6 +57,13 @@ img {
     display: block;
 }
 
+:focus {
+    outline: 2px solid var(--color-black);
+    // rounded outline
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
 img,
 .wp-caption {
     &.alignright {
@@ -81,4 +88,3 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-

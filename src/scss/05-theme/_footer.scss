@@ -1,6 +1,127 @@
 @use "../01-grid/responsive";
+@use "../02-base/mixins";
 
 footer {
+    background-color: var(--color-primary);
+    padding-top: 7.41rem;
+    padding-bottom: 4.13rem;
 
+    .footer-wrapper {
+        column-gap: 1.59rem;
+    }
+
+    
+
+
+    h4,
+    h6 {
+        border-bottom: 1px solid var(--color-black);
+        padding-bottom: 1.69rem;
+        margin-bottom: 2.25rem;
+    }
+
+    h6 {
+        margin-top: 3.26rem;
+    }
+
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        a {
+            font-size: 1.875rem;
+            @extend %a-hover;
+        }
+    }
+
+    .adres-info {
+        line-height: 220%;
+        @extend %a-hover;
+    }
+
+    .direct-contact-wrapper {
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 2.22rem;
+        }
+
+        a {
+            @extend %a-hover;
+        }
+
+        li {
+            display: grid;
+            gap: 2.31rem;
+            grid-template-columns: 1fr 5fr;
+        }
+
+        .name {
+            font-weight: 600;
+            line-height: 160%;
+        }
+        
+        .function,
+        .email {
+            line-height: 160%;
+
+            &::after,
+            &::before{
+                bottom: .25em;
+            }
+        }
+
+
+
+        .quick-contact-info {
+            height: fit-content;
+        }
+
+        .image {
+            border-radius: 50%;
+            height: 100%;
+            aspect-ratio: 1;
+            overflow: clip;
+
+            img {
+                scale: 1.9;
+                object-position: top;
+            }
+
+        }
+    }
+
+
+    .quick-menu-wrapper{
+        a{
+            @extend %a-hover;
+        }
+    }
+
+    .social-wrapper{
+        a{
+            @extend %a-hover;
+        }
+    }
+
+    .site-note{
+        margin-bottom: 8.69rem;
+        margin-top: -2.69rem;
+        
+        ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            gap: 6.37rem;
+
+            a{
+                @extend %a-hover;
+                font-size: 0.875rem;
+
+            }
+        }
+    }
 
 }

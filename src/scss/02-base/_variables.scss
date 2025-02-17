@@ -16,9 +16,9 @@
     --text-color-primary: var(--color-black);
 
 
-    --cubic: cubic-bezier(.4, .24, .56, .77);
+    --cubic: cubic-bezier(0.6, 0.03, 0.28, 0.98);
     --transition-effect: var(--cubic);
-    --transition-timeing: .2s;
+    --transition-timeing: .4s;
     --transition: var(--transition-timeing) var(--transition-effect);
 
 

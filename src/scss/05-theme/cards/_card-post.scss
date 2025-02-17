@@ -6,7 +6,7 @@
         background-color: #F6F6F6;
 
         img {
-            transition: .4s cubic-bezier(0.6, 0.03, 0.28, 0.98);
+            transition: var(--transition);
             width: 100%;
             height: 100%;
             transform: scale(1.01);

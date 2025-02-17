@@ -1,6 +1,7 @@
 @use "../01-grid/containers";
 @use "../01-grid/responsive";
 @use "../03-components/button";
+@use "../02-base/mixins";
 
 header {
     position: sticky;
@@ -33,6 +34,7 @@ header {
         &:not(.button_menu):not(.button_pacman) {
             a {
                 position: relative;
+                // @extend %a-hover;
 
 
                 &::before {

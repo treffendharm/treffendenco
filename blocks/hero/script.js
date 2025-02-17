@@ -1,4 +1,5 @@
 // Lets make the svg look at the cursor its the .arrow thats inside the .block-hero
+// Only make the arrow respond when its in view with some extra margin outside its view with like 20% extra
 
 function initArrowAnimation() {
     const arrow = document.querySelector('.hero__arrow');
@@ -8,8 +9,40 @@ function initArrowAnimation() {
     let mouseY = 0;
     let currentAngle = 0; // Track current angle for smooth animation
 
+    // Function to check if the arrow is in view
+    function isArrowInView() {
+        const arrowRect = arrow.getBoundingClientRect();
+        const viewPortRect = {
+            top: window.scrollY,
+            left: window.scrollX,
+            bottom: window.scrollY + window.innerHeight,
+            right: window.scrollX + window.innerWidth
+        };
+
+        // Add 20% extra margin outside the arrow's view
+        const extraMargin = 100; // in percentage
+        const extraMarginPx = (arrowRect.width + arrowRect.height) * (extraMargin / 100);
+        const extendedArrowRect = {
+            top: arrowRect.top - extraMarginPx,
+            left: arrowRect.left - extraMarginPx,
+            bottom: arrowRect.bottom + extraMarginPx,
+            right: arrowRect.right + extraMarginPx
+        };
+
+        // Check if the arrow is in view with the extra margin
+        return (
+            extendedArrowRect.bottom > viewPortRect.top &&
+            extendedArrowRect.top < viewPortRect.bottom &&
+            extendedArrowRect.right > viewPortRect.left &&
+            extendedArrowRect.left < viewPortRect.right
+        );
+    }
+
     // Track mouse movement
     document.addEventListener('mousemove', (e) => {
+        // Check if the arrow is in view before proceeding
+        if (!isArrowInView()) return;
+
         // Get mouse position relative to viewport
         mouseX = e.clientX;
         mouseY = e.clientY;
@@ -41,6 +74,9 @@ function initArrowAnimation() {
     // Update position when scrolling
     document.addEventListener('scroll', () => {
         if (!mouseX || !mouseY) return; // Skip if no mouse movement yet
+
+        // Check if the arrow is in view before proceeding
+        if (!isArrowInView()) return;
 
         const actualY = mouseY + window.scrollY;
 

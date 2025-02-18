@@ -70,7 +70,6 @@ add_filter('allowed_block_types_all', 'treffend_allowed_block_types', 25, 2);
  */
 function treffend_acf_block_render_callback($block_attributes, $content = '', $is_preview = false, $post_id = 0)
 {
-
     if ($is_preview === true) : ?>
         <div class="treffend-block">
             <span class="treffend-block-icon dashicons dashicons-<?= $block_attributes['icon'] ?>"></span>
@@ -80,6 +79,10 @@ function treffend_acf_block_render_callback($block_attributes, $content = '', $i
 <?php else :
         $block_index = $block_index ?? 0;
         $block_path  = $block_attributes['path'] . '/' . $block_attributes['render_template'];
+        
+        // Pass the block data to the template
+        $block = $block_attributes; // Add this line to make block data available in template
+        
         if ($anchor = $block_attributes['anchor'] ?? false) {
             ob_start();
             require $block_path;

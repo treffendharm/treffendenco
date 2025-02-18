@@ -1,0 +1,16 @@
+{
+    "name": "acf/text",
+    "title": "Tekst",
+    "description": "Toon tekst op 2 kolommen",
+    "style": "file:../../dist/css/blocks/text.css",
+    "category": "treffend",
+    "icon": "editor-textcolor",
+    "keywords": ["body", "text"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php",
+        "postTypes": []
+    },
+    "render_callback": "treffend_acf_block_render_callback",
+    "align": "full"
+}

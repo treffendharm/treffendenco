@@ -1,5 +1,5 @@
 <?php
-$post_id = $args['post_id'];
+$post_id = $args['post_id'] ?? get_the_ID();
 $title = get_the_title($post_id);
 $link = get_the_permalink($post_id);
 $image = wp_get_img(get_post_thumbnail_id($post_id), 'large');

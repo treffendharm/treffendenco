@@ -1,5 +1,5 @@
 .block-posts {
-    margin-top: 10rem;
+    margin-block: 9.375rem;
     
     .block-header {
         display: flex;
@@ -15,7 +15,8 @@
         }
     }
 
-    h2 {
+    h2,
+    h1 {
         font-size: 3.75rem;
         line-height: 110%;
     }

@@ -1,28 +1,33 @@
 <?php
 $className = 'block-image-row';
-if (!empty($block['className'])) {
-    $className .= ' ' . $block['className'];
+
+$margin_top = get_field('margin_top_large');
+$margin_bottom = get_field('margin_bottom_large');
+
+// Only try to access block data if it exists
+if (!empty($block)) {
+    if (!empty($block['className'])) {
+        $className .= ' ' . $block['className'];
+    }
+
+    if (!empty($block['style'])) {
+        $className .= ' ' . $block['style'];
+    }
 }
 
-if (!empty($block['style'])) {
-    $style = str_replace('is-style-', '', $block['style']);
-    $className .= ' ' . $style;
-}
-
-// Check if we're in the editor
-$is_editor = defined('REST_REQUEST') && REST_REQUEST;
 ?>
 
-<section class="content-grid <?= esc_attr($className); ?>">
-    <div class="col-10 start-2 image-row-wrapper">
-        <?php if ($is_editor): ?>
-            <div class="image-row-placeholder">
-                <span>Sleep hier je afbeeldingen</span>
-            </div>
-        <?php endif; ?>
-        <InnerBlocks 
-            allowedBlocks="<?= esc_attr(wp_json_encode(['core/image'])); ?>"
-            template="<?= esc_attr(wp_json_encode([])); ?>"
-        />
+<section class="content-grid <?= esc_attr($className); ?> <?= $margin_top ? 'margin-top-large' : '' ?> <?= $margin_bottom ? 'margin-bottom-large' : '' ?>">
+    <div class="content image-row-wrapper">
+
+        <!-- Acf galary field -->
+        <?php
+        if (get_field('images')):
+            foreach (get_field('images') as $image):
+                echo wp_get_img($image, 'full');
+            endforeach;
+        endif;
+        ?>
+
     </div>
-</section> 
+</section>

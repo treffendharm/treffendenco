@@ -3,27 +3,30 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
     MouseFollower.registerGSAP(gsap);
     gsap.registerPlugin(ScrollTrigger);
 
-    // Add a flag to prevent double initialization
-    if (!window.showreelInitialized) {
-        window.showreelInitialized = true;
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all showreel blocks
+        const showreels = document.querySelectorAll('.block-showreel');
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const THRESHOLD = 0.7;
-            const FADE_DURATION = 500; // 500ms fade duration
-            const video = document.querySelector('.block-showreel video');
-            const overlay = document.querySelector('.block-showreel .video-wrapper-overlay');
+        showreels.forEach(showreel => {
+            const video = showreel.querySelector('video');
+            const overlay = showreel.querySelector('.video-wrapper-overlay');
+            const alwaysMuted = video?.dataset.alwaysMuted === 'true';
+            const isLooping = video?.hasAttribute('loop');
+            
             if (!video || !overlay) return;
 
             let cursor = null;
 
-            // Initialize cursor only for showreel block
+            // Initialize cursor for this specific showreel
             function initCursor() {
+                if (alwaysMuted) return;
+
                 const videoRect = video.getBoundingClientRect();
                 const centerX = videoRect.left + (videoRect.width / 2);
                 const centerY = videoRect.top + (videoRect.height / 2) + window.scrollY;
 
                 cursor = new MouseFollower({
-                    container: '.video-wrapper',
+                    container: showreel.querySelector('.video-wrapper'), // Scope to this showreel
                     speed: 0.55,
                     ease: 'expo.out',
                     skewing: 0,
@@ -31,7 +34,7 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
                     hideOnLeave: true,
                     hiddenState: '-hidden',
                     visible: true,
-                    initialPos: [centerX, centerY] // Set initial position to center
+                    initialPos: [centerX, centerY]
                 });
             }
 
@@ -40,11 +43,22 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
             // Hide default controls
             video.controls = false;
 
-            // Add replay button
-            const replayButton = document.createElement('button');
-            replayButton.className = 'video-replay-button';
-            replayButton.setAttribute('aria-label', 'Replay video');
-            video.parentElement.appendChild(replayButton);
+            // Only add replay button if video is not looping
+            if (!isLooping) {
+                const replayButton = document.createElement('button');
+                replayButton.className = 'video-replay-button';
+                replayButton.setAttribute('aria-label', 'Replay video');
+                video.parentElement.appendChild(replayButton);
+
+                // Handle replay button click
+                function handleReplayClick(e) {
+                    e.stopPropagation();
+                    video.currentTime = 0;
+                    video.play();
+                }
+
+                replayButton.addEventListener('click', handleReplayClick);
+            }
 
             // Function to smoothly fade audio
             function fadeAudio(from, to, duration, callback) {
@@ -68,48 +82,42 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
 
             // Handle click on video for mute/unmute
             function handleVideoClick() {
-                console.log('clicked the video')
-                if (!cursor) return;
+                if (!cursor || alwaysMuted) return;
 
                 if (video.muted) {
-                    // Unmute and fade in volume
                     video.muted = false;
-                    video.volume = 0; // Start from 0
+                    video.volume = 0;
                     fadeAudio(0, 1, FADE_DURATION);
                     cursor.addState('-unmuted');
                     cursor.removeState('-muted');
                 } else {
-                    // Fade out and then mute
                     fadeAudio(video.volume, 0, FADE_DURATION, () => {
                         video.muted = true;
-                        video.volume = 1; // Reset volume for next unmute
+                        video.volume = 1;
                     });
                     cursor.addState('-muted');
                     cursor.removeState('-unmuted');
                 }
             }
 
-            // Handle replay button click
-            function handleReplayClick(e) {
-                e.stopPropagation(); // Prevent triggering video click
-                video.currentTime = 0;
-                video.play();
+            // Only add click listener if not always muted
+            if (!alwaysMuted) {
+                video.addEventListener('click', handleVideoClick);
             }
 
-            video.addEventListener('click', handleVideoClick);
-            replayButton.addEventListener('click', handleReplayClick);
+            // Update cursor state on hover only if not always muted
+            if (!alwaysMuted) {
+                video.addEventListener('mouseenter', () => {
+                    if (!cursor) return;
+                    cursor.addState('-muted');
+                });
 
-            // Update cursor state on hover
-            video.addEventListener('mouseenter', () => {
-                if (!cursor) return;
-                // cursor.addState(video.muted ? '-muted' : '-unmuted');
-            });
-
-            video.addEventListener('mouseleave', () => {
-                if (!cursor) return;
-                // cursor.removeState('-muted');
-                // cursor.removeState('-unmuted');
-            });
+                video.addEventListener('mouseleave', () => {
+                    if (!cursor) return;
+                    cursor.removeState('-muted');
+                    cursor.removeState('-unmuted');
+                });
+            }
 
             // Cleanup cursor when video is out of view
             function cleanupCursor() {
@@ -119,38 +127,35 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
                 }
             }
 
+            const THRESHOLD = 0.7;
+            const FADE_DURATION = 500;
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    // Only play when the intersection ratio is above 70%
                     if (entry.isIntersecting && entry.intersectionRatio >= THRESHOLD) {
-                        // Start with muted state but full volume
                         video.volume = 1;
                         video.muted = true;
                         video.play();
                         overlay.classList.add('is-hidden');
 
-                        // Reinitialize cursor if needed
-                        if (!cursor) {
+                        if (!alwaysMuted && !cursor) {
                             initCursor();
                         }
-                        if (cursor) {
+                        if (cursor && !alwaysMuted) {
                             cursor.addState('-muted');
                         }
                     } else {
-                        // If video is not muted, fade out the audio
                         if (!video.muted) {
                             fadeAudio(video.volume, 0, FADE_DURATION, () => {
                                 video.pause();
-                                // Reset volume to full and mute for next play
                                 video.volume = 1;
                                 video.muted = true;
                             });
                         } else {
-                            // If already muted, just pause
                             video.pause();
                         }
                         overlay.classList.remove('is-hidden');
-                        cleanupCursor(); // Cleanup cursor when out of view
+                        cleanupCursor();
                     }
                 });
             }, {
@@ -160,5 +165,5 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
 
             observer.observe(video);
         });
-    }
+    });
 }

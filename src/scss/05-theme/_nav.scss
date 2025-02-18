@@ -99,8 +99,11 @@ header {
             gap: 7rem;
             align-items: center;
 
-            .current-menu-item>a {
-                color: var(--color-black);
+            .current-menu-item:not(.button_menu)>a {
+
+                &::before {
+                    width: 100%;
+                }
             }
         }
 
@@ -111,9 +114,10 @@ header {
             &.button_menu {
                 // margin-left: 5.625rem;
 
-                a{
+                a {
                     border-color: currentColor;
-                    &:hover{
+
+                    &:hover {
                         background-color: var(--color-primary-reverse);
                     }
                 }
@@ -272,7 +276,7 @@ header {
 
 
 body.fixed__header {
-    nav{
+    nav {
 
         padding-block: 1rem;
     }

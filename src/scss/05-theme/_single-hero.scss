@@ -1,0 +1,17 @@
+@use '../02-base/type';
+
+.block-single-hero{
+    margin-bottom: 5rem;
+    margin-top: 9.375rem;
+    
+    h1{
+        @extend .h5;
+        line-height: 110%; 
+        margin-bottom: .94rem;
+    }
+    
+    .payoff{
+        @extend .h3;
+        line-height: 100%;
+    }
+}

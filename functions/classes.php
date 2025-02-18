@@ -87,9 +87,11 @@ function get_video_image_output($args = [])
     $youtube_url = $args['youtube_url'] ?? get_field('youtube_url');
     $video_file = $args['video_file'] ?? get_field('video_file');
     $thumbnail = $args['thumbnail'] ?? get_field('thumbnail');
-    $autoplay = $args['autoplay'] ?? get_field('autoplay') ?? false;
+    $autoplay = $args['autoplay'] ?? get_field('autoplay') ?? true;
+    $always_muted = $args['always_muted'] ?? get_field('always_muted') ?? false;
+    $loop = $args['loop'] ?? get_field('loop') ?? false;
 
-    
+
 
     ob_start();
 
@@ -117,26 +119,32 @@ function get_video_image_output($args = [])
             }
         } else if ($video_file) {
             ?>
-            <div class="video-wrapper file">
+            <div class="video-wrapper file <?= $always_muted ? 'always-muted' : ''; ?>" <?= $loop ? 'data-loop' : ''; ?>>
                 <video
                     controls
                     preload="none"
-                    <?php if ($autoplay) : ?>
+                    data-always-muted="<?= $always_muted ? 'true' : 'false' ?>"
+                    <?php if ($autoplay) { ?>
                     autoplay
                     muted
-                    <?php endif; ?>
+                    <?php } ?>
+
+                    <?php if ($loop) { ?>
+                    loop
+                    <?php } ?>
+
                     <?php if ($thumbnail) : ?>
-                        poster="<?= wp_get_attachment_image_url($thumbnail['ID'], 'full'); ?>"
-                        <?php endif; ?>>
-                        <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>">
-                        Your browser does not support the video tag.
+                    poster="<?= wp_get_attachment_image_url($thumbnail['ID'], 'full'); ?>"
+                    <?php endif; ?>>
+                    <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>">
+                    Your browser does not support the video tag.
                 </video>
                 <div class="video-wrapper-overlay">
                     <?= wp_get_img($thumbnail['ID'], 'full', false, ['loading' => 'eager', 'decoding' => 'sync']); ?>
                 </div>
             </div>
 
-            
+
 <?php
         }
     }

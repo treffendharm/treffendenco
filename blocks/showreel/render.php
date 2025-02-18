@@ -6,6 +6,8 @@ $media_data = [
     'youtube_url' => get_field('youtube_url'),
     'video_file' => get_field('video_file'),
     'thumbnail' => get_field('thumbnail'),
+    'always_muted' => get_field('always_muted'),
+    'loop' => get_field('loop_video'),
 ];
 ?>
 

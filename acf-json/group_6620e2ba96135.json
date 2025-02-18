@@ -23,6 +23,74 @@
             "ui": 1
         },
         {
+            "key": "field_67b45137b01e6",
+            "label": "Loop video ∞",
+            "name": "loop_video",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6620e2bb3bdf9",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6620e2ee3bdfb",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_67b45141b01e7",
+            "label": "Altijd muted",
+            "name": "always_muted",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6620e2bb3bdf9",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6620e2ee3bdfb",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_6620e2de3bdfa",
             "label": "Afbeelding",
             "name": "image",
@@ -208,5 +276,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738591033
+    "modified": 1739870993
 }

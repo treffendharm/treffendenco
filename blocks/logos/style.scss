@@ -1,20 +1,24 @@
-.logos-wrapper {
-    display: flex;
-    column-gap: 9.375rem;
-    row-gap: 3.5rem;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 4.5rem;
-    margin-block    : 9.375rem;
-    border-top: 1px solid var(--color-black);
-    .logo {
-        height: 2rem;
-        width: fit-content;
+.block-logos {
+    margin-block: 9.375rem;
+
+    .logos-wrapper {
+        display: flex;
+        column-gap: 9.375rem;
+        row-gap: 3.5rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 4.5rem;
+        border-top: 1px solid var(--color-black);
+
+        .logo {
+            height: 2rem;
+            width: fit-content;
+        }
+
+
+        img {
+            object-fit: contain;
+        }
+
     }
-
-
-    img {
-        object-fit: contain;
-    }
-
 }

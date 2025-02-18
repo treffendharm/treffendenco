@@ -1,40 +1,29 @@
 {
     "name": "acf/image-row",
-    "title": "Afbeelding rij",
+    "title": "Afbeeldingen rij",
     "description": "Voeg een rij met afbeeldingen toe in verschillende layouts.",
     "style": "file:../../dist/css/blocks/image-row.css",
     "category": "treffend",
     "icon": "format-gallery",
     "keywords": ["image", "gallery", "row"],
     "acf": {
-        "mode": "preview",
+        "mode": "auto",
         "renderTemplate": "render.php"
     },
     "supports": {
         "align": false,
-        "anchor": true
+        "mode": false,
+        "jsx": true
     },
     "styles": [
         {
             "name": "single",
-            "label": "Enkele afbeelding",
+            "label": "Enkele grote afbeelding",
             "isDefault": true
         },
         {
             "name": "two_equal",
             "label": "Twee gelijke afbeeldingen"
-        },
-        {
-            "name": "two_left",
-            "label": "Links groter"
-        },
-        {
-            "name": "two_right",
-            "label": "Rechts groter"
-        },
-        {
-            "name": "three",
-            "label": "Drie afbeeldingen"
         }
     ]
 } 

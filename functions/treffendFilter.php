@@ -200,7 +200,7 @@ class postTypeFilter
             while ($query->have_posts()) {
                 $query->the_post();
                 get_template_part(
-                    'template-parts/archive/card',
+                    'template-parts/card',
                     $this->post_type,
                     array(
                         'args' => $args,

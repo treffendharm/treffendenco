@@ -7,6 +7,7 @@
 
 $title = get_field('title') ?? 'Ons werk';
 $posts = get_field('projects'); // returns array of post ids
+$show_button_to_archive = get_field('show_button') ?? true;
 if (!$posts) {
     $posts = get_posts([
         'post_type' => 'post',
@@ -23,8 +24,15 @@ $classes = [
 <section class="<?= implode(' ', array_filter($classes)); ?>">
     <div class="content block-header">
         <?php if ($title) : ?>
-            <h2 class="block-posts__title"><?= $title ?></h2>
-            <a href="<?= get_permalink(get_option('page_for_posts')) ?>">Bekijk projecten</a>
+            <?php if (is_home() || is_archive()) : ?>
+                <h1 class="block-posts__title"><?= $title ?></h1>
+            <?php else : ?>
+                <h2 class="block-posts__title"><?= $title ?></h2>
+            <?php endif; ?>
+
+            <?php if ($show_button_to_archive) : ?>
+                <a href="<?= get_permalink(get_option('page_for_posts')) ?>">Bekijk projecten</a>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
     <div class="content archive-grid">

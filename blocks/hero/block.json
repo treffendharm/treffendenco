@@ -1,17 +1,17 @@
 {
-    "name": "acf/hero",
-    "title": "Hero",
-    "description": "Toon de hero voor de homepage. Er zit ook de tekst slider in.",
-   "style": "file:../../dist/css/blocks/hero.css",
-    "viewScript": "file:./script.js",
-    "category": "treffend",
-    "icon": "align-wide",
-    "keywords": ["body", "text"],
-    "acf": {
-        "mode": "auto",
-        "renderTemplate": "render.php",
-        "postTypes": []
-    },
-    "render_callback": "treffend_acf_block_render_callback",
-    "align": "full"
+  "name": "acf/hero",
+  "title": "Hero",
+  "description": "Toon de hero voor de homepage. Er zit ook de tekst slider in.",
+  "style": "file:../../dist/css/blocks/hero.css",
+  "viewScript": ["file:./arrow-animation.js", "file:./marquee.js"],
+  "category": "treffend",
+  "icon": "align-wide",
+  "keywords": ["body", "text"],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "postTypes": []
+  },
+  "render_callback": "treffend_acf_block_render_callback",
+  "align": "full"
 }

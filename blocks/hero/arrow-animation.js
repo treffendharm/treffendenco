@@ -1,6 +1,3 @@
-// Lets make the svg look at the cursor its the .arrow thats inside the .block-hero
-// Only make the arrow respond when its in view with some extra margin outside its view with like 20% extra
-
 function initArrowAnimation() {
     const arrow = document.querySelector('.hero__arrow');
     if (!arrow) return;

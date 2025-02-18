@@ -159,8 +159,6 @@ if (typeof MouseFollower !== 'undefined' && typeof gsap !== 'undefined') {
             });
 
             observer.observe(video);
-
-            console.log('Showreel initialized'); // This should now only log once
         });
     }
 }

@@ -39,67 +39,34 @@ function initArrowAnimation() {
     }
 
     // Track mouse movement
-    document.addEventListener('mousemove', (e) => {
-        // Check if the arrow is in view before proceeding
-        if (!isArrowInView()) return;
+    function updateArrow() {
+        if (!mouseX || !mouseY || !isArrowInView()) return;
 
-        // Get mouse position relative to viewport
+        const actualY = mouseY + window.scrollY;
+
+        const arrowRect = arrow.getBoundingClientRect();
+        const arrowX = arrowRect.left + (arrowRect.width / 2);
+        const arrowY = arrowRect.top + (arrowRect.height / 2) + window.scrollY;
+
+        const deltaX = mouseX - arrowX;
+        const deltaY = actualY - arrowY;
+
+        const angle = (Math.atan2(deltaY, deltaX) * (180 / Math.PI)) + 45;
+        const targetAngle = angle * 0.05;
+
+        currentAngle += (targetAngle - currentAngle) * 0.1;
+
+        arrow.style.transform = `rotate(${currentAngle}deg) skewX(${currentAngle * 0.1}deg)`;
+    }
+
+    document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
-        // Add scroll offset to get position relative to document
-        const actualY = mouseY + window.scrollY;
-
-        // Calculate angle between arrow and mouse position
-        const arrowRect = arrow.getBoundingClientRect();
-        const arrowX = arrowRect.left + (arrowRect.width / 2);
-        const arrowY = arrowRect.top + (arrowRect.height / 2) + window.scrollY;
-
-        const deltaX = mouseX - arrowX;
-        const deltaY = actualY - arrowY;
-        
-        // Calculate angle and add 45 degree offset
-        const angle = (Math.atan2(deltaY, deltaX) * (180 / Math.PI)) + 45;
-        
-        // Limit rotation to 5% of the calculated angle
-        const targetAngle = angle * 0.05;
-        
-        // Smooth transition
-        currentAngle += (targetAngle - currentAngle) * 0.1;
-
-        // Apply transform with both rotation and skew
-        arrow.style.transform = `rotate(${currentAngle}deg) skewX(${currentAngle * 0.1}deg)`;
+        updateArrow();
     });
 
-    // Update position when scrolling
-    document.addEventListener('scroll', () => {
-        if (!mouseX || !mouseY) return; // Skip if no mouse movement yet
+    document.addEventListener('scroll', updateArrow);
 
-        // Check if the arrow is in view before proceeding
-        if (!isArrowInView()) return;
-
-        const actualY = mouseY + window.scrollY;
-
-        // Recalculate angle with new scroll position
-        const arrowRect = arrow.getBoundingClientRect();
-        const arrowX = arrowRect.left + (arrowRect.width / 2);
-        const arrowY = arrowRect.top + (arrowRect.height / 2) + window.scrollY;
-
-        const deltaX = mouseX - arrowX;
-        const deltaY = actualY - arrowY;
-        
-        // Calculate angle and add 45 degree offset
-        const angle = (Math.atan2(deltaY, deltaX) * (180 / Math.PI)) + 45;
-        
-        // Limit rotation to 5% of the calculated angle
-        const targetAngle = angle * 0.05;
-        
-        // Smooth transition
-        currentAngle += (targetAngle - currentAngle) * 0.1;
-
-        // Apply transform with both rotation and skew
-        arrow.style.transform = `rotate(${currentAngle}deg) skewX(${currentAngle * 0.1}deg)`;
-    });
 }
 
 // Call the function when the page loads

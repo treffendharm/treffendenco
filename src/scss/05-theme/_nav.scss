@@ -10,9 +10,9 @@ header {
     right: 0;
     z-index: 10;
     transition: background-color var(--transition);
-    color: var(--color-black);
     // I want the nav text to be kinda color doge or something the things below it
-    // mix-blend-mode: difference;
+    color: var(--color-white);
+    mix-blend-mode: difference;
 
     nav {
         display: flex;
@@ -40,7 +40,7 @@ header {
                 &::before {
                     content: '';
                     height: 1px;
-                    background-color: var(--color-black);
+                    background-color: currentColor;
                     position: absolute;
                     bottom: 0;
                     left: 0;
@@ -110,6 +110,13 @@ header {
 
             &.button_menu {
                 // margin-left: 5.625rem;
+
+                a{
+                    border-color: currentColor;
+                    &:hover{
+                        background-color: var(--color-primary-reverse);
+                    }
+                }
             }
         }
     }
@@ -264,4 +271,9 @@ header {
 
 
 
-body.fixed__header {}
+body.fixed__header {
+    nav{
+
+        padding-block: 1rem;
+    }
+}

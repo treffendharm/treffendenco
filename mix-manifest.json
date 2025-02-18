@@ -7,6 +7,7 @@
     "/dist/css/blocks/showreel.css": "/dist/css/blocks/showreel.css",
     "/dist/css/critical.css": "/dist/css/critical.css",
     "/dist/css/admincss.css": "/dist/css/admincss.css",
+    "/dist/css/style.css": "/dist/css/style.css",
     "/dist/css/blocks/about.css": "/dist/css/blocks/about.css",
     "/dist/css/blocks/hero.css": "/dist/css/blocks/hero.css",
     "/dist/css/blocks/image-row.css": "/dist/css/blocks/image-row.css",
@@ -20,11 +21,11 @@
     "/dist/images/svg/arrow.svg": "/dist/images/svg/arrow.svg",
     "/dist/images/svg/download.svg": "/dist/images/svg/download.svg",
     "/dist/images/svg/logo-black.svg": "/dist/images/svg/logo-black.svg",
+    "/dist/images/svg/logo-small.svg": "/dist/images/svg/logo-small.svg",
     "/dist/images/svg/outgoing.svg": "/dist/images/svg/outgoing.svg",
     "/dist/images/svg/pacman-closed.svg": "/dist/images/svg/pacman-closed.svg",
     "/dist/images/svg/pacman.svg": "/dist/images/svg/pacman.svg",
     "/dist/images/svg/pijl-simpel.svg": "/dist/images/svg/pijl-simpel.svg",
     "/dist/images/svg/pijl.svg": "/dist/images/svg/pijl.svg",
-    "/dist/images/svg/star.svg": "/dist/images/svg/star.svg",
-    "/dist/css/style.css": "/dist/css/style.css"
+    "/dist/images/svg/star.svg": "/dist/images/svg/star.svg"
 }

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Morphing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Remove or replace the non-working MorphSVGPlugin CDN -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MorphSVGPlugin.min.js"></script> -->
+
+    <!-- Add your authorized version of MorphSVGPlugin after getting Club GSAP membership -->
+    <script src="https://www.greensock.com/members/MorphSVGPlugin.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: black;
+        }
+
+        svg {
+            width: 400px;
+            height: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <svg id="logo" width="374" height="40" viewBox="0 0 374 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Full logo -->
+        <g id="fullLogo">
+            <path class="t" d="M0 6.92812H12.1644V39.6588H19.2353V6.92812H31.9112V0H0V6.92812Z" fill="white" />
+            <path class="r"
+                d="M66.5871 13.2835C66.5871 5.95933 60.5061 0 53.0297 0H36.1313V39.6588H43.2023V26.5659H51.0275L59.0447 39.6588H67.2906L58.5639 25.4077C63.2885 23.3293 66.5859 18.677 66.5859 13.2824L66.5871 13.2835ZM43.2035 6.92812H53.0309C56.6076 6.92812 59.5173 9.77904 59.5173 13.2835C59.5173 16.788 56.6076 19.6377 53.0321 19.6389H43.2035V6.92812Z"
+                fill="white" />
+            <path class="e1"
+                d="M70.7566 39.6588H99.8382V32.7307H77.8276V23.2935H99.8382V16.3654H77.8276V6.92812H99.8382V0H70.7566V39.6588Z"
+                fill="white" />
+            <path class="f1"
+                d="M104.06 39.6588H111.131V23.2935H128.254V16.3654H111.131V6.92812H132.474V0H104.06V39.6588Z"
+                fill="white" />
+            <path class="f2"
+                d="M136.696 39.6588H143.766V23.2935H160.89V16.3654H143.766V6.92812H165.11V0H136.696V39.6588Z"
+                fill="white" />
+            <path class="e2"
+                d="M169.331 39.6588H198.413V32.7307H176.402V23.2935H198.413V16.3654H176.402V6.92812H198.413V0H169.331V39.6588Z"
+                fill="white" />
+            <path class="n"
+                d="M227.53 26.0243L209.301 0H202.634V39.6588H209.705V13.6357L227.935 39.6588H234.601V0.00923749H227.53V26.0243Z"
+                fill="white" />
+            <path class="d"
+                d="M252.087 0H238.822V39.6588H252.087C263.247 39.6588 272.326 30.7631 272.326 19.8294C272.326 8.8957 263.247 0 252.087 0ZM252.087 32.7307H245.893V6.92812H252.087C259.348 6.92812 265.255 12.7154 265.255 19.8294C265.255 26.9434 259.348 32.7307 252.087 32.7307Z"
+                fill="white" />
+            <path class="enc"
+                d="M321.197 32.9166C318.036 32.8231 314.999 31.6061 312.676 29.5034C309.982 27.0635 308.575 23.7958 308.454 20.4899C308.461 20.2705 308.466 20.0511 308.466 19.8294H308.446C308.495 16.5894 309.777 13.3643 312.294 10.8979C314.781 8.46154 318.088 7.11979 321.605 7.11979C325.123 7.11979 328.364 8.43613 330.843 10.8286L334.691 4.89587C326.748 -1.71124 314.789 -1.34405 307.294 5.99975C303.245 9.96725 301.274 15.2107 301.38 20.4206C301.24 23.4482 300.03 26.2067 298.113 28.3418C295.892 25.4412 293.574 22.3593 291.497 19.4957C295.515 18.1621 298.419 14.444 298.443 10.0689C298.475 4.52983 293.739 0 288.087 0H268.94L273.886 6.92812H288.16C289.871 6.92812 291.321 8.24099 291.371 9.91644C291.422 11.5919 289.994 13.0918 288.227 13.0918C280.757 13.0918 274.678 19.0431 274.67 26.3603C274.661 33.9166 281.163 39.8863 288.871 39.6484C291.623 39.5642 294.24 38.9372 296.612 37.8749C297.1 38.4995 297.567 39.0954 298.01 39.6588H306.958C306.061 38.533 304.429 36.4765 302.441 33.9316C303.326 33.0748 304.131 32.1372 304.844 31.1338C305.552 32.1592 306.369 33.1337 307.295 34.0413C311.118 37.7871 316.2 39.8494 321.605 39.8494C326.453 39.8494 331.04 38.1901 334.693 35.1463L330.844 29.2124C328.269 31.6973 324.832 33.0217 321.198 32.9155L321.197 32.9166ZM288.227 32.7307C284.65 32.7307 281.741 29.8798 281.741 26.3753C281.741 24.3546 282.709 22.5533 284.213 21.3882C286.611 24.7738 289.461 28.5842 292.177 32.1372C290.929 32.5229 289.604 32.7307 288.227 32.7307Z"
+                fill="white" />
+            <path class="o"
+                d="M353.715 0.145508C342.53 0.145508 333.429 9.06199 333.429 20.0211C333.429 30.9802 342.53 39.8967 353.715 39.8967C364.9 39.8967 374 30.9802 374 20.0211C374 9.06199 364.9 0.145508 353.715 0.145508ZM353.715 32.8762C346.48 32.8762 340.594 27.1097 340.594 20.0211C340.594 12.9325 346.48 7.166 353.715 7.166C360.949 7.166 366.835 12.9325 366.835 20.0211C366.835 27.1097 360.949 32.8762 353.715 32.8762Z"
+                fill="white" />
+        </g>
+
+
+    </svg>
+
+    <script>
+        const animationConfig = {
+            duration: 0.3,
+            stagger: .2,
+            slideDistance: 500,
+            encDistance: 251,
+            ease: "power2.inOut"
+        };
+
+        let isFullLogo = true;
+
+        // Letter configuration
+        const letters = [
+            { class: 'r' },
+            { class: 'e1' },
+            { class: 'f1' },
+            { class: 'f2' },
+            { class: 'e2' },
+            { class: 'n' },
+            { class: 'd' },
+            { class: 'enc', special: true },
+            { class: 'o' }
+        ];
+
+        // Set initial states
+        gsap.set("#smallLogo", { opacity: 0 });
+        gsap.set(letters.map(l => `.${l.class}`), { x: 0, opacity: 1 });
+
+        const animation = {
+            init: () => {
+                const tl = gsap.timeline();
+                const { duration, stagger, slideDistance, encDistance, ease } = animationConfig;
+
+                // Get letters in the correct order based on direction
+                const sequence = isFullLogo ? letters : [...letters].reverse();
+
+                // Animate each letter
+                sequence.forEach((letter, index) => {
+                    const target = `.${letter.class}`;
+                    const config = {
+                        duration,
+                        x: isFullLogo ?
+                            (letter.special ? -encDistance : -slideDistance) :
+                            0,
+                        ease,
+                        ...(!letter.special && { opacity: isFullLogo ? 0 : 1 })
+                    };
+
+                    tl.to(target, config, index === 0 ? 0 : `-=${stagger}`);
+                });
+            }
+        };
+
+        // Logo click handler
+        document.getElementById("logo").addEventListener("click", () => {
+            animation.init();
+            isFullLogo = !isFullLogo;
+        });
+    </script>
+
+</body>
+
+</html>

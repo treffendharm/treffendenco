@@ -35,6 +35,7 @@ body {
     transition: opacity var(--transition);
     will-change: background-color;
     font-weight: 400;
+    background-color: var(--color-white);
 }
 
 main {

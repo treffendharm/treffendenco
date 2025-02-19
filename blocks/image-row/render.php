@@ -24,7 +24,7 @@ if (!empty($block)) {
         <?php
         if (get_field('images')):
             foreach (get_field('images') as $image):
-                echo wp_get_img($image, 'full');
+                echo wp_get_img($image, 'full', false, ['class' => 'load-in']);
             endforeach;
         endif;
         ?>

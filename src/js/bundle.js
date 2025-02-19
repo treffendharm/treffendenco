@@ -2,6 +2,7 @@
 
 import './components/scripts';
 import './components/scroll-top';
+import './load-animations/image';
 // import './components/treffendFilter';
 
 

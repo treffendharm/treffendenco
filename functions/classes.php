@@ -154,7 +154,7 @@ function get_video_image_output($args = [])
         $img_id = is_int($image) ? $image : $image['ID'];
         // If is hero image, no lazy loading, and set decoding sync. So only if attr hero is true
         $is_hero = $args['hero'] ?? false;
-        echo wp_get_img($img_id, 'large', false, ['loading' => $is_hero ? 'eager' : 'lazy', 'decoding' => $is_hero ? 'sync' : 'async']);
+        echo wp_get_img($img_id, 'large', false, ['loading' => $is_hero ? 'eager' : 'lazy', 'decoding' => $is_hero ? 'sync' : 'async', 'class' => 'load-in']);
     }
 
     return ob_get_clean();

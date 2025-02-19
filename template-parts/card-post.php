@@ -11,7 +11,7 @@ foreach ($categories as $category) {
 $category_links = implode(' - ', $category_links);
 ?>
 
-<a href="<?= $link; ?>" class="card-post">
+<a href="<?= $link; ?>" class="card-post load-in">
     <div class="card-post__image">
         <?= $image; ?>
     </div>

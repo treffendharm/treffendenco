@@ -1,5 +1,6 @@
 {
-    "/dist/js/helpers.js": "/dist/js/helpers.js",
+    "/dist/js/tinymce-table.min.js": "/dist/js/tinymce-table.min.js",
+    "/dist/js/filter-gutenberg-blocks.js": "/dist/js/filter-gutenberg-blocks.js",
     "/dist/js/bundle.js": "/dist/js/bundle.js",
     "/dist/css/blocks/showreel.css": "/dist/css/blocks/showreel.css",
     "/dist/css/blocks/text.css": "/dist/css/blocks/text.css",
@@ -8,6 +9,7 @@
     "/dist/css/style.css": "/dist/css/style.css",
     "/dist/css/blocks/about.css": "/dist/css/blocks/about.css",
     "/dist/css/blocks/hero.css": "/dist/css/blocks/hero.css",
+    "/dist/css/blocks/hero-small.css": "/dist/css/blocks/hero-small.css",
     "/dist/css/blocks/image-row.css": "/dist/css/blocks/image-row.css",
     "/dist/css/blocks/logos.css": "/dist/css/blocks/logos.css",
     "/dist/css/blocks/posts.css": "/dist/css/blocks/posts.css",

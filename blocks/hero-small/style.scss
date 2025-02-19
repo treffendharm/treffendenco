@@ -32,11 +32,6 @@
         transform: translateY(-50%);
         margin-left: clamp(-15rem, calc(-38.125rem + 30vw), 0rem); // Hmm i like this one, it seems to line up pretty well :)
     }
-
-    .hero__arrow {
-        transform-style: preserve-3d;
-        perspective: 1000px;
-    }
 }
 
 .marquee {

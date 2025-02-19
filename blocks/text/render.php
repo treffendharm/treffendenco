@@ -37,7 +37,7 @@ $margin_bottom = get_field('margin_bottom_large');
     <?php endif; ?>
 
     <?php if ($text_2 || $button_2) : ?>
-        <div class="col-5 start-7 text-wrapper">
+        <div class="col-4 start-7 text-wrapper">
             <?php if ($text_2) : ?>
                 <div class="text-container">
                     <?= $text_2 ?>

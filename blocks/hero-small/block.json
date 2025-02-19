@@ -1,0 +1,17 @@
+{
+  "name": "acf/hero-small",
+  "title": "Hero Small",
+  "description": "Een simpele hero block, met een titel en een subtitel.",
+  "style": "file:../../dist/css/blocks/hero-small.css",
+  "viewScript": [],
+  "category": "treffend",
+  "icon": "star-filled",
+  "keywords": ["body", "text"],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "postTypes": []
+  },
+  "render_callback": "treffend_acf_block_render_callback",
+  "align": "full"
+}

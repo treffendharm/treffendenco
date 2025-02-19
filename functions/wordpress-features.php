@@ -205,7 +205,7 @@ function custom_acf_toolbars($toolbars)
 
 function add_the_table_plugin($plugins)
 {
-    $plugins['table'] = get_template_directory_uri() . '/dist/js/admin/tinymce-table.min.js'; // This version is smaller then the dist version lol
+    $plugins['table'] = get_template_directory_uri() . '/dist/js/tinymce-table.min.js'; // This version is smaller then the dist version lol
     return $plugins;
 }
 add_filter('mce_external_plugins', 'add_the_table_plugin');

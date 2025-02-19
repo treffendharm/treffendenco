@@ -49,9 +49,9 @@ function treffend_admin_files()
     if ($current_screen && $current_screen->is_block_editor()) {
         wp_enqueue_script(
             'gutenberg-filters',
-            get_template_directory_uri() . '/dist/js/filter-gutenberg-blocks.js',
+            get_template_directory_uri() . '/dist/js/admin/filter-gutenberg-blocks.js',
             ['wp-blocks', 'wp-dom-ready', 'wp-edit-post'],
-            filemtime(get_template_directory() . '/dist/js/filter-gutenberg-blocks.js'),
+            filemtime(get_template_directory() . '/dist/js/admin/filter-gutenberg-blocks.js'),
             true
         );
     }

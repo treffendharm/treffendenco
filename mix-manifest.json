@@ -1,7 +1,5 @@
 {
-    "/dist/js/tinymce-table.min.js": "/dist/js/tinymce-table.min.js",
     "/dist/js/helpers.js": "/dist/js/helpers.js",
-    "/dist/js/filter-gutenberg-blocks.js": "/dist/js/filter-gutenberg-blocks.js",
     "/dist/js/bundle.js": "/dist/js/bundle.js",
     "/dist/css/blocks/showreel.css": "/dist/css/blocks/showreel.css",
     "/dist/css/blocks/text.css": "/dist/css/blocks/text.css",

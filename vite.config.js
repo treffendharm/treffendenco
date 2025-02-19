@@ -7,5 +7,8 @@ export default defineConfig({
             '@gsap': path.resolve(__dirname, 'node_modules/gsap'),
             '@mouse-follower': path.resolve(__dirname, 'node_modules/mouse-follower'),
         }
+    },
+    optimizeDeps: {
+        include: ['@studio-freight/lenis', 'gsap']
     }
 }); 

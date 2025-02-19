@@ -1,0 +1,166 @@
+.block-quote {
+    margin-block: 9.375rem;
+    
+
+    .quote-wrapper {
+        position: relative;
+        column-gap: 1.5rem;
+    }
+
+    .quote-info {
+        position: relative;
+    }
+
+    .quote-images {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1;
+        margin-bottom: 2rem;
+
+        .quote-image {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            border-radius: 50%;
+            overflow: hidden;
+
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+
+    .quote-authors {
+        margin-bottom: 2rem;
+        position: relative;
+        min-height: 4rem;
+        overflow: hidden;
+        margin-inline: auto;
+        text-align: center;
+
+        .quote-author {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            pointer-events: none;
+
+            &.active {
+                opacity: 1;
+                position: relative;
+                // visibility: visible;
+                pointer-events: auto;
+            }
+
+            .name {
+                font-weight: 600;
+                font-size: 1.125rem;
+                line-height: 150%;
+                margin-bottom: 0.19rem;
+            }
+
+            .function {
+                font-size: 0.875rem;
+                line-height: 150%;
+            }
+        }
+    }
+
+    .progress-wrapper {
+        width: 100%;
+        // height: 2px;
+
+
+        .progress-bar {
+            height: 0.625rem;
+            background: var(--color-secondary);
+            transform-origin: left center;
+        }
+    }
+
+    .controls {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-black);
+
+        button {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            svg {
+                fill: currentColor;
+            }
+        }
+    }
+
+    .quote-content {
+        position: relative;
+        // min-height: 12rem;
+
+        .quote-text {
+            opacity: 0;
+            position: absolute;
+            inset: 0;
+
+            &.active {
+                opacity: 1;
+                position: relative;
+            }
+
+            blockquote {
+                font-size: 2.5rem;
+                font-weight: 600;
+                line-height: 120%;
+                margin: 0;
+                backface-visibility: hidden;
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+    }
+
+    .quote-images,
+    .quote-authors,
+    .quote-content {
+        will-change: transform, opacity;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+    .quote-image,
+    .quote-author,
+    .quote-text {
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+        transform: translateZ(0);
+        will-change: transform, opacity;
+    }
+
+    // Single quote variation
+    &.single {
+
+        .quote-images .quote-image,
+        .quote-authors .quote-author,
+        .quote-content .quote-text {
+            opacity: 1;
+            position: relative;
+            // visibility: visible;
+        }
+    }
+
+    .border {
+        // border-top: 1px solid var(--color-black)
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-black);
+        margin-left: 1.5rem;
+    }
+}

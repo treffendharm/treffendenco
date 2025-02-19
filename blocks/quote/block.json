@@ -1,0 +1,17 @@
+{
+    "name": "acf/quote",
+    "title": "Quote",
+    "description": "Toon een quote slider",
+    "style": "file:../../dist/css/blocks/quote.css",
+    "viewScript": "file:./script.js",
+    "category": "treffend",
+    "icon": "format-quote",
+    "keywords": ["quote", "slider", "testimonial"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php",
+        "postTypes": []
+    },
+    "render_callback": "treffend_acf_block_render_callback",
+    "align": "full"
+}

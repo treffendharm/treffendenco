@@ -57,9 +57,16 @@ header {
             }
         }
 
+
         &.button_menu {
+
             a {
                 @extend %button;
+                border-color: currentColor;
+
+                .button__effect {
+                    background-color: var(--color-primary-reverse);
+                }
             }
         }
 
@@ -107,22 +114,7 @@ header {
             }
         }
 
-        li {
-
-
-
-            &.button_menu {
-                // margin-left: 5.625rem;
-
-                a {
-                    border-color: currentColor;
-
-                    &:hover {
-                        background-color: var(--color-primary-reverse);
-                    }
-                }
-            }
-        }
+        li {}
     }
 
 

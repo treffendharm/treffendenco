@@ -1,4 +1,4 @@
-
+import './components/button';
 import './components/scripts';
 import './components/scroll-top';
 // import './components/treffendFilter';

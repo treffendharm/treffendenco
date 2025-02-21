@@ -51,7 +51,12 @@ $single_quote = count($quotes) === 1;
                 </svg>
             </button>
         </div>
+    <?php else: ?>
+        <div class=" col-4 controls">
+        </div>
     <?php endif; ?>
+
+
     <div class="col-8 start-5 border">
     </div>
 </section>

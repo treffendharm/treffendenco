@@ -1,6 +1,6 @@
 {
     "key": "group_67b4589a0699d",
-    "title": "Block | Images",
+    "title": "Block | Media row",
     "fields": [
         {
             "key": "field_67b45b73b091a",
@@ -97,7 +97,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/image-row"
+                "value": "acf\/media-row"
             }
         ]
     ],
@@ -110,5 +110,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739976581
+    "modified": 1739978820
 }

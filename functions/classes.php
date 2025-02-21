@@ -90,6 +90,7 @@ function get_video_image_output($args = [])
     $autoplay = $args['autoplay'] ?? get_field('autoplay') ?? true;
     $always_muted = $args['always_muted'] ?? get_field('always_muted') ?? false;
     $loop = $args['loop'] ?? get_field('loop') ?? false;
+    $thumbnail_color = $args['thumbnail_color'] ?? get_field('thumbnail-color') ?? false;
 
 
 
@@ -111,9 +112,8 @@ function get_video_image_output($args = [])
                         title="YouTube video"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-
-                        </iframe>
+                        allowfullscreen>
+                    </iframe>
                 </div>
             <?php
             }
@@ -139,8 +139,8 @@ function get_video_image_output($args = [])
                     <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>">
                     Your browser does not support the video tag.
                 </video>
-                <div class="video-wrapper-overlay">
-                    <?= wp_get_img($thumbnail['ID'], 'full', false, ['loading' => 'eager', 'decoding' => 'sync']); ?>
+                <div class="video-wrapper-overlay" style="background-color: <?= $thumbnail_color ? esc_attr($thumbnail_color) : ''; ?>">
+                    <?= $thumbnail_color ? '' : wp_get_img($thumbnail['ID'], 'full', false, ['loading' => 'eager', 'decoding' => 'sync']); ?>
                 </div>
             </div>
 

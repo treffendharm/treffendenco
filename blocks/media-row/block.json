@@ -1,8 +1,9 @@
 {
-    "name": "acf/image-row",
-    "title": "Afbeeldingen rij",
-    "description": "Voeg een rij met afbeeldingen toe in verschillende layouts.",
-    "style": "file:../../dist/css/blocks/image-row.css",
+    "name": "acf/media-row",
+    "title": "Media rij",
+    "description": "Voeg een rij met afbeeldingen of video's toe in verschillende layouts.",
+    "style": "file:../../dist/css/blocks/media-row.css",
+    "viewScript": "file:./script.js",
     "category": "treffend",
     "icon": "format-gallery",
     "keywords": ["image", "gallery", "row"],

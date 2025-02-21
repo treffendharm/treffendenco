@@ -145,6 +145,12 @@
         will-change: transform, opacity;
     }
 
+    .quote-image{
+        img{
+            aspect-ratio: 1;
+        };
+    }
+
     // Single quote variation
     &.single {
 

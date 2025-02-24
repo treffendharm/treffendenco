@@ -13,7 +13,7 @@ $media_data = [
 
 <section class="content-grid block block-showreel">
     <div class="content">
-        <div class="showreel-wrapper">
+        <div class="showreel-wrapper media-wrapper">
             <?php
             the_video_image_output($media_data);
             ?>

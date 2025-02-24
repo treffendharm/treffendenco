@@ -1,0 +1,96 @@
+.block-slider {
+   margin-block: 9.375rem;
+   
+   .slider-container {
+      width: 100%;
+      position: relative;
+      
+      .slider-nav {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         background: rgba(255, 255, 255, 0.8);
+         border: none;
+         border-radius: 50%;
+         width: 3rem;
+         height: 3rem;
+         cursor: pointer;
+         z-index: 10;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         transition: background-color 0.3s;
+         
+         &:hover {
+            background: rgba(255, 255, 255, 1);
+         }
+         
+         svg {
+            width: 1.5rem;
+            height: 1.5rem;
+         }
+         
+         &.prev {
+            left: 1rem;
+         }
+         
+         &.next {
+            right: 1rem;
+         }
+      }
+   }
+   
+   .slider-wrapper {
+      display: flex;
+      gap: 1.44rem;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      width: max-content;
+      position: relative;
+      touch-action: none;
+      pointer-events: auto;
+      will-change: transform;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+
+      &:active {
+         cursor: grabbing;
+      }
+
+      .slide {
+         height: 100%;
+         display: grid;
+         grid-template-rows: 41.21294rem 1fr;
+         gap: 1.25rem;
+         flex: 0 0 auto;
+         
+         
+         .slide-media {
+            height: 100%;
+            
+            img, 
+            video {
+               height: 100%;
+               width: auto;
+               max-height: 41.21294rem;
+               pointer-events: none;
+               user-drag: none;
+               -webkit-user-drag: none;
+               user-select: none;
+               -webkit-user-select: none;
+               object-fit: contain;
+            }
+            
+            .video-wrapper {
+               height: 100%;
+
+
+               video{
+                  aspect-ratio: unset;
+               }
+            }
+         }
+      }
+   }
+}

@@ -332,6 +332,15 @@ function enqueue_block_scripts()
         true
     );
 
+    // Add Draggable plugin
+    wp_enqueue_script(
+        'gsap-draggable',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js',
+        array('gsap'),
+        '3.12.5',
+        true
+    );
+
     // Enqueue ScrollTrigger
     wp_enqueue_script(
         'gsap-scrolltrigger',

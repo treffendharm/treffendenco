@@ -18,7 +18,7 @@ if (!empty($block)) {
 ?>
 
 <section class="content-grid <?= esc_attr($className); ?> <?= $margin_top ? 'margin-top-large' : '' ?> <?= $margin_bottom ? 'margin-bottom-large' : '' ?>">
-    <div class="content media-row-wrapper">
+    <div class="content media-row-wrapper media-wrapper">
         <?php
         if (get_field('images')):
             foreach (get_field('images') as $media):

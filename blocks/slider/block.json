@@ -1,0 +1,30 @@
+{
+    "name": "acf/slider",
+    "title": "Slider",
+    "description": "Voeg een slider toe met afbeeldingen of video's.",
+    "style": "file:../../dist/css/blocks/slider.css",
+    "viewScript": "file:./script.js",
+    "category": "treffend",
+    "icon": "slides",
+    "keywords": ["image", "gallery", "row"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "jsx": true
+    },
+    "styles": [
+        {
+            "name": "single",
+            "label": "Enkele grote afbeelding",
+            "isDefault": true
+        },
+        {
+            "name": "two_equal",
+            "label": "Twee gelijke afbeeldingen"
+        }
+    ]
+} 

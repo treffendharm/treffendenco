@@ -9,10 +9,10 @@ $text = get_field('text');
                 <?php include get_template_directory() . '/dist/images/svg/pijl.svg' ?>
             </div>
         </div>
-        <div class="col-6 start-7">
+        <div class="col-6 start-7 text-wrapper">
             <p><?= $text ?></p>
         </div>
-        <div class="col-8 start-5">
+        <div class="col-8 start-5 text-wrapper">
             <h1><?= $title ?></h1>
         </div>
     </div>

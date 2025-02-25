@@ -68,7 +68,7 @@ button,
 input,
 textarea,
 select {
-    font-size: 1.125rem;
+    font-size: clamp(1rem, calc(0.891rem + 0.25vw), 1.125rem); /* min: 16px, max: 18px */;
     line-height: 150%;
 }
 

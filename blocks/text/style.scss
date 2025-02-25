@@ -2,10 +2,10 @@
     margin-block: 5rem;
 
     &.margin-top-large {
-        margin-top: 9.375rem;
+        margin-top: var(--section-spaceing);
     }
 
     &.margin-bottom-large {
-        margin-bottom: 9.375rem;
+        margin-bottom: var(--section-spaceing);
     }
 }

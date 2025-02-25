@@ -64,6 +64,7 @@ $image-base-path: '../images' !default;
     width: fit-content;
     overflow: hidden;
     display: block;
+    --_effect-color: var(--color-primary);
 
     &::after,
     &::before {
@@ -80,7 +81,7 @@ $image-base-path: '../images' !default;
     }
 
     &::before {
-        background-color: var(--color-primary);
+        background-color: var(--_effect-color);
         z-index: 2;
         width: 0;
         left: 0;

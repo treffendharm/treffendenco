@@ -2,7 +2,7 @@
 
 .block-single-hero{
     margin-bottom: 5rem;
-    margin-top: 9.375rem;
+    margin-top: var(--section-spaceing);
     
     h1{
         @extend .h5;

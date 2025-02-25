@@ -20,7 +20,7 @@
         overflow: hidden;
         
         .arrow {
-            width: 56.5625rem;
+            width: clamp(11.875rem, calc(-12.953rem + 95vw), 56.25rem); /* min: 190px, max: 900px */;
             height: 9.75rem;
             @include mixins.mask('pijl-simpel');
             transition: unset;
@@ -36,14 +36,19 @@
     }
 
     .service {
-        padding-block: 2.69rem;
+        padding-block: clamp(1.5rem, calc(0.459rem + 2.38vw), 2.69rem); /* min: 24px, max: 43.04px */;
         border-bottom: 1px solid var(--color-black);
 
         .service-item-hero {
             cursor: pointer;
 
+            .title-wrapper{
+                display: flex;
+                align-items: center;
+            }
+
             p {
-                font-size: 1.5rem;
+                font-size: clamp(1.125rem, calc(0.797rem + 0.75vw), 1.5rem); /* min: 18px, max: 24px */;
             }
 
             .service-toggle {
@@ -86,7 +91,7 @@
         }
 
         .content-wrapper {
-            padding-top: 2.69rem;
+            padding-top: clamp(1.625rem, calc(1.25rem + 1.88vw), 2.69rem); /* min: 26px, max: 43.04px */;
         }
 
         &[data-open="true"] {

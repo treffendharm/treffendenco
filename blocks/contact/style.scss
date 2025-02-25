@@ -1,0 +1,34 @@
+body:has(.block-contact) main {
+
+    .h4{
+        line-height: 110%;
+    }
+
+    a{
+        --_effect-color: var(--color-white);
+    }
+
+    .block {
+        margin-block: 4.69rem;
+        
+        .border {
+            border-top: 1px solid #000;
+            padding-bottom: 4.69rem;
+        }
+    }
+
+    .block-single-hero {
+        h1 {
+            font-size: 5.625rem;
+            line-height: 100%;
+        }
+    }
+
+    .contact-info{
+        margin-bottom: 3rem;
+    }
+
+    footer{
+        margin-top: var(--section-spaceing);
+    }
+}

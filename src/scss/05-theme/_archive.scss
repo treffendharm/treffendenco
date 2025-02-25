@@ -1,10 +1,11 @@
 .cards-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(clamp(25rem, 18.25rem + 15vw, 40rem), 1fr));
+    // grid-template-columns: repeat(auto-fill, minmax(clamp(25rem, 18.25rem + 15vw, 40rem), 1fr)); // Backup - did not fit for mobile
+    grid-template-columns: repeat(auto-fill, minmax(clamp(17rem, 12.25rem + 20vw, 40rem), 1fr));
     column-gap: 1.56rem;
-    row-gap: 4.06rem;
+    row-gap: clamp(2.56rem, 1.248rem + 3vw, 4.06rem); /* min: 40.96px, max: 64.96px */
 }
 
 .archive-wrapper {
-    margin-block: 9.375rem;
+    margin-block: var(--section-spaceing);
 }

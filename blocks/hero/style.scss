@@ -1,6 +1,6 @@
-@use '../../src/scss/02-base/mixins' with (
-    $image-base-path: '../../../src/images'
+@use '../../src/scss/02-base/mixins' with ($image-base-path: '../../../src/images'
 );
+@use "../../src/scss/01-grid/responsive";
 
 .block-hero {
     height: 72svh;
@@ -8,13 +8,15 @@
 
     .hero-wrapper {
         grid-auto-rows: min-content;
-        margin-top: 3rem; 
+        margin-top: 3rem;
         position: relative;
         column-gap: 1.5rem;
     }
 
     p {
-        font-size: 1.25rem;
+        font-size: clamp(1.125rem, calc(1.016rem + 0.25vw), 1.25rem);
+        /* min: 18px, max: 20px */
+        ;
         line-height: 130%;
         max-width: 31.6875rem;
     }
@@ -23,6 +25,10 @@
         text-align: right;
         margin-top: 2.5625rem;
         max-width: 40.1875rem;
+        text-wrap: balance;
+        font-size: clamp(4rem, calc(-1.25rem + 12vw), 10rem);
+        /* min: 64px, max: 160px */
+        ;
     }
 
 
@@ -31,11 +37,35 @@
         top: 50%;
         transform: translateY(-50%);
         margin-left: clamp(-15rem, calc(-38.125rem + 30vw), 0rem); // Hmm i like this one, it seems to line up pretty well :)
+        pointer-events: none;
+
+        svg {
+            width: 100%;
+        }
     }
 
     .hero__arrow {
         transform-style: preserve-3d;
         perspective: 1000px;
+        width: calc(30svw - clamp(-15rem, calc(-38.125rem + 30vw), 0rem));
+    }
+
+    @include responsive.respond-to(sm) {
+        .text-wrapper {
+            grid-column: 1 / -1;
+        }
+
+        .arrow-wrapper {
+            grid-column: 1 / -1;
+            margin-left: 0;
+            transform: rotate(45deg);
+            position: absolute;
+            top: -150%;
+
+            .hero__arrow{
+                transform: unset;
+            }
+        }
     }
 }
 
@@ -46,7 +76,7 @@
     overflow: hidden;
     position: relative;
     width: 100%;
-    
+
     display: flex;
     gap: 3rem;
 

@@ -24,8 +24,8 @@ header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-block: 3rem;
-        transition: padding-block var(--transition);
+        padding: 3rem 0 3rem 0;
+        transition: padding var(--transition);
         --_nav-color: var(--color-black);
     }
 
@@ -298,12 +298,12 @@ header {
 // -------------------------
 body.fixed__header {
     header nav {
-        padding-block: 1rem;
+        padding: 1rem 0 1rem 0;
     }
 }
 
 body {
     header[data-open=true] nav {
-        padding-block: 3rem;
+        padding: 3rem 0 3rem 0;
     }
 }

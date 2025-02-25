@@ -1,0 +1,16 @@
+{
+    "name": "acf/contact",
+    "title": "Contact",
+    "description": "Block voor contact pagina",
+    "style": "file:../../dist/css/blocks/contact.css",
+    "category": "treffend",
+    "icon": "editor-textcolor",
+    "keywords": ["contact"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php",
+        "postTypes": []
+    },
+    "render_callback": "treffend_acf_block_render_callback",
+    "align": "full"
+}

@@ -1,4 +1,4 @@
-function initArrowAnimation() {
+function ArrowAnimation() {
     const arrow = document.querySelector('.hero__arrow');
     if (!arrow) return;
 
@@ -64,6 +64,26 @@ function initArrowAnimation() {
 
     document.addEventListener('scroll', updateArrow);
 
+    // Method to kill the animation
+    this.kill = function () {
+        document.removeEventListener('mousemove', updateArrow);
+        document.removeEventListener('scroll', updateArrow);
+    };
+}
+
+
+function initArrowAnimation() {
+    // check if screen width is greater than 768px
+    if (window.innerWidth > 768) {
+        ArrowAnimation();
+    }
+
+    // Also check on resize, but don't make it too responsive, as in, not too many event listeners
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            ArrowAnimation();
+        }
+    });
 }
 
 // Call the function when the page loads

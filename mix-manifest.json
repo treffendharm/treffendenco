@@ -8,6 +8,7 @@
     "/dist/css/admincss.css": "/dist/css/admincss.css",
     "/dist/css/style.css": "/dist/css/style.css",
     "/dist/css/blocks/about.css": "/dist/css/blocks/about.css",
+    "/dist/css/blocks/contact.css": "/dist/css/blocks/contact.css",
     "/dist/css/blocks/hero.css": "/dist/css/blocks/hero.css",
     "/dist/css/blocks/hero-small.css": "/dist/css/blocks/hero-small.css",
     "/dist/css/blocks/logos.css": "/dist/css/blocks/logos.css",

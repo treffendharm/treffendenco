@@ -4,7 +4,8 @@
     "scripts": {
         "dev": "mix",
         "watch": "mix watch",
-        "prod": "mix --production"
+        "start": "npm i && mix watch",
+        "prod": "mix --production && npm i --production"
     },
     "author": "Harm van de Kraats",
     "license": "ISC",

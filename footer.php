@@ -32,13 +32,15 @@
       </div>
       <div class="col-2 start-9 quick-menu-wrapper">
          <h6><?= get_field('footer_title_4', 'option'); ?></h6>
-         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Over ons</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Denklab</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Pacman</a></li>
+         <ul class="menu">
+            <?php
+            wp_nav_menu(array(
+               'theme_location' => 'footer_menu',
+               'container' => false,
+               'items_wrap' => '%3$s',
+               'walker' => new Treffend_Submenu_container()
+            ));
+            ?>
          </ul>
       </div>
       <div class="col-2 start-11 social-wrapper">

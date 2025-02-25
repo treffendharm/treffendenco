@@ -34,33 +34,7 @@
 
 
 .btn {
-    // align-items: center;
-    // background: transparent;
-    // border: none;
-    // border-radius: 6.25rem;
-    // color: var(--button-color, var(--color-black));
-    // cursor: pointer;
-    // display: inline-flex;
-    // font-size: max(1rem, min(.38835vw + .908981rem, 1.375rem));
-    // font-weight: 600;
-    // gap: .363636em;
-    // justify-content: center;
-    // letter-spacing: -.01em;
-    // line-height: 1.04545;
-    // // overflow: hidden;
-    // padding: .9375rem 1.5rem;
-    // position: relative;
-    // text-decoration: none;
     @extend %button;
-
-    // &:after {
-    //     border: .125rem solid var(--button-stroke, currentColor);
-    //     border-radius: 6.25rem;
-    //     content: "";
-    //     pointer-events: none;
-    //     position: absolute;
-    //     inset: 0;
-    // }
 }
 
 .button__effect {
@@ -131,6 +105,26 @@
             opacity: 0;
 
             transition: transform .3s var(--transition-effect), left .3s var(--transition-effect), opacity .3s var(--transition-effect) .1s;
+        }
+    }
+}
+
+
+%btn_pacman_small{
+    @extend %btn_pacman;
+    background-color: unset;
+
+    &::before {
+        background-color: var(--color-black);
+    }
+    &::after {
+        @include mixins.bg-mask('pacman-normal');   
+    }
+
+    &:hover,
+    &:focus-visible {
+        &::after {
+            @include mixins.bg-mask('pacman-closed-normal');
         }
     }
 }

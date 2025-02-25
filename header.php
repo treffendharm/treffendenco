@@ -6,6 +6,7 @@
     <?php if (get_field('head_code', 'options')) { ?>
         <?php the_field('head_code', 'options'); ?>
     <?php } ?>
+    
 
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="description" content="<?php bloginfo('description'); ?>">

@@ -41,18 +41,16 @@
         </a>
 
         <div class="navigation-menu-wrapper">
-            <div class="inner">
-                <ul class="menu">
-                    <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'main_menu',
-                        'container' => false,
-                        'items_wrap' => '%3$s',
-                        'walker' => new Treffend_Submenu_container()
-                    ));
-                    ?>
-                </ul>
-            </div>
+            <ul class="menu">
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'main_menu',
+                    'container' => false,
+                    'items_wrap' => '%3$s',
+                    'walker' => new Treffend_Submenu_container()
+                ));
+                ?>
+            </ul>
         </div>
 
         <div class="menu-toggle">
@@ -66,3 +64,20 @@
 
     </nav>
 </header>
+
+<div class="mobile-menu">
+    <div class="navigation-menu-wrapper">
+        <div class="inner">
+            <ul class="menu">
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'main_menu',
+                    'container' => false,
+                    'items_wrap' => '%3$s',
+                    'walker' => new Treffend_Submenu_container()
+                ));
+                ?>
+            </ul>
+        </div>
+    </div>
+</div>

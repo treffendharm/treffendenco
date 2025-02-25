@@ -3,98 +3,113 @@
 @use "../03-components/button";
 @use "../02-base/mixins";
 
+// Header component
+// -------------------------
 header {
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 1000;
     transition: background-color var(--transition);
-    // I want the nav text to be kinda color doge or something the things below it
     color: var(--color-white);
     mix-blend-mode: difference;
 
+    // When mobile menu is open
+    &[data-open=true] {}
+
+    // Main navigation
+    // -------------------------
     nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding-block: 3rem;
         transition: padding-block var(--transition);
-        --_nav-color: var(--color-primary);
+        --_nav-color: var(--color-black);
     }
 
+    // Logo
+    // -------------------------
     .nav-logo {
         width: 30rem;
+        margin-right: 1rem;
+        display: flex;
+
+        svg{
+            width: 100%;
+        }
+
+        @include responsive.respond-to(1161) {
+            width: 20rem;
+            max-width: 90%;
+        }
     }
 
-    li {
-        display: flex;
-        height: min-content;
+    // Navigation items
+    // -------------------------
+    .menu {
+        li {
+            display: flex;
+            height: min-content;
 
-        &:not(.button_menu):not(.button_pacman) {
-            a {
-                position: relative;
-                // @extend %a-hover;
+            // Standard menu items
+            &:not(.button_menu):not(.button_pacman) {
+                a {
+                    position: relative;
 
-
-                &::before {
-                    content: '';
-                    height: 1px;
-                    background-color: currentColor;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 0;
-                    transition: width var(--transition);
-                }
-
-                &:hover,
-                &:focus-visible {
                     &::before {
-                        width: 100%;
+                        content: '';
+                        height: 1px;
+                        background-color: currentColor;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 0;
+                        transition: width var(--transition);
+                    }
+
+                    &:hover,
+                    &:focus-visible {
+                        &::before {
+                            width: 100%;
+                        }
                     }
                 }
             }
-        }
 
+            // Button-style menu item
+            &.button_menu {
+                a {
+                    @extend %button;
+                    border-color: currentColor;
 
-        &.button_menu {
-
-            a {
-                @extend %button;
-                border-color: currentColor;
-
-                .button__effect {
-                    background-color: var(--color-primary-reverse);
+                    .button__effect {
+                        background-color: var(--color-primary-reverse);
+                    }
                 }
             }
-        }
 
-        &.button_pacman {
-            margin-left: -4rem;
-            height: 100%;
-            aspect-ratio: 1;
+            // Pacman button menu item
+            &.button_pacman {
+                margin-left: -4rem;
+                height: 100%;
+                aspect-ratio: 1;
 
-            a {
-                @extend %btn_pacman;
+                a {
+                    @extend %btn_pacman;
+                }
             }
         }
     }
 
-    // Desktop menu
+    // Desktop only menu styles
+    // -------------------------
     @include responsive.respond-from(lg) {
-        // background-color: var(--color-white);
-
         .navigation-menu-wrapper {
             width: 100%;
             display: flex;
             justify-content: flex-end;
-
-            .inner {
-                width: 100%;
-                display: flex;
-                justify-content: flex-end;
-            }
         }
 
         .menu-toggle {
@@ -105,31 +120,40 @@ header {
             display: flex;
             gap: 7rem;
             align-items: center;
+            width: 100%;
+            justify-content: flex-end;
 
-            .current-menu-item:not(.button_menu)>a {
-
+            .current-menu-item:not(.button_menu):not(.button_pacman)>a {
                 &::before {
                     width: 100%;
                 }
             }
         }
-
-        li {}
     }
 
-
-    // Mobile menu
+    // Mobile menu styles
+    // -------------------------
     @include responsive.respond-to(lg) {
+        color: var(--color-white);
+
+        .navigation-menu-wrapper {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: flex;
+        }
+
         .nav-logo {
             z-index: 100;
         }
 
+        // Hamburger menu toggle
         .menu-toggle {
             cursor: pointer;
             --_height: 3px;
             --_width: 1.68rem;
             --_center: calc(50% - var(--_height) / 2);
-            // width: var(--_width);
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -142,7 +166,7 @@ header {
                 .line {
                     width: var(--_width);
                     height: var(--_height);
-                    background-color: var(--_nav-color);
+                    background-color: var(--color-white);
                     transition: top 0.2s .2s, transform .2s, opacity .2s, background-color var(--transition);
                     position: absolute;
 
@@ -160,7 +184,7 @@ header {
                 }
             }
 
-
+            // Open state for hamburger
             &[data-open=true] {
                 .burger {
                     .line {
@@ -172,7 +196,6 @@ header {
                         }
 
                         &:nth-child(2) {
-                            // top: var(--_center);
                             opacity: 0;
                         }
 
@@ -183,93 +206,104 @@ header {
                     }
                 }
             }
+        }
+    }
+}
+
+
+// Mobile menu
+// -------------------------
+@include responsive.respond-from(1161) {
+    .mobile-menu,
+    .mobile-menu[data-open=true] {
+        display: none;
+    }
+}
+
+
+.mobile-menu {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    padding-top: 6rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100svw;
+    height: 100svh;
+    backdrop-filter: blur(3rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+    @include containers.content-grid-setup();
 
 
 
+    .navigation-menu-wrapper {
+        grid-column: col-1 / content;
+
+        transform: scale(1.1);
+        transition: var(--transition);
+    }
+
+    .inner {
+        height: 100%;
+    }
 
 
-            .navigation-menu-wrapper {
-                @include containers.content-grid-setup();
-                position: absolute;
-                inset: 0;
-                height: 100svh;
-                background-color: var(--color-secondary);
-                align-items: center;
-                transition: transform .5s, opacity .5s;
+    .menu {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2rem, calc(1.125rem + 2vw), 3rem);
+        align-items: center;
+        justify-content: center;
 
-                // // close state
-                // opacity: 0;
-                // transform: translatey(-100%);
-                // pointer-events: none;
-                opacity: 0;
-                scale: 1.1;
-                pointer-events: none;
-                transform: scale(.95);
+        li {
 
+            a {
 
+                font-size: clamp(2rem, calc(0.25rem + 4vw), 4rem);
+                /* min: 32px, max: 64px */
+                ;
+                font-family: var(--font-title);
+                font-weight: 700;
+                color: var(--color-black);
+            }
 
+            &.button_pacman {
+                height: 3rem;
+                aspect-ratio: 1;
 
-                .inner {
-                    grid-column: col-3 / span 9;
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 3rem;
-                    align-items: flex-end;
-                }
-
-
-                .menu {
-                    display: flex;
-                    flex-direction: column;
-                    gap: clamp(1rem, calc(0.063rem + 3vw), 2.875rem);
-
-                    li {
-                        a {
-                            color: var(--color-white);
-                            font-size: clamp(2.5rem, calc(1.563rem + 3vw), 4.375rem);
-                            line-height: 100%;
-                            transition: color var(--transition), padding .2s;
-                            position: relative;
-
-                            &::before {
-                                content: '';
-                                position: absolute;
-                                top: 50%;
-                                left: 0;
-                                transform: translateY(-10%) scale(.7);
-                                transform-origin: center;
-                                width: 1rem;
-                                height: 1rem;
-                                background-color: var(--color-white);
-                                opacity: 0;
-                                transition: .2s;
-                                z-index: 2;
-                                border-radius: .1rem;
-                            }
-
-                            &:hover,
-                            &:focus-visible {
-                                // color: var(--color-primary-light);
-                                padding-left: 2rem;
-
-                                &::before {
-                                    opacity: 1;
-                                    transform: translateY(-50%) scale(1);
-                                }
-                            }
-                        }
-                    }
+                a {
+                    @extend %btn_pacman_small;
                 }
             }
+        }
+    }
+
+
+    &[data-open=true] {
+        opacity: 1;
+        pointer-events: auto;
+
+        .navigation-menu-wrapper {
+            transform: scale(1);
         }
     }
 }
 
 
 
+// Fixed header state
+// -------------------------
 body.fixed__header {
-    nav {
-
+    header nav {
         padding-block: 1rem;
+    }
+}
+
+body {
+    header[data-open=true] nav {
+        padding-block: 3rem;
     }
 }

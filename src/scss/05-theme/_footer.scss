@@ -1,5 +1,6 @@
 @use "../01-grid/responsive";
 @use "../02-base/mixins";
+@use "../03-components/button";
 
 footer {
     background-color: var(--color-primary);
@@ -10,7 +11,7 @@ footer {
         column-gap: 1.59rem;
     }
 
-    
+
 
 
     h4,
@@ -62,13 +63,13 @@ footer {
             font-weight: 600;
             line-height: 160%;
         }
-        
+
         .function,
         .email {
             line-height: 160%;
 
             &::after,
-            &::before{
+            &::before {
                 bottom: .25em;
             }
         }
@@ -94,29 +95,41 @@ footer {
     }
 
 
-    .quick-menu-wrapper{
-        a{
+    .quick-menu-wrapper {
+        li:not(.button_pacman) {
+
+            a {
+                @extend %a-hover;
+            }
+        }
+
+        li.button_pacman {
+            height: 3rem;
+            aspect-ratio: 1;
+
+            a {
+                @extend %btn_pacman_small;
+            }
+        }
+    }
+
+    .social-wrapper {
+        a {
             @extend %a-hover;
         }
     }
 
-    .social-wrapper{
-        a{
-            @extend %a-hover;
-        }
-    }
-
-    .site-note{
+    .site-note {
         margin-bottom: 8.69rem;
         margin-top: -2.69rem;
-        
-        ul{
+
+        ul {
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
             gap: 6.37rem;
 
-            a{
+            a {
                 @extend %a-hover;
                 font-size: 0.875rem;
 

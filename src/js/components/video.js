@@ -1,5 +1,4 @@
 // Initialize MouseFollower with GSAP
-console.log('video');
 import MouseFollower from 'mouse-follower';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';

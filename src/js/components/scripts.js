@@ -1,6 +1,6 @@
 jQuery($ => {
   $(".menu-toggle").click(function () {
-    $("header, .menu-toggle").attr("data-open", (_, attr) => attr == "true" ? "false" : "true");
+    $(".mobile-menu, .menu-toggle").attr("data-open", (_, attr) => attr == "true" ? "false" : "true");
   });
 
 

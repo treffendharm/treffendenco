@@ -27,7 +27,7 @@ $images = get_field('images');
             <div class="col-10 start-3 subgrid image-wrapper">
                 <?php foreach ($images as $image) : ?>
                     <div class="image">
-                        <img src="<?= $image['url'] ?>" alt="<?= $image['alt'] ?>">
+                        <img src="<?= $image['url'] ?>" alt="<?= $image['alt'] ?>" class="load-in">
                     </div>
                 <?php endforeach; ?>
             </div>

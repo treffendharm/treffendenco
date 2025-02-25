@@ -1,4 +1,9 @@
 <?php
+add_action('acf/init', 'my_acf_init');
+function my_acf_init()
+{
+    acf_update_setting('show_admin', true);
+}
 function set_user_color_scheme($user_id)
 {
     // Set the color scheme to 'modern' for all new users
@@ -101,3 +106,43 @@ function treffend_welcome_content()
 }
 
 add_action('wp_dashboard_setup', 'treffend_welcome');
+
+
+function quick_fill_marquee()
+{
+    add_meta_box(
+        'quick_fill_marquee',
+        'Marquee tekst bewerken',
+        'quick_fill_marquee_content',
+        'dashboard',
+        'normal',
+        'high'
+    );
+}
+
+function quick_fill_marquee_content()
+{
+    // Check if form was submitted and show notice
+    if (isset($_GET['updated']) && $_GET['updated'] == 'true') {
+        echo '<div class="notice notice-success inline" style="margin: 0 0 15px 0;"><p>Marquee tekst is succesvol bijgewerkt!</p></div>';
+    }
+
+    // Get the field object
+    $field = get_field_object('marquee_items', 'option');
+
+    // Create options page form elements
+    acf_form_head();
+    acf_form([
+        'post_id' => 'option',
+        'field_groups' => false,
+        'fields' => ['marquee_items'],
+        'submit_value' => 'Marquee bijwerken',
+        'html_submit_button'  => '<input type="submit" class="acf-button button button-primary" value="%s" />',
+        'html_after_fields'  => '',
+        'return' => add_query_arg('updated', 'true', admin_url('index.php')), // Add success parameter
+        'updated_message' => false // Disable default ACF message
+    ]);
+}
+
+// Add the dashboard widget
+add_action('wp_dashboard_setup', 'quick_fill_marquee');

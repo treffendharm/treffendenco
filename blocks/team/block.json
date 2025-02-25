@@ -1,0 +1,16 @@
+{
+    "name": "acf/team",
+    "title": "Team",
+    "description": "Toon het team",
+    "style": "file:../../dist/css/blocks/team.css",
+    "category": "treffend",
+    "icon": "editor-textcolor",
+    "keywords": ["team"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php",
+        "postTypes": []
+    },
+    "render_callback": "treffend_acf_block_render_callback",
+    "align": "full"
+}

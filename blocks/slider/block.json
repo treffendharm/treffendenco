@@ -1,12 +1,12 @@
 {
     "name": "acf/slider",
     "title": "Slider",
-    "description": "Voeg een slider toe met afbeeldingen of video's.",
+    "description": "Voeg een slider toe met afbeeldingen of video's. Ondersteunt natuurlijke afbeeldingsbreedtes en elastisch scrollen.",
     "style": "file:../../dist/css/blocks/slider.css",
     "viewScript": "file:./script.js",
     "category": "treffend",
     "icon": "slides",
-    "keywords": ["image", "gallery", "row"],
+    "keywords": ["image", "gallery", "row", "slider", "carousel"],
     "acf": {
         "mode": "auto",
         "renderTemplate": "render.php"
@@ -18,13 +18,25 @@
     },
     "styles": [
         {
-            "name": "single",
-            "label": "Enkele grote afbeelding",
+            "name": "default",
+            "label": "Natuurlijke breedte",
             "isDefault": true
         },
         {
-            "name": "two_equal",
-            "label": "Twee gelijke afbeeldingen"
+            "name": "fixed-width",
+            "label": "Vaste breedte"
+        },
+        {
+            "name": "full-width",
+            "label": "Volledige breedte"
         }
-    ]
+    ],
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_help": "screenshot.png"
+            }
+        }
+    }
 } 

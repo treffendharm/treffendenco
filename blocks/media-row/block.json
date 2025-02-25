@@ -19,12 +19,16 @@
     "styles": [
         {
             "name": "single",
-            "label": "Enkele grote afbeelding",
+            "label": "Enkele grote media",
             "isDefault": true
         },
         {
             "name": "two_equal",
-            "label": "Twee gelijke afbeeldingen"
+            "label": "Twee gelijke media"
+        },
+        {
+            "name": "special_one",
+            "label": "Special one"
         }
     ]
 } 

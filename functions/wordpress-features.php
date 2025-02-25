@@ -358,5 +358,22 @@ function enqueue_block_scripts()
         '1.1.2',
         true
     );
+
+    // Enqueue Swiper
+    wp_enqueue_script(
+        'swiper',
+        'https://unpkg.com/swiper@11/swiper-bundle.min.js',
+        array(),
+        '11.2.4',
+        true
+    );
+
+    // Enqueue Swiper CSS
+    wp_enqueue_style(
+        'swiper',
+        'https://unpkg.com/swiper@11/swiper-bundle.min.css',
+        array(),
+        '11.2.4'
+    );
 }
 add_action('wp_enqueue_scripts', 'enqueue_block_scripts');

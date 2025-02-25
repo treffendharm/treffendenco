@@ -8,10 +8,12 @@ $button_2 = get_field('button_2');
 $margin_top = get_field('margin_top_large');
 $margin_bottom = get_field('margin_bottom_large');
 
+$background_color = get_field('background_color');
+
 ?>
 
 
-<section class="content-grid block block-text <?= $margin_top ? 'margin-top-large' : '' ?> <?= $margin_bottom ? 'margin-bottom-large' : '' ?>">
+<section class="content-grid block block-text <?= $margin_top ? 'margin-top-large' : '' ?> <?= $margin_bottom ? 'margin-bottom-large' : '' ?> <?= $background_color ? 'background' : '' ?>">
     <?php if ($subtitle || $title) : ?>
         <div class="start-3 col-8">
             <?php if ($subtitle) : ?>

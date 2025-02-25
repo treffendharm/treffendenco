@@ -45,8 +45,29 @@
             "ui": 1
         },
         {
+            "key": "field_67bde7899c3f1",
+            "label": "Gele achtergrond kleur",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_67b4557fd8483",
-            "label": "subtitel",
+            "label": "Subtitel",
             "name": "subtitle",
             "aria-label": "",
             "type": "text",
@@ -88,7 +109,7 @@
         },
         {
             "key": "field_67b4557fd8489",
-            "label": "Tekst",
+            "label": "Tekst links",
             "name": "text",
             "aria-label": "",
             "type": "wysiwyg",
@@ -96,7 +117,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -108,25 +129,8 @@
             "delay": 0
         },
         {
-            "key": "field_67b4557fd848b",
-            "label": "Knop",
-            "name": "button",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "allow_in_bindings": 0
-        },
-        {
             "key": "field_67b4559b693b8",
-            "label": "Tekst 2",
+            "label": "Tekst rechts",
             "name": "text_2",
             "aria-label": "",
             "type": "wysiwyg",
@@ -134,7 +138,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -146,16 +150,16 @@
             "delay": 0
         },
         {
-            "key": "field_67b455a3693b9",
-            "label": "Knop 2",
-            "name": "button_2",
+            "key": "field_67b4557fd848b",
+            "label": "Knop links",
+            "name": "button",
             "aria-label": "",
             "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -163,25 +167,21 @@
             "allow_in_bindings": 0
         },
         {
-            "key": "field_67b45590693b7",
-            "label": "Titel 2",
-            "name": "title_2",
+            "key": "field_67b455a3693b9",
+            "label": "Knop rechts",
+            "name": "button_2",
             "aria-label": "",
-            "type": "text",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "return_format": "array",
+            "allow_in_bindings": 0
         }
     ],
     "location": [
@@ -202,5 +202,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739872079
+    "modified": 1740498844
 }

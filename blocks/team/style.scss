@@ -1,0 +1,68 @@
+@use '../../src/scss/02-base/mixins' with ($image-base-path: '../../../src/images'
+);
+
+.block-team {
+    margin-block: var(--section-spaceing);
+
+    .team-wrapper {
+        display: flex;
+        flex-direction: column;
+        // gap: 2.31rem;
+        border-top: 1px solid var(--color-black);
+    }
+
+
+    .team-item {
+        padding-block: 2.31rem;
+        border-bottom: 1px solid var(--color-black);
+        position: relative;
+        opacity: .3;
+        transition: .2s;
+        padding-left: 8.31rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.5rem;
+            height: 1.5rem;
+            aspect-ratio: 1;
+            background-color: var(--color-black);
+            @include mixins.mask('star')
+        }
+
+        .team-item-name {
+            font-size: 2.5rem;
+            line-height: 110%;
+        }
+
+        .team-item-jobtitle {
+            font-size: 1.125rem;
+            line-height: 110%;
+            margin-top: .75rem;
+        }
+
+
+        .team-item-image {
+            position: absolute;
+            opacity: 0;
+            right: 0;
+            transition: .2s;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 23.375rem;
+            height: 26.0255rem;
+            pointer-events: none;
+        }
+
+        &:hover {
+            opacity: 1;
+
+            .team-item-image {
+                opacity: 1;
+            }
+        }
+    }
+}

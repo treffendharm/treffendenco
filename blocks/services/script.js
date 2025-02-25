@@ -1,5 +1,5 @@
+
 const serviceItemHeroes = document.querySelectorAll('.service-item-hero');
-const SCROLL_BASED = true; // Toggle between scroll-based (true) and view-based (false) animation
 
 serviceItemHeroes.forEach(serviceItemHero => {
     serviceItemHero.addEventListener('click', () => {
@@ -16,38 +16,23 @@ serviceItemHeroes.forEach(serviceItemHero => {
 if (typeof gsap !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Wait for all content to load before initializing ScrollTrigger
     window.addEventListener('load', () => {
-        // Refresh ScrollTrigger to recalculate positions
-        ScrollTrigger.refresh();
-
-        // Initialize the arrow animation
         const arrow = document.querySelector('.arrow-wrapper .arrow');
         if (!arrow) return;
 
-        const customEase = 'CustomEase.create("custom", "0.104,0.204,0.492,1")'
+        const arrowWrapper = document.querySelector('.block-services .arrow-wrapper');
 
-        if (SCROLL_BASED) {
-            // Scroll-based animation
-            gsap.to(arrow, {
-                x: '71.1%',
+        gsap.to(arrow,
+            {
+                x: arrowWrapper.clientWidth - arrow.clientWidth,
+                ease: 'none',
                 scrollTrigger: {
                     trigger: '.block-services',
                     start: 'top 20%',
                     end: '40% 40%',
-                    scrub: true,
-                    markers: false,
-                    // lets make the transition smoother
-                    ease: customEase
+                    scrub: 1.5,
                 }
-            });
-        } else {
-            // View-based animation
-            gsap.to(arrow, {
-                x: '71.1%',
-                duration: 1,
-                ease: customEase
-            });
-        }
+            }
+        );
     });
 }

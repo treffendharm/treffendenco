@@ -63,8 +63,9 @@ $image-base-path: '../images' !default;
     position: relative;
     width: fit-content;
     overflow: hidden;
-    display: block;
+    // display: block;
     --_effect-color: var(--color-primary);
+    display: inline-block;
 
     &::after,
     &::before {
@@ -76,7 +77,7 @@ $image-base-path: '../images' !default;
         bottom: .6em;
         left: 0;
         pointer-events: none;
-        display: block;
+        display: inline-block;
 
     }
 
@@ -94,6 +95,96 @@ $image-base-path: '../images' !default;
             width: 100%;
             left: 100%;
             transition: width var(--transition), left var(--transition) .2s;
+        }
+    }
+}
+
+
+// %a-hover-new {
+//     position: relative;
+//     display: inline;
+//     background-image: linear-gradient(to right, var(--color-black) 100%, transparent 0);
+//     background-size: 100% 1px;
+//     background-position: 0 100%;
+//     background-repeat: no-repeat;
+//     transition: background-size 0.3s ease-in-out;
+
+//     &:hover,
+//     &:focus-visible {
+//         background-size: 0% 1px; // Shrinks to simulate movement
+//         transition: background-size 0.3s ease-in-out 0.2s;
+//     }
+// }
+
+
+// %a-hover-new {
+//     display: inline;
+//     --_text-color: var(--color-black);
+//     --transition-timeing: .4s;
+//     --cubic: cubic-bezier(0.6, 0.03, 0.28, 0.98);
+
+//     color: var(--_text-color, currentColor);
+//     text-decoration: none;
+
+//     background-image: linear-gradient(to right, var(--_text-color), var(--_text-color));
+//     background-repeat: no-repeat;
+//     background-size: 100% 1px;
+//     background-position: 0% 100%;
+
+//     transition:
+//         background-size var(--transition-timeing) var(--cubic),
+//         background-position var(--transition-timeing) var(--cubic);
+
+//     &:hover {
+//         background-size: 0% 1px;
+//     }
+// }
+
+
+
+%a-hover-new {
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
+    // display: block;
+    --_effect-color: var(--color-primary);
+    display: inline-block;
+    
+    &::after,
+    &::before {
+        content: "";
+        height: 1px;
+        background-color: var(--color-black);
+        position: absolute;
+        width: 0;
+        bottom: .2em;
+        left: 0;
+        pointer-events: none;
+        display: inline-block;
+    }
+
+    &::before {
+        width: 0;
+        transition: width var(--transition) 0s;
+    }
+    
+    &::after {
+        right: 0;
+        width: 100%;
+        left: auto;
+        transition: right var(--transition) calc(var(--transition-timeing) / 2);
+    }
+
+    &:hover,
+    &:focus-visible {
+        &::before {
+            width: 100%;
+            transition: width var(--transition) calc(var(--transition-timeing) / 2);
+        }
+
+        &::after{
+            right: -100%;
+            transition: right var(--transition) 0s;
         }
     }
 }

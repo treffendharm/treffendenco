@@ -17,6 +17,10 @@
         gap: 1.62rem;
     }
 
+    img{
+        height: fit-content;
+    }
+
     // Layout variations based on block style
     &.is-style-single .media-row-wrapper {
         grid-template-columns: 1fr;

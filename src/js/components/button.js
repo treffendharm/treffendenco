@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ballY += velocityY;
 
             ball.style.transform = `translate(calc(${ballX}px - 50%), calc(${ballY}px - 50%))`;
-
             if (!isLeaving || Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1) {
                 requestAnimationFrame(animate);
             }

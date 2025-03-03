@@ -1,4 +1,3 @@
-
 const serviceItemHeroes = document.querySelectorAll('.service-item-hero');
 
 serviceItemHeroes.forEach(serviceItemHero => {
@@ -21,9 +20,19 @@ if (typeof gsap !== 'undefined') {
         if (!arrow) return;
 
         const arrowWrapper = document.querySelector('.block-services .arrow-wrapper');
-
-        gsap.to(arrow,
-            {
+        
+        // Store the animation reference
+        let arrowAnimation;
+        
+        // Function to create or refresh the animation
+        const setupArrowAnimation = () => {
+            // Kill previous animation if it exists
+            if (arrowAnimation && arrowAnimation.scrollTrigger) {
+                arrowAnimation.scrollTrigger.kill();
+            }
+            
+            // Create new animation with current dimensions
+            arrowAnimation = gsap.to(arrow, {
                 x: arrowWrapper.clientWidth - arrow.clientWidth,
                 ease: 'none',
                 scrollTrigger: {
@@ -31,8 +40,15 @@ if (typeof gsap !== 'undefined') {
                     start: 'top 20%',
                     end: '40% 40%',
                     scrub: 1.5,
+                    invalidateOnRefresh: true // Automatically recalculate values on refresh
                 }
-            }
-        );
+            });
+        };
+        
+        // Initial setup
+        setupArrowAnimation();
+        
+        // Recalculate on window resize
+        window.addEventListener('resize', setupArrowAnimation);
     });
 }

@@ -11,7 +11,9 @@ $show_button_to_archive = get_field('show_button') ?? true;
 if (!$posts) {
     $posts = get_posts([
         'post_type' => 'post',
-        'posts_per_page' => 3,
+        'posts_per_page' => 6,
+        'orderby' => 'date',
+        'order' => 'DESC',
         'post__not_in' => [get_the_ID()], // Exclude current post
     ]);
 }

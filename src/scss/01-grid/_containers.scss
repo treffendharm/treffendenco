@@ -5,7 +5,7 @@ $max-columns: 12;
     // Grid vars
     --col-padding: clamp(2em, 8vw, 10em);
     --total-columns: #{$max-columns};
-    --padding-inline: 1.25em;
+    --padding-inline: 1rem;
     
     // --content-max-width: clamp(1296px, 75vw + 1em, 1496px);
     // --content-max-width: clamp(1300px, 75vw + 10em, 1755px);

@@ -1,5 +1,4 @@
-@use '../../src/scss/02-base/mixins' with ($image-base-path: '../../../src/images'
-);
+@use '../../src/scss/02-base/mixins' with ($image-base-path: '../../../src/images');
 @use "../../src/scss/01-grid/responsive";
 
 .block-hero {
@@ -10,13 +9,11 @@
         grid-auto-rows: min-content;
         margin-top: 3rem;
         position: relative;
-        column-gap: 1.5rem;
+        // column-gap: 1.5rem;
     }
 
     p {
-        font-size: clamp(1.125rem, calc(1.016rem + 0.25vw), 1.25rem);
-        /* min: 18px, max: 20px */
-        ;
+        font-size: 1.125rem;
         line-height: 130%;
         max-width: 31.6875rem;
     }
@@ -26,9 +23,6 @@
         margin-top: 2.5625rem;
         max-width: 40.1875rem;
         text-wrap: balance;
-        font-size: clamp(4rem, calc(-1.25rem + 12vw), 10rem);
-        /* min: 64px, max: 160px */
-        ;
     }
 
 
@@ -41,6 +35,7 @@
 
         svg {
             width: 100%;
+            height: 100%;
         }
     }
 
@@ -50,21 +45,55 @@
         width: calc(30svw - clamp(-15rem, calc(-38.125rem + 30vw), 0rem));
     }
 
-    @include responsive.respond-to(sm) {
+    @include responsive.respond-to(1161) {
         .text-wrapper {
-            grid-column: 1 / -1;
+            order: 1;
+            grid-column: col-4 / span 6;
+        }
+
+        .hero__arrow {
+            width: unset;
         }
 
         .arrow-wrapper {
-            grid-column: 1 / -1;
-            margin-left: 0;
-            transform: rotate(45deg);
-            position: absolute;
-            top: -150%;
+            grid-row: 1;
+            margin: unset;
+            grid-column: col-2 / span 6;
+            transform: unset;
 
-            .hero__arrow{
-                transform: unset;
+            position: absolute;
+            top: -25%;
+
+
+            svg {
+                width: 100%;
+                height: 100%;
             }
+        }
+
+        .title-wrapper {
+            grid-row: 1;
+        }
+
+        h1 {
+            margin-bottom: 1.78rem;
+            margin-top: 0;
+        }
+    }
+
+    @include responsive.respond-to(sm) {
+        .title-wrapper {
+            grid-column: col-3 / span 10;
+        }
+
+        .text-wrapper {
+            grid-column: col-4 / span 9;
+        }
+
+        .arrow-wrapper {
+            grid-column: col-1 / span 8;
+            // transform: translateX(-2rem);
+            top: -40%;
         }
     }
 }
@@ -78,13 +107,14 @@
     width: 100%;
 
     display: flex;
-    gap: 3rem;
+    // gap: 3rem;
 
     p {
         white-space: nowrap;
         line-height: normal;
         position: relative;
         padding-right: 4.5rem;
+        padding-left: 3rem;
         display: block;
         flex-shrink: 0;
 

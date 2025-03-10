@@ -12,7 +12,7 @@ $text = get_field('text');
         <div class="col-6 start-7 text-wrapper">
             <p><?= $text ?></p>
         </div>
-        <div class="col-8 start-5 text-wrapper">
+        <div class="col-8 start-5 title-wrapper">
             <h1><?= $title ?></h1>
         </div>
     </div>

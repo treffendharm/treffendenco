@@ -16,7 +16,7 @@ $team = get_posts([
             ?>
                 <div class="team-item">
                     <h3 class="team-item-name"><?= get_the_title($post->ID); ?></h3>
-                    <p class="team-item-jobtitle"><?php the_field('function', $post->ID); ?></p>
+                    <p class="team-item-jobtitle"><?= get_field('function', $post->ID); ?></p>
                     <?php $post_thumbnail_id = get_post_thumbnail_id($post->ID); ?>
                     <?php if ($post_thumbnail_id) : ?>
                         <div class="team-item-image">

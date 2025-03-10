@@ -53,8 +53,11 @@
       </div>
       <div class="content site-note">
          <ul>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Algemene voorwaarden</a></li>
+            <?php if (have_rows('footer_links', 'option')) : ?>
+               <?php while (have_rows('footer_links', 'option')) : the_row(); ?>
+                  <li><a href="<?= get_sub_field('link')['url']; ?>"><?= get_sub_field('link')['title']; ?></a></li>
+               <?php endwhile; ?>
+            <?php endif; ?>
          </ul>
       </div>
       <div class="content logo-wrapper">

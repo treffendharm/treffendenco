@@ -1,6 +1,9 @@
 const mix = require('laravel-mix');
 const glob = require('glob');
-require('dotenv').config(); // Add this line to load .env file
+require('dotenv').config(); // Load .env file
+
+// Disable success notifications
+mix.disableSuccessNotifications();
 
 // Copy static assets
 mix.copyDirectory('src/fonts', 'dist/fonts')
@@ -38,7 +41,6 @@ const srcBlockStyles = glob.sync('./src/scss/03-blocks/_*.scss');
 // Add these to the main style.scss compilation
 srcBlockStyles.forEach(file => {
     // These are already imported in style.scss, no need to compile separately
-    console.log(`Found block style: ${file}`);
 });
 
 mix.options({
@@ -46,6 +48,11 @@ mix.options({
     postCss: [require('autoprefixer')],
     sassOptions: {
         outputStyle: 'compressed'
+    },
+    // Disable notifications
+    notifications: {
+        onSuccess: false,
+        onFailure: true
     }
 })
 .sourceMaps(process.env.NODE_ENV !== 'production'); 

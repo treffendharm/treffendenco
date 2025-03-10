@@ -3,7 +3,7 @@
 
 
 
-    .h5{
+    .h5 {
         line-height: 110%;
         margin-bottom: 1rem;
     }
@@ -13,22 +13,14 @@
         margin-bottom: 3.75rem;
     }
 
-    .btn{
+    .btn {
         margin-top: 2.5rem;
     }
 
-    &.background{
+    &.background {
         background-color: var(--color-secondary);
         padding-block: 5rem;
         margin-block: 0;
-
-        // &.margin-top-large {
-        //     margin-top: 5rem;
-        // }
-    
-        // &.margin-bottom-large {
-        //     margin-bottom: 5rem;
-        // }
     }
 
     &.margin-top-large {
@@ -37,5 +29,16 @@
 
     &.margin-bottom-large {
         margin-bottom: var(--section-spaceing);
+    }
+
+    .intro-side {
+
+        // All text elements 700 font-weight
+        p,
+        a,
+        span,
+        li {
+            font-weight: 700;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 <head>
     <?php if (get_field('head_code', 'options')) { ?>
-        <?php the_field('head_code', 'options'); ?>
+        <?= get_field('head_code', 'options'); ?>
     <?php } ?>
 
 
@@ -46,7 +46,7 @@
 
 <body <?php body_class('hero-image-scroller'); ?>>
     <?php if (get_field('body_code', 'options')) { ?>
-        <?php the_field('body_code', 'options'); ?>
+        <?= get_field('body_code', 'options'); ?>
     <?php } ?>
 
     <?php wp_body_open(); ?>

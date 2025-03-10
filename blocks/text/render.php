@@ -28,7 +28,7 @@ $background_color = get_field('background_color');
     <?php if ($text || $button) : ?>
         <div class="col-3 start-3 text-wrapper">
             <?php if ($text) : ?>
-                <div class="text-container">
+                <div class="text-container intro-side">
                     <?= $text ?>
                 </div>
             <?php endif; ?>

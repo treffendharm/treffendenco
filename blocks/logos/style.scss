@@ -1,3 +1,5 @@
+@use '../../src/scss/01-grid/responsive';
+
 .block-logos {
     margin-block: var(--section-spaceing);
 
@@ -19,6 +21,36 @@
         img {
             object-fit: contain;
             max-height: 100%;
+        }
+
+        @include responsive.respond-to(xl) {
+            gap: 2rem;
+            flex-wrap: nowrap;
+            overflow: hidden;
+
+            .logo {
+                height: 3rem;
+
+                &:nth-child(n+10) {
+                    display: none;
+                }
+            }
+        }
+
+        @include responsive.respond-to(lg) {
+            .logo {
+                &:nth-child(n+7) {
+                    display: none;
+                }
+            }
+        }
+
+        @include responsive.respond-to(sm) {
+            .logo {
+                &:nth-child(n+4) {
+                    display: none;
+                }
+            }
         }
     }
 }

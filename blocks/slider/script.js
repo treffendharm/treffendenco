@@ -1,9 +1,22 @@
 // Minimal slider with fluid, elastic dragging using Swiper.js
 // No imports needed as Swiper is globally available
 
+// Slider block using the global SliderUtils object
+// No imports needed as SliderUtils is globally available
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Find all slider blocks
+    // Wait a bit to ensure all DOM elements are fully loaded and rendered
+    setTimeout(() => {
+        initializeSliderBlocks();
+    }, 100);
+});
+
+function initializeSliderBlocks() {
+    // Check if SliderUtils is available and find all slider blocks
+    if (!window.SliderUtils) return;
+    
     const sliderBlocks = document.querySelectorAll('.block-slider');
+    if (!sliderBlocks.length) return;
 
     // Set up intersection observer to initialize sliders when they come into view
     const sliderObserver = new IntersectionObserver((entries, observer) => {
@@ -27,58 +40,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to initialize a single slider
     function initializeSlider(sliderBlock) {
-        // Find the swiper container
-        const swiperContainer = sliderBlock.querySelector('.swiper');
+        try {
+            // Find the swiper container
+            const swiperContainer = sliderBlock.querySelector('.swiper');
+            if (!swiperContainer) return null;
 
-        if (!swiperContainer) return;
+            // Find navigation buttons
+            const prevButton = sliderBlock.querySelector('.slider-nav.prev');
+            const nextButton = sliderBlock.querySelector('.slider-nav.next');
 
-        // Find navigation buttons
-        const prevButton = sliderBlock.querySelector('.slider-nav.prev');
-        const nextButton = sliderBlock.querySelector('.slider-nav.next');
+            // Initialize Swiper using our utility function
+            const swiper = SliderUtils.createSlider(swiperContainer, {
+                // Add navigation if buttons exist
+                navigation: prevButton && nextButton ? {
+                    nextEl: nextButton,
+                    prevEl: prevButton
+                } : undefined
+            });
 
-        // Initialize Swiper
-        const swiper = new Swiper(swiperContainer, {
-            slidesPerView: 'auto',
-            spaceBetween: 24,
-            grabCursor: true,
+            if (!swiper) return null;
 
-            // Enable free mode for fluid dragging with momentum
-            freeMode: {
-                enabled: true,
-                momentum: true,
-                momentumRatio: 0.8,
-                momentumBounce: true,
-                momentumBounceRatio: 0.8,
-                minimumVelocity: 0.1
-            },
+            // Add resize handler to ensure proper slide visibility
+            const resizeHandler = () => {
+                if (swiper && typeof swiper.update === 'function') {
+                    swiper.update();
+                }
+            };
+            
+            window.addEventListener('resize', resizeHandler);
 
-            // Resistance when reaching the end
-            resistance: true,
-            resistanceRatio: 0.5,
-
-            // Navigation
-            navigation: {
-                nextEl: nextButton,
-                prevEl: prevButton
-            },
-
-            // Add extra space at the end to ensure last slide is fully visible
-            slidesOffsetAfter: 0,
-
-            // Update swiper when window resizes or slides change
-            observer: true,
-            observeParents: true,
-
-            // Ensure we can scroll to the end
-            watchSlidesProgress: true
-        });
-
-        // Add resize handler to ensure proper slide visibility
-        window.addEventListener('resize', () => {
-            swiper.update();
-        });
-
-        // Return the swiper instance in case we need it later
-        return swiper;
+            // Return the swiper instance in case we need it later
+            return swiper;
+        } catch (error) {
+            return null;
+        }
     }
-});
+}

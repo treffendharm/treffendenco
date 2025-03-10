@@ -52,24 +52,30 @@ server.init({
     files: [
         'dist/**/*.css',
         'dist/**/*.js',
+        'dist/css/blocks/**/*.css', // Specifically watch compiled block CSS
+        'blocks/**/*.scss', // Watch block SCSS files directly
+        'blocks/**/style.scss', // Explicitly watch block style.scss files
         '**/*.php',
         'src/images/**/*'
-    ]
+    ],
+    // Add a file watcher with callback for debugging
+    watchEvents: ['change', 'add', 'unlink'],
+    callbacks: {
+        files: function(event, file) {
+            // Log file changes for debugging
+            if (file.includes('blocks') && file.includes('.scss')) {
+                console.log(chalk.yellow(`Block SCSS file changed: ${file}`));
+            }
+        }
+    }
 });
 
-// Log URLs initially
+// Log URLs only at startup
 logBrowserSyncUrls();
 
-// Log URLs every 30 seconds to keep them visible
-setInterval(logBrowserSyncUrls, 30000);
-
-// Also log URLs when files change
-server.watch([
-    'dist/**/*.css',
-    'dist/**/*.js',
-    '**/*.php',
-    'src/images/**/*'
-]).on('change', function(file) {
-    console.log(chalk.magenta(`File changed: ${file}`));
-    logBrowserSyncUrls();
+// Add a specific watcher for block SCSS files
+server.watch('blocks/**/style.scss').on('change', function(file) {
+    console.log(chalk.magenta(`Block style changed: ${file}`));
+    // Force a reload
+    server.reload();
 }); 

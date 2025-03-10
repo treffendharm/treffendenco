@@ -1,3 +1,4 @@
+@use '../../src/scss/01-grid/responsive';
 @import 'swiper/css';
 
 .block-slider {
@@ -36,12 +37,11 @@
       gap: 1rem;
       height: auto;
 
-      /* Allow slides to maintain their natural width */
       width: auto;
-      max-width: 80vw;
+      max-width: 90vw;
 
-      @media (max-width: 768px) {
-         max-width: 90vw;
+      @include responsive.respond-to(sm) {
+         max-width: unset;
       }
 
       .slide-media {
@@ -60,6 +60,11 @@
             -webkit-user-select: none;
             object-fit: contain;
             display: block;
+
+            @include responsive.respond-to(sm) {
+               max-height: 19.5rem;
+            }
+            
          }
 
          .video-wrapper {

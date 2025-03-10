@@ -33,6 +33,4 @@ $images = get_field('images');
             </div>
         </div>
     </div>
-
-    <!-- Place the images here inside a  -->
 </section>

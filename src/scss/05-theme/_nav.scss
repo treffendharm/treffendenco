@@ -36,7 +36,7 @@ header {
         margin-right: 1rem;
         display: flex;
 
-        svg{
+        svg {
             width: 100%;
         }
 
@@ -151,7 +151,7 @@ header {
         // Hamburger menu toggle
         .menu-toggle {
             cursor: pointer;
-            --_height: 3px;
+            --_height: 2px;
             --_width: 1.68rem;
             --_center: calc(50% - var(--_height) / 2);
             display: flex;
@@ -214,6 +214,7 @@ header {
 // Mobile menu
 // -------------------------
 @include responsive.respond-from(1161) {
+
     .mobile-menu,
     .mobile-menu[data-open=true] {
         display: none;
@@ -227,10 +228,10 @@ header {
     top: 0;
     left: 0;
     padding-top: 6rem;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--color-primary);
     width: 100svw;
     height: 100svh;
-    backdrop-filter: blur(3rem);
+    // backdrop-filter: blur(3rem);
     opacity: 0;
     pointer-events: none;
     transition: var(--transition);
@@ -262,11 +263,9 @@ header {
 
             a {
 
-                font-size: clamp(2rem, calc(0.25rem + 4vw), 4rem);
-                /* min: 32px, max: 64px */
-                ;
+                font-size: 3.75rem;
                 font-family: var(--font-title);
-                font-weight: 700;
+                font-weight: 500;
                 color: var(--color-black);
             }
 
@@ -276,6 +275,25 @@ header {
 
                 a {
                     @extend %btn_pacman_small;
+                    background-color: var(--color-black);
+
+                    &::before {
+                        background-color: var(--color-secondary);
+                    }
+
+                    &::after {
+                        background-image: unset;
+                        @include mixins.mask('pacman-normal');
+                        background-color: var(--color-secondary);
+                    }
+                
+                    &:hover,
+                    &:focus-visible {
+                        &::after {
+                            background-image: unset;
+                            @include mixins.mask('pacman-closed-normal');
+                        }
+                    }
                 }
             }
         }

@@ -5,89 +5,89 @@ html,
 body,
 *::after,
 *::before {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-color: inherit;
-font-family: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: inherit;
+    font-family: inherit;
 }
 
 html {
-// font-size: clamp(1rem, 0.37vw + 0.53rem, 1.125rem);
-font-size: 1rem;
-overflow-x: hidden;
-scroll-behavior: smooth;
-font-family: var(--font-default);
+    // font-size: clamp(1rem, 0.37vw + 0.53rem, 1.125rem);
+    font-size: 1rem;
+    overflow-x: hidden;
+    // scroll-behavior: smooth;
+    font-family: var(--font-default);
 
 
--webkit-font-smoothing: antialiased;
--webkit-tap-highlight-color: transparent;
--moz-osx-font-smoothing: grayscale;
--webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-display: flex;
-flex-direction: column;
-min-height: 100svh;
-overflow-x: clip;
-color: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    overflow-x: clip;
+    color: var(--color-black);
 
-// opacity: 0;
-transition: opacity var(--transition);
-will-change: background-color;
-font-weight: 400;
-background-color: var(--color-white);
+    // opacity: 0;
+    transition: opacity var(--transition);
+    will-change: background-color;
+    font-weight: 400;
+    background-color: var(--color-white);
 }
 
 main {
-flex: 1;
+    flex: 1;
 }
 
 
 ul,
 ol {
-padding: 0;
-list-style-type: none;
+    padding: 0;
+    list-style-type: none;
 }
 
 
 
 img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 :focus-visible {
-outline: 2px solid var(--color-black);
-// rounded outline
-outline-offset: 2px;
-border-radius: 2px;
+    outline: 2px solid var(--color-black);
+    // rounded outline
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 img,
 .wp-caption {
-&.alignright {
-    margin: .5em 0 1em 1em;
-    float: right;
-}
+    &.alignright {
+        margin: .5em 0 1em 1em;
+        float: right;
+    }
 
-&.alignleft {
-    margin: .5em 1em 1em 0;
-    float: left;
-}
+    &.alignleft {
+        margin: .5em 1em 1em 0;
+        float: left;
+    }
 
-&.aligncenter {
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-}
+    &.aligncenter {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+    }
 }
 
 
 table {
-border-collapse: collapse;
-border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }

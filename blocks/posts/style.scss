@@ -1,3 +1,4 @@
+@use '../../src/scss/01-grid/responsive';
 .block-posts {
     margin-block: var(--section-spaceing);
     
@@ -10,14 +11,19 @@
 
         a {
             text-align: right;
-            font-size: 1.125rem;
+            font-size: clamp(0.875rem, calc(0.656rem + 0.5vw), 1.125rem); /* min: 14px, max: 18px */;
             text-decoration-line: underline;
+        }
+        
+        @include responsive.respond-to(sm) {
+            align-items: center;
         }
     }
 
     h2,
     h1 {
-        font-size: 3.75rem;
+        font-size: clamp(1.875rem, calc(0.234rem + 3.75vw), 3.75rem); /* min: 30px, max: 60px */;
+
         line-height: 110%;
     }
 }

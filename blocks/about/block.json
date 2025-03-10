@@ -3,6 +3,7 @@
     "title": "Wie wij zijn",
     "description": "Toon de wie wij zijn met titels en afbeeldingen.",
     "style": "file:../../dist/css/blocks/about.css",
+    "viewScript": "file:./script.js",
     "category": "treffend",
     "icon": "groups",
     "keywords": ["body", "text"],

@@ -59,6 +59,9 @@ function loadInImages() {
     });
 }
 
+// Make the function globally available
+window.loadInImages = loadInImages;
+
 // Initialize on document ready
 document.addEventListener("DOMContentLoaded", loadInImages);
 

@@ -4,14 +4,12 @@
 
 footer {
     background-color: var(--color-primary);
-    padding-top: 7.41rem;
-    padding-bottom: 4.13rem;
-
+    padding-top: calc(var(--section-spaceing) * .5);
+    padding-bottom: var(--section-spaceing);
 
     .footer-wrapper {
         column-gap: 1.59rem;
     }
-
 
 
     h4,
@@ -25,6 +23,50 @@ footer {
         margin-top: 3.26rem;
     }
 
+
+    @include responsive.respond-to(xxl) {
+        .contact-wrapper {
+            grid-column: 1 / 7;
+
+        }
+
+        .direct-contact-wrapper {
+            grid-column: 7 / -1;
+        }
+
+        .quick-menu-wrapper {
+            grid-column: 1 / 7;
+        }
+
+        .social-wrapper {
+            grid-column: 7 / -1;
+        }
+
+        h4,
+        h6 {
+            line-height: 100%;
+        }
+
+        h6 {
+            margin-top: calc(clamp(2.5rem, 1.406rem + 2.5vw, 3.75rem) - 1em);
+        }
+    }
+
+    @include responsive.respond-to(sm) {
+        padding-top: calc(var(--section-spaceing) * 1);
+
+        .contact-wrapper,
+        .direct-contact-wrapper {
+            grid-column: 1 / -1;
+        }
+
+        .quick-menu-wrapper,
+        .social-wrapper {
+            margin-top: 2rem;
+        }
+
+    }
+
 }
 
 .contact-info {
@@ -33,7 +75,9 @@ footer {
     gap: 1rem;
 
     a {
-        font-size: 1.875rem;
+        font-size: clamp(1.25rem, calc(0.703rem + 1.25vw), 1.875rem);
+        /* min: 20px, max: 30px */
+        ;
         @extend %a-hover;
     }
 }
@@ -41,6 +85,9 @@ footer {
 .adres-info {
     line-height: 220%;
     @extend %a-hover;
+    font-size: clamp(0.875rem, calc(0.656rem + 0.5vw), 1.125rem);
+    /* min: 14px, max: 18px */
+    ;
 }
 
 .direct-contact-wrapper {
@@ -58,6 +105,7 @@ footer {
         display: grid;
         gap: 2.31rem;
         grid-template-columns: 1fr 5fr;
+        align-items: center;
     }
 
     .name {
@@ -92,6 +140,17 @@ footer {
             object-position: top;
         }
 
+    }
+
+
+    @include responsive.respond-to(sm) {
+        .direct-contact-wrapper {
+
+            li {
+                gap: 2.3rem;
+                grid-template-columns: 1fr 2fr;
+            }
+        }
     }
 }
 
@@ -134,6 +193,18 @@ footer {
             @extend %a-hover;
             font-size: 0.875rem;
 
+        }
+    }
+
+
+    @include responsive.respond-to(xs) {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        ul {
+            justify-content: flex-start;
+            gap: 2.8rem;
+            flex-wrap: wrap;
         }
     }
 }

@@ -23,17 +23,17 @@ h1,
 
 h2,
 .h2 {
-    font-size: 8.25rem;
+    font-size: clamp(4.25rem, calc(0.75rem + 8vw), 8.25rem);
 }
 
 h3,
 .h3 {
-    font-size: 4.375rem;
+    font-size: clamp(2.5rem, calc(0.859rem + 3.75vw), 4.375rem);
 }
 
 h4,
 .h4 {
-    font-size: 3.75rem;
+    font-size:  clamp(2.5rem, calc(1.406rem + 2.5vw), 3.75rem); /* min: 40px, max: 60px */;
 }
 
 h5,

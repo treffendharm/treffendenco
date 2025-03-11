@@ -325,3 +325,76 @@ body {
         padding: 3rem 0 3rem 0;
     }
 }
+
+
+
+.nav-logo-wrapper {
+    position: relative;
+    --_transition-timing-function: cubic-bezier(0.6, 0.03, 0.28, 0.98);
+    --_transition-duration: 0.4s;
+
+    /* Base transitions for all paths */
+    path {
+        transition: var(--_transition-duration) var(--_transition-timing-function);
+    }
+
+    /* Treffend text */
+    .treffend {
+        --_offset: 100%;
+        clip-path: polygon(0 0, var(--_offset) 0, var(--_offset) 100%, 0% 100%);
+        transition: clip-path var(--_transition-duration) var(--_transition-timing-function);
+    }
+
+    /* O element */
+    .o {
+        transition: transform var(--_transition-duration) var(--_transition-timing-function),
+                   opacity var(--_transition-duration) var(--_transition-timing-function);
+    }
+
+    /* Enc element and its clones */
+    .enc,
+    .enc-clone {
+        transition: transform var(--_transition-duration) var(--_transition-timing-function),
+                   stroke var(--_transition-duration) var(--_transition-timing-function);
+        will-change: transform;
+    }
+
+    /* Clone-specific styles */
+    .enc-clone {
+        opacity: 0 !important; /* Hide clones by default */
+        filter: blur(3px);
+        /* Only need opacity transition for clones */
+        transition: transform var(--_transition-duration) var(--_transition-timing-function),
+                   opacity 0.01s linear;
+    }
+
+    /* Active state styles */
+    &.active {
+        & .o {
+            transform: translateX(-67%);
+            opacity: 0;
+        }
+
+        & .enc,
+        & .enc-clone {
+            transform: translateX(-67%);
+            stroke: none;
+        }
+
+        & .treffend {
+            --_offset: 10%;
+        }
+    }
+
+    /* Transitioning state styles */
+    &.transitioning {
+        & .enc-clone {
+            opacity: 0.03 !important; /* Show clones during transition */
+        }
+    }
+}
+
+
+body:has(.nav-logo.active) {
+    background-color: pink;
+}

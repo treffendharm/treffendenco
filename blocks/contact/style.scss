@@ -1,16 +1,18 @@
+@use '../../src/scss/01-grid/responsive';
+
 body:has(.block-contact) main {
 
-    .h4{
+    .h4 {
         line-height: 110%;
     }
 
-    a{
+    a {
         --_effect-color: var(--color-white);
     }
 
     .block {
-        margin-block: 4.69rem;
-        
+        margin-block: calc(var(--section-spaceing) / 1);
+
         .border {
             border-top: 1px solid #000;
             padding-bottom: 4.69rem;
@@ -19,16 +21,45 @@ body:has(.block-contact) main {
 
     .block-single-hero {
         h1 {
-            font-size: 5.625rem;
+            font-size: clamp(2.5rem, calc(-0.234rem + 6.25vw), 5.625rem);
+            /* min: 40px, max: 90px */
+            ;
             line-height: 100%;
         }
     }
 
-    .contact-info{
+    .contact-info {
         margin-bottom: 3rem;
     }
 
-    footer{
+    footer {
         margin-top: var(--section-spaceing);
+    }
+
+    @include responsive.respond-to(md) {
+
+        .title-wrapper,
+        .border {
+            grid-column: col-1 / content;
+        }
+
+        .block-single-hero {
+            margin-block: 0;
+        }
+
+        .block {
+            margin-top: calc(var(--section-spaceing) / 2);
+
+
+            h2{
+                margin-bottom: 1.5rem;
+            }
+
+            .border {
+                padding-bottom: calc(var(--section-spaceing) / 2);
+            }
+        }
+
+        margin-bottom: calc(var(--section-spaceing) / 1);
     }
 }

@@ -140,7 +140,7 @@ function get_video_image_output($args = [])
                     Your browser does not support the video tag.
                 </video>
                 <div class="video-wrapper-overlay" style="background-color: <?= $thumbnail_color ? esc_attr($thumbnail_color) : ''; ?>">
-                    <?= $thumbnail_color ? '' : wp_get_img($thumbnail['ID'], 'full', false, ['loading' => 'eager', 'decoding' => 'sync']); ?>
+                    <?= $thumbnail_color ? '' : wp_get_img($thumbnail['ID'], 'large', false, ['loading' => 'eager', 'decoding' => 'sync']); ?>
                 </div>
             </div>
 

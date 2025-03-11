@@ -15,7 +15,7 @@ $background_color = get_field('background_color');
 
 <section class="content-grid block block-text <?= $margin_top ? 'margin-top-large' : '' ?> <?= $margin_bottom ? 'margin-bottom-large' : '' ?> <?= $background_color ? 'background' : '' ?>">
     <?php if ($subtitle || $title) : ?>
-        <div class="start-3 col-8">
+        <div class="start-3 col-8 title-wrapper">
             <?php if ($subtitle) : ?>
                 <p class="h5"><?= $subtitle ?></p>
             <?php endif; ?>
@@ -26,7 +26,7 @@ $background_color = get_field('background_color');
     <?php endif; ?>
 
     <?php if ($text || $button) : ?>
-        <div class="col-3 start-3 text-wrapper">
+        <div class="col-3 start-3 text-wrapper intro-wrapper">
             <?php if ($text) : ?>
                 <div class="text-container intro-side">
                     <?= $text ?>

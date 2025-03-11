@@ -10,14 +10,14 @@ $text_2 = get_field('text_2');
 
 
 <section class="content-grid block-single-hero">
-    <div class="col-8 start-3">
+    <div class="col-8 start-3 title-wrapper">
         <h1><?= get_field('alt_title') ? get_field('alt_title') : get_the_title(); ?></h1>
     </div>
 </section>
 
 <section class="content-grid block block-text">
     <?php if ($text) : ?>
-        <div class="col-3 start-3 text-wrapper">
+        <div class="col-3 start-3 text-wrapper intro-wrapper">
             <div class="text-container">
                 <p class="intro"><?= $text ?></p>
             </div>

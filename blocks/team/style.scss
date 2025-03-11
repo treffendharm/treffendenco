@@ -1,6 +1,8 @@
 @use '../../src/scss/02-base/mixins' with ($image-base-path: '../../../src/images'
 );
 
+@use '../../src/scss/01-grid/responsive';
+
 .block-team {
     margin-block: var(--section-spaceing);
 
@@ -15,55 +17,101 @@
     .team-item {
         padding-block: 2.31rem;
         border-bottom: 1px solid var(--color-black);
-        position: relative;
-        opacity: .3;
-        transition: .2s;
-        padding-left: 8.31rem;
-        
 
-        &::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 1.5rem;
-            height: 1.5rem;
-            aspect-ratio: 1;
-            background-color: var(--color-black);
-            @include mixins.mask('star')
+        @include responsive.respond-from(sm) {
+            position: relative;
+            padding-left: 8.31rem;
+            opacity: .3;
+            transition: .2s;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1.5rem;
+                height: 1.5rem;
+                aspect-ratio: 1;
+                background-color: var(--color-black);
+                @include mixins.mask('star')
+            }
         }
 
         .team-item-name {
-            font-size: 2.5rem;
+            font-size: clamp(1.375rem, calc(0.391rem + 2.25vw), 2.5rem);
             line-height: 110%;
+
+            @include responsive.respond-to(sm) {
+                position: relative;
+                padding-left: 2.5rem;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    aspect-ratio: 1;
+                    background-color: var(--color-black);
+                    @include mixins.mask('star')
+                }
+
+            }
         }
 
         .team-item-jobtitle {
-            font-size: 1.125rem;
+            font-size: clamp(1rem, calc(0.891rem + 0.25vw), 1.125rem); /* min: 16px, max: 18px */
             line-height: 110%;
             margin-top: .75rem;
+
+            @include responsive.respond-to(sm) {
+                padding-left: 2.5rem;
+                margin-top: .5rem;
+            }
         }
 
-
-        .team-item-image {
-            position: absolute;
-            opacity: 0;
-            right: 0;
-            transition: .2s;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 23.375rem;
-            height: 26.0255rem;
-            pointer-events: none;
-        }
-
-        &:hover {
-            opacity: 1;
+        @include responsive.respond-from(sm) {
 
             .team-item-image {
+                position: absolute;
+                opacity: 0;
+                right: 0;
+                transition: .2s;
+                top: 50%;
                 transform: translateY(-50%);
+                width: 23.375rem;
+                height: 26.0255rem;
+                pointer-events: none;
+            }
+
+            &:hover {
                 opacity: 1;
+
+                .team-item-image {
+                    transform: translateY(-50%);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    @include responsive.respond-to(sm) {
+        .team-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-item-image {
+            order: -1;
+            position: relative;
+            padding-right: clamp(5rem, calc(-6.375rem + 50vw), 18rem); /* min: 80px, max: 288px */;
+            margin-bottom: 1.8rem;
+
+            img{
+                height: 18.57969rem;
             }
         }
     }

@@ -1,3 +1,4 @@
+@use '../../src/scss/01-grid/responsive';
 @import "~mouse-follower/src/scss/index.scss";
 
 .block-media-row {
@@ -17,7 +18,7 @@
         gap: 1.62rem;
     }
 
-    img{
+    img {
         // height: fit-content;
         height: 100%;
     }
@@ -35,27 +36,37 @@
         display: grid;
         grid-template-columns: subgrid;
 
-        img:nth-child(1) {
-            grid-column: col-1 / col-4;
-            grid-row: 1/1;
+        @include responsive.respond-from(sm) {
+            img:nth-child(1) {
+                grid-column: col-1 / col-4;
+                grid-row: 1/1;
+            }
+
+            img:nth-child(2) {
+                grid-column: col-1 / col-4;
+            }
+
+            img:nth-child(3) {
+                grid-column: col-4 / col-10;
+                grid-row: 1 / span 2;
+            }
+
+            img:nth-child(4) {
+                grid-column: col-10 / content;
+                grid-row: 1 / span 2;
+            }
         }
 
-        img:nth-child(2) {
-            grid-column: col-1 / col-4;
-        }
-
-        img:nth-child(3) {
-            grid-column: col-4 / col-10;
-            grid-row: 1 / span 2;
-        }
-
-        img:nth-child(4) {
-            grid-column: col-10 / content;
-            grid-row: 1 / span 2;
+        @include responsive.respond-to(sm) {
+            img {
+                grid-column: col-1 / content;
+                grid-row: unset;
+                max-height: 20rem;
+            }
         }
     }
 
-    @media (max-width: 768px) {
+    @include responsive.respond-to(sm) {
         .media-row-wrapper {
             grid-template-columns: 1fr;
         }

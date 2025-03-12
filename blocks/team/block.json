@@ -3,6 +3,7 @@
     "title": "Team",
     "description": "Toon het team",
     "style": "file:../../dist/css/blocks/team.css",
+    "viewScript": "file:./script.js",
     "category": "treffend",
     "icon": "editor-textcolor",
     "keywords": ["team"],

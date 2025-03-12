@@ -5,6 +5,7 @@ $team = get_posts([
     'numberposts' => -1,
     'orderby' => 'rand',
 ]);
+$index = 0;
 ?>
 
 
@@ -14,7 +15,7 @@ $team = get_posts([
             <?php foreach ($team as $post) :
                 setup_postdata($post);
             ?>
-                <div class="team-item">
+                <div class="team-item" data-index="<?= $index ?>">
                     <h3 class="team-item-name"><?= get_the_title($post->ID); ?></h3>
                     <p class="team-item-jobtitle"><?= get_field('function', $post->ID); ?></p>
                     <?php $post_thumbnail_id = get_post_thumbnail_id($post->ID); ?>
@@ -24,7 +25,8 @@ $team = get_posts([
                         </div>
                     <?php endif; ?>
                 </div>
-            <?php endforeach; ?>
+            <?php $index++;
+            endforeach; ?>
             <?php wp_reset_postdata(); ?>
         </div>
     </div>

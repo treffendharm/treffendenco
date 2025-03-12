@@ -24,5 +24,5 @@ function splitText(elements) {
 	});
 }
 
+window.splitText = splitText;
 export default splitText;
-

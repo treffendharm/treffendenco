@@ -1,4 +1,5 @@
 @use '../../src/scss/01-grid/responsive';
+@use '../../src/scss/02-base/mixins';
 .block-posts {
     margin-block: var(--section-spaceing);
     
@@ -12,7 +13,8 @@
         a {
             text-align: right;
             font-size: clamp(0.875rem, calc(0.656rem + 0.5vw), 1.125rem); /* min: 14px, max: 18px */;
-            text-decoration-line: underline;
+            @extend %a-hover-new;
+            height: fit-content;
         }
         
         @include responsive.respond-to(sm) {

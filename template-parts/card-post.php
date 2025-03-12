@@ -8,7 +8,7 @@ $category_links = [];
 foreach ($categories as $category) {
     $category_links[] = '<span>' . $category->name . '</span>';
 }
-$category_links = implode(' - ', $category_links);
+$category_links = implode(' <span>-</span> ', $category_links);
 ?>
 
 <a href="<?= $link; ?>" class="card-post">

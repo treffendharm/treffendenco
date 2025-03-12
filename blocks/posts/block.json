@@ -3,6 +3,7 @@
     "title": "Berichten",
     "description": "Toon de 3 gekozen berichten.",
     "style": "file:../../dist/css/blocks/posts.css",
+    "viewScript": "file:./script.js",
     "category": "treffend",
     "icon": "grid-view",
     "keywords": ["body", "text"],

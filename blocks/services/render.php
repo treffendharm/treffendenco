@@ -24,9 +24,9 @@ foreach ($fields as $field) {
         <div class="arrow"></div>
     </div>
     <div class="content subtitle-wrapper">
-        <h5 class="subtitle">
+        <h3 class="h5" class="subtitle">
             <?= $subtitle ?>
-        </h5>
+        </h3>
     </div>
     <div class="content subgrid services">
         <div class="services-wrapper content subgrid">
@@ -38,7 +38,7 @@ foreach ($fields as $field) {
                             <p><?= $count ?>.</p>
                         </div>
                         <div class="title-wrapper col-6 start-2">
-                            <p><b><?= $service['title'] ?></b> <?= $service['subtitle'] ?></p>
+                            <h4><b><?= $service['title'] ?></b> <?= $service['subtitle'] ?></h4>
                         </div>
                         <div class="service-toggle col-12 start-12"></div>
                     </div>

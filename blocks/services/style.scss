@@ -64,10 +64,10 @@
                 }
             }
 
-            p {
+            h4 {
                 font-size: clamp(1.125rem, calc(0.797rem + 0.75vw), 1.5rem);
-                /* min: 18px, max: 24px */
-                ;
+                font-weight: 400;
+                line-height: 150%;
             }
 
             .service-toggle {
@@ -115,8 +115,6 @@
 
         .content-wrapper {
             padding-top: clamp(1.625rem, calc(1.25rem + 1.88vw), 2.69rem);
-            /* min: 26px, max: 43.04px */
-            ;
         }
 
         &[data-open="true"] {

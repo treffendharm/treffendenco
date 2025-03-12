@@ -136,7 +136,7 @@ function get_video_image_output($args = [])
                     <?php if ($thumbnail) : ?>
                     poster="<?= wp_get_attachment_image_url($thumbnail['ID'], 'full'); ?>"
                     <?php endif; ?>>
-                    <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>">
+                    <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>" decoding="async" loading="lazy">
                     Your browser does not support the video tag.
                 </video>
                 <div class="video-wrapper-overlay" style="background-color: <?= $thumbnail_color ? esc_attr($thumbnail_color) : ''; ?>">

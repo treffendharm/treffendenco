@@ -10,7 +10,7 @@ $images = get_field('images');
 <section class="content-grid block block-about">
     <div class="content subgrid">
         <div class="col-7 subtitle">
-            <p class="h5"><?= $subtitle ?></p>
+            <h5 class="h5"><?= $subtitle ?></h5>
         </div>
         <div class="col-7 title">
             <h2 class="h3"><?= $title ?></h2>

@@ -1,0 +1,61 @@
+@use '../../src/scss/02-base/mixins' with ($image-base-path: '../../../src/images');
+@use '../../src/scss/01-grid/responsive';
+
+.block-vacatures {
+    margin-block: var(--section-spaceing);
+
+
+    .intro-side {
+        margin-top: clamp(2rem, calc(0.469rem + 3.5vw), 3.75rem); /* min: 32px, max: 60px */;
+        // All text elements 700 font-weight
+        p,
+        a,
+        span,
+        li {
+            font-size: clamp(1.125rem, calc(0.906rem + 0.5vw), 1.375rem);
+            font-weight: 600;
+            line-height: 130%;
+
+        }
+    }
+
+
+    .vacatures-wrapper {
+        margin-top: var(--section-spaceing);
+
+        .vacature{
+            padding-bottom: clamp(2rem, calc(1.125rem + 2vw), 3rem); /* min: 32px, max: 48px */;
+            border-bottom: 1px solid var(--color-black);
+
+        }
+
+        .h5 {
+            position: relative;
+            width: 100%;
+            display: block;
+
+            @include mixins.icon('arrow-right', 'after', $width: 2rem);
+
+            &:hover {
+                &::after {
+                    transform: translateX(0.5rem) translateY(-50%);
+                }
+            }
+        }
+    }
+
+
+
+    @include responsive.respond-to(md) {
+
+        .text-wrapper,
+        .title-wrapper,
+        .vacatures-wrapper {
+            grid-column: col-1 / content;
+        }
+
+        .intro-wrapper {
+            margin-bottom: 2rem;
+        }
+    }
+}

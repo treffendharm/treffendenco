@@ -1,0 +1,16 @@
+{
+    "name": "acf/vacatures",
+    "title": "Vacatures",
+    "description": "Toon de vacatures",
+    "style": "file:../../dist/css/blocks/vacatures.css",
+    "category": "treffend",
+    "icon": "admin-users",
+    "keywords": ["body", "text"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php",
+        "postTypes": []
+    },
+    "render_callback": "treffend_acf_block_render_callback",
+    "align": "full"
+}

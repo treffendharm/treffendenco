@@ -1,0 +1,66 @@
+@use '../../src/scss/01-grid/responsive';
+
+.block-text-single {
+    margin-block: calc(var(--section-spaceing) / 2);
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    .embed-container,
+    .wp-caption {
+        margin-bottom: clamp(1rem, calc(-0.203rem + 2.75vw), 2.375rem); /* min: 16px, max: 38px */;
+    }
+
+    .h5 {
+        line-height: 110%;
+        margin-bottom: 1rem;
+    }
+
+    .h3 {
+        line-height: 100%;
+        margin-bottom: clamp(1.87rem, calc(0.225rem + 3.76vw), 3.75rem);
+    }
+
+    .btn {
+        margin-top: 2.5rem;
+    }
+
+    &.background {
+        background-color: var(--color-secondary);
+        padding-block: 5rem;
+        margin-block: 0;
+    }
+
+    &.margin-top-large {
+        margin-top: var(--section-spaceing);
+    }
+
+    &.margin-bottom-large {
+        margin-bottom: var(--section-spaceing);
+    }
+
+    .intro-side {
+
+        // All text elements 700 font-weight
+        p,
+        a,
+        span,
+        li {
+            font-weight: 700;
+        }
+    }
+
+
+    @include responsive.respond-to(md) {
+
+        .text-wrapper,
+        .title-wrapper {
+            grid-column: col-1 / content;
+        }
+
+        .intro-wrapper {
+            margin-bottom: 2rem;
+        }
+    }
+}

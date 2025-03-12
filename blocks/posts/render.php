@@ -6,17 +6,11 @@
  */
 
 $title = get_field('title') ?? 'Ons werk';
-$posts = get_field('projects'); // returns array of post ids
 $show_button_to_archive = get_field('show_button') ?? true;
-if (!$posts) {
-    $posts = get_posts([
-        'post_type' => 'post',
-        'posts_per_page' => 6,
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'post__not_in' => [get_the_ID()], // Exclude current post
-    ]);
-}
+
+$posts_per_page = is_singular('post') ? 2 : 6;
+$posts = get_block_posts(get_field('projects'), $posts_per_page);
+
 
 $classes = [
     'content-grid',

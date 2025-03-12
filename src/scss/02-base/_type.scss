@@ -154,4 +154,9 @@ select {
         height: 100%;
         aspect-ratio: 16/9;
     }
+
+
+    h4{
+        font-size: clamp(1rem, calc(0.891rem + 0.25vw), 1.125rem);
+    }
 }

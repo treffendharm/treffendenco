@@ -87,3 +87,57 @@ function custom_excerpt($id, $size = 146, $trim = true)
 
     return $excerpt;
 }
+
+
+function get_block_posts($posts = null, $posts_per_page = 6)
+{
+    if (is_singular('post')) {
+        $posts = [];
+
+        // Get previous and next posts
+        $previous_post = get_previous_post();
+        $next_post = get_next_post();
+
+        // If there's no previous post, loop to the last post
+        if (!$previous_post) {
+            $previous_post = get_posts([
+                'posts_per_page' => 1,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+                'post_type'      => get_post_type(),
+                'post_status'    => 'publish'
+            ]);
+            $previous_post = $previous_post[0] ?? null;
+        }
+
+        // If there's no next post, loop to the first post
+        if (!$next_post) {
+            $next_post = get_posts([
+                'posts_per_page' => 1,
+                'orderby'        => 'date',
+                'order'          => 'ASC',
+                'post_type'      => get_post_type(),
+                'post_status'    => 'publish'
+            ]);
+            $next_post = $next_post[0] ?? null;
+        }
+
+        // Add found post IDs to the array
+        if ($next_post) {
+            $posts[] = $next_post->ID;
+        }
+        if ($previous_post) {
+            $posts[] = $previous_post->ID;
+        }
+    } elseif (!$posts) {
+        // Default: Fetch latest posts
+        $recent_posts = get_posts([
+            'posts_per_page' => $posts_per_page,
+            'orderby'        => 'date',
+            'order'          => 'DESC'
+        ]);
+        $posts = wp_list_pluck($recent_posts, 'ID');
+    }
+
+    return $posts;
+}

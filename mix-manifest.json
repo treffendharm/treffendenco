@@ -2,7 +2,8 @@
     "/dist/js/tinymce-table.min.js": "/dist/js/tinymce-table.min.js",
     "/dist/js/filter-gutenberg-blocks.js": "/dist/js/filter-gutenberg-blocks.js",
     "/dist/js/bundle.js": "/dist/js/bundle.js",
-    "/dist/css/blocks/team.css": "/dist/css/blocks/team.css",
+    "/dist/css/blocks/text-single.css": "/dist/css/blocks/text-single.css",
+    "/dist/css/blocks/vacatures.css": "/dist/css/blocks/vacatures.css",
     "/dist/css/critical.css": "/dist/css/critical.css",
     "/dist/css/admincss.css": "/dist/css/admincss.css",
     "/dist/css/style.css": "/dist/css/style.css",
@@ -16,12 +17,15 @@
     "/dist/css/blocks/quote.css": "/dist/css/blocks/quote.css",
     "/dist/css/blocks/services.css": "/dist/css/blocks/services.css",
     "/dist/css/blocks/slider.css": "/dist/css/blocks/slider.css",
+    "/dist/css/blocks/team.css": "/dist/css/blocks/team.css",
+    "/dist/css/blocks/text.css": "/dist/css/blocks/text.css",
     "/dist/images/icons/dev-favicon.png": "/dist/images/icons/dev-favicon.png",
     "/dist/images/icons/favicon.png": "/dist/images/icons/favicon.png",
     "/dist/images/icons/leger-des-heils.svg": "/dist/images/icons/leger-des-heils.svg",
     "/dist/images/icons/npv.svg": "/dist/images/icons/npv.svg",
     "/dist/images/icons/sgp.svg": "/dist/images/icons/sgp.svg",
     "/dist/images/logo.json": "/dist/images/logo.json",
+    "/dist/images/svg/arrow-right.svg": "/dist/images/svg/arrow-right.svg",
     "/dist/images/svg/arrow.svg": "/dist/images/svg/arrow.svg",
     "/dist/images/svg/download.svg": "/dist/images/svg/download.svg",
     "/dist/images/svg/logo-black.svg": "/dist/images/svg/logo-black.svg",
@@ -33,6 +37,5 @@
     "/dist/images/svg/pacman.svg": "/dist/images/svg/pacman.svg",
     "/dist/images/svg/pijl-simpel.svg": "/dist/images/svg/pijl-simpel.svg",
     "/dist/images/svg/pijl.svg": "/dist/images/svg/pijl.svg",
-    "/dist/images/svg/star.svg": "/dist/images/svg/star.svg",
-    "/dist/css/blocks/text.css": "/dist/css/blocks/text.css"
+    "/dist/images/svg/star.svg": "/dist/images/svg/star.svg"
 }

@@ -1,0 +1,16 @@
+{
+    "name": "acf/text-single",
+    "title": "Single Tekst",
+    "description": "Toon tekst in 1 kolom",
+    "style": "file:../../dist/css/blocks/text-single.css",
+    "category": "treffend",
+    "icon": "editor-textcolor",
+    "keywords": ["body", "text"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php",
+        "postTypes": []
+    },
+    "render_callback": "treffend_acf_block_render_callback",
+    "align": "full"
+}

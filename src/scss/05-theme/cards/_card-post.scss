@@ -4,6 +4,8 @@
     .card-post__image {
         overflow: hidden;
         background-color: #F6F6F6;
+        // max-height: clamp(14.6915rem, calc(2.859rem + 22.75vw), 32rem); /* min: 434px, max: 512px */;
+        aspect-ratio: 16 / 9; // Perfect.
 
         img {
             transition: var(--transition);

@@ -1,5 +1,6 @@
 @use '../02-base/type';
 
+
 .block-single-hero{
     margin-bottom: 5rem;
     margin-top: var(--section-spaceing);
@@ -14,4 +15,6 @@
         @extend .h3;
         line-height: 100%;
     }
+
+
 }

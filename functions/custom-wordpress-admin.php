@@ -146,3 +146,46 @@ function quick_fill_marquee_content()
 
 // Add the dashboard widget
 add_action('wp_dashboard_setup', 'quick_fill_marquee');
+
+
+
+
+// Function to change "posts" to "news" in the admin side menu
+function change_post_menu_label()
+{
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Projecten';
+    $submenu['edit.php'][5][0] = 'Projecten';
+    $submenu['edit.php'][10][0] = 'Project toevoegen';
+    $submenu['edit.php'][16][0] = 'Tags';
+    echo '';
+}
+add_action('admin_menu', 'change_post_menu_label');
+// Function to change post object labels to "projects"
+function change_post_object_label()
+{
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Projecten';
+    $labels->singular_name = 'Project';
+    $labels->add_new = 'Voeg project toe';
+    $labels->add_new_item = 'Nieuw project toevoegen';
+    $labels->edit_item = 'Bewerk project';
+    $labels->new_item = 'Project';
+    $labels->view_item = 'Bekijk project';
+    $labels->search_items = 'Zoek projecten';
+    $labels->not_found = 'Geen projecten gevonden';
+    $labels->not_found_in_trash = 'Geen projecten gevonden in Trash';
+}
+add_action('init', 'change_post_object_label');
+
+function change_admin_bar_menu($wp_admin_bar)
+{
+    $node = $wp_admin_bar->get_node('view');
+    if ($node) {
+        $node->title = str_replace('Bericht bekijken', 'Project bekijken', $node->title);
+        $wp_admin_bar->add_node($node);
+    }
+}
+add_action('admin_bar_menu', 'change_admin_bar_menu', 999);

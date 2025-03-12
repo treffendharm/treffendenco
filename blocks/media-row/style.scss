@@ -23,6 +23,12 @@
         height: 100%;
     }
 
+    img,
+    video,
+    iframe{
+        max-height: 90svh;
+    }
+
     // Layout variations based on block style
     &.is-style-single .media-row-wrapper {
         grid-template-columns: 1fr;

@@ -7,9 +7,9 @@
 
 $title = get_field('title') ?? 'Ons werk';
 $show_button_to_archive = get_field('show_button') ?? true;
-
+$tag = get_field('tag') ?? 'project';
 $posts_per_page = is_singular('post') ? 2 : 6;
-$posts = get_block_posts(get_field('projects'), $posts_per_page);
+$posts = get_block_posts(get_field('projects'), $tag, $posts_per_page);
 
 
 $classes = [

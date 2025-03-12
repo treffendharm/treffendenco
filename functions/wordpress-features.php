@@ -142,7 +142,7 @@ function custom_editor_formats($init_array)
         array(
             'title' => 'Knop',
             'selector' => 'a',
-            'classes' => 'button',
+            'classes' => 'btn',
         ),
         // array(
         //     'title' => 'Knop wit',

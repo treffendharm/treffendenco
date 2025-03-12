@@ -1,6 +1,4 @@
 .card-post {
-
-
     .card-post__image {
         overflow: hidden;
         background-color: #F6F6F6;
@@ -14,11 +12,11 @@
             transform: scale(1.01);
         }
 
-        &:hover,
-        &:focus-visible {
-            img {
-                transform: scale(1.05);
-            }
+    }
+    &:hover,
+    &:focus-visible {
+        img {
+            transform: scale(1.05);
         }
     }
 
@@ -29,7 +27,7 @@
     }
 
     .categories {
-        margin-top: clamp(0.28rem, calc(0.088rem + 0.44vw), 0.5rem); /* min: 4.48px, max: 8px */;
+        margin-top: clamp(0.28rem, calc(0.088rem + 0.44vw), 0.5rem);
 
         a {
             font-size: 0.875rem;

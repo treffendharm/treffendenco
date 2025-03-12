@@ -89,7 +89,7 @@ function custom_excerpt($id, $size = 146, $trim = true)
 }
 
 
-function get_block_posts($posts = null, $posts_per_page = 6)
+function get_block_posts($posts = null, $tag = 'project', $posts_per_page = 6)
 {
     if (is_singular('post')) {
         $posts = [];
@@ -105,7 +105,8 @@ function get_block_posts($posts = null, $posts_per_page = 6)
                 'orderby'        => 'date',
                 'order'          => 'DESC',
                 'post_type'      => get_post_type(),
-                'post_status'    => 'publish'
+                'post_status'    => 'publish',
+                'tag'            => $tag
             ]);
             $previous_post = $previous_post[0] ?? null;
         }
@@ -117,7 +118,8 @@ function get_block_posts($posts = null, $posts_per_page = 6)
                 'orderby'        => 'date',
                 'order'          => 'ASC',
                 'post_type'      => get_post_type(),
-                'post_status'    => 'publish'
+                'post_status'    => 'publish',
+                'tag'            => $tag
             ]);
             $next_post = $next_post[0] ?? null;
         }
@@ -134,7 +136,9 @@ function get_block_posts($posts = null, $posts_per_page = 6)
         $recent_posts = get_posts([
             'posts_per_page' => $posts_per_page,
             'orderby'        => 'date',
-            'order'          => 'DESC'
+            'order'          => 'DESC',
+            'post_status'    => 'publish',
+            'tag'            => $tag
         ]);
         $posts = wp_list_pluck($recent_posts, 'ID');
     }

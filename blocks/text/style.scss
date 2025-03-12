@@ -35,16 +35,6 @@
         margin-bottom: var(--section-spaceing);
     }
 
-    .intro-side {
-
-        // All text elements 700 font-weight
-        p,
-        a,
-        span,
-        li {
-            font-weight: 700;
-        }
-    }
 
     @include responsive.respond-to(md) {
 

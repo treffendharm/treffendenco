@@ -50,14 +50,33 @@ function tref_post_register_template($args, $post_type)
                 )
             )),
             array('acf/media-row'),
-            array('acf/quote'),
-            array('acf/posts', array(
+            array('acf/text', array(
                 'data' => array(
-                    'show_button' => true,
-                    'title' => 'Meer werk'
+                    'margin_bottom_large' => '1',
+                )
+            )),
+            array('acf/quote', array(
+                'data' => array(
+                    'quotes' => array(
+                        array(
+                            'name' => 'name',
+                            'function' => '',
+                            'quote' => '',
+                            'afbeelding' => ''
+                        )
+                    )
+                )
+            )),
+            array(
+                'acf/posts',
+                array(
+                    'data' => array(
+                        'show_button' => true,
+                        'title' => 'Meer werk'
+                    )
                 )
             )
-        ));
+        );
     }
 
     return $args;

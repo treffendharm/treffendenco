@@ -1,3 +1,5 @@
+@use "../02-base/mixins" as *;
+
 h1,
 .h1,
 h2,
@@ -33,7 +35,9 @@ h3,
 
 h4,
 .h4 {
-    font-size:  clamp(2.5rem, calc(1.406rem + 2.5vw), 3.75rem); /* min: 40px, max: 60px */;
+    font-size: clamp(2.5rem, calc(1.406rem + 2.5vw), 3.75rem);
+    /* min: 40px, max: 60px */
+    ;
 }
 
 h5,
@@ -69,9 +73,20 @@ input,
 textarea,
 select {
     font-size: clamp(1rem, calc(0.891rem + 0.25vw), 1.125rem);
-    /* min: 16px, max: 18px */
-    ;
     line-height: 150%;
+}
+
+.intro-side {
+    // margin-top: clamp(2rem, calc(0.469rem + 3.5vw), 3.75rem);
+
+    p,
+    a,
+    span,
+    li {
+        font-size: clamp(1.125rem, calc(0.906rem + 0.5vw), 1.375rem);
+        font-weight: 600;
+        line-height: 130%;
+    }
 }
 
 .text-container {
@@ -91,7 +106,7 @@ select {
     }
 
     .intro {
-        font-size: clamp(1.125rem, calc(0.906rem + 0.5vw), 1.375rem); /* min: 18px, max: 22px */;
+        font-size: clamp(1.125rem, calc(0.906rem + 0.5vw), 1.375rem);
         font-weight: 600;
         line-height: 130%;
     }
@@ -133,13 +148,8 @@ select {
 
     a {
         &:not(.btn) {
-
-            &:hover,
-            &:focus-visible {
-                color: var(--color-black);
-            }
+            @extend %a-hover-new;
         }
-
     }
 
     blockquote {
@@ -149,14 +159,16 @@ select {
         font-weight: 600;
     }
 
-    iframe {
+    iframe,
+    video {
         width: 100%;
         height: 100%;
         aspect-ratio: 16/9;
     }
 
 
-    h4{
-        font-size: clamp(1rem, calc(0.891rem + 0.25vw), 1.125rem);
+    h4 {
+        font-size: clamp(1.125rem, calc(0.906rem + 0.5vw), 1.375rem);
+        margin-bottom: .5rem;
     }
 }

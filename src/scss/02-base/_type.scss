@@ -31,6 +31,7 @@ h2,
 h3,
 .h3 {
     font-size: clamp(2.5rem, calc(0.859rem + 3.75vw), 4.375rem);
+    // text-wrap: balance;
 }
 
 h4,

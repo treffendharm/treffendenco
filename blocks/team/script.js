@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
         imageContainerWrapper.prepend(imageContainer);
 
 
-        const cursor = new MouseFollower({
-            container: '.team-wrapper',
-            el: imageContainerWrapper,
-        });
+        // const cursor = new MouseFollower({
+        //     container: '.team-wrapper',
+        //     el: imageContainerWrapper,
+        // });
 
         let offset;
         let currentIndex = 0;

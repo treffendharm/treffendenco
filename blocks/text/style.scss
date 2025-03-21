@@ -1,7 +1,7 @@
 @use '../../src/scss/01-grid/responsive';
 
 .block-text {
-    margin-block: 5rem;
+    margin-block: calc(var(--section-spaceing) * .5);
 
 
 

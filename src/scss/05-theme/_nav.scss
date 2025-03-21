@@ -24,11 +24,11 @@ header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 3rem 0 3rem 0;
+        padding: 2rem 0 2rem 0;
         transition: padding var(--transition);
         --_nav-color: var(--color-black);
     }
-
+    
     // Logo
     // -------------------------
     .nav-logo {
@@ -38,6 +38,7 @@ header {
 
         svg {
             width: 100%;
+            overflow: visible;
         }
 
         @include responsive.respond-to(1161) {
@@ -227,14 +228,15 @@ header {
     z-index: 999;
     top: 0;
     left: 0;
+    bottom: 0;
     padding-top: 6rem;
     background-color: var(--color-primary);
-    width: 100svw;
-    height: 100svh;
+    width: 100dvw;
+    height: 100dvh;
     // backdrop-filter: blur(3rem);
     opacity: 0;
     pointer-events: none;
-    transition: var(--transition);
+    transition: opacity var(--transition);
     @include containers.content-grid-setup();
 
 
@@ -322,7 +324,7 @@ body.fixed__header {
 
 body {
     header[data-open=true] nav {
-        padding: 3rem 0 3rem 0;
+        padding: 2rem 0 2rem 0;
     }
 }
 

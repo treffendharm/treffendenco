@@ -1,5 +1,4 @@
 @use '../../src/scss/01-grid/responsive';
-@import "~mouse-follower/src/scss/index.scss";
 
 .block-media-row {
     margin-block: 1.62rem;
@@ -13,20 +12,22 @@
         margin-bottom: var(--section-spaceing);
     }
 
+
+
     .media-row-wrapper {
         display: grid;
         gap: 1.62rem;
     }
 
-    img {
-        // height: fit-content;
-        height: 100%;
-    }
 
     img,
     video,
-    iframe{
+    iframe {
         max-height: 90svh;
+    }
+
+    img {
+        height: 100%;
     }
 
     // Layout variations based on block style
@@ -73,8 +74,15 @@
     }
 
     @include responsive.respond-to(sm) {
-        .media-row-wrapper {
+        &:first-of-type {
+            margin-bottom: var(--section-spaceing);
+        }
+
+        .media-row-wrapper.media-row-wrapper {
             grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
+            // gap: 1.62rem;
         }
     }
 }

@@ -76,23 +76,26 @@
         }
 
         @include responsive.respond-from(sm) {
-            will-change: opacity;
+            will-change: opacity, scale;
 
             .team-item-image {
                 position: absolute;
-                opacity: 0;
                 right: 0;
                 transition: .2s;
+                opacity: 0;
                 top: 50%;
                 transform: translateY(-50%);
                 width: 23.375rem;
                 height: 26.0255rem;
                 pointer-events: none;
+                will-change: transform, opacity;
+                // clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
             }
 
             &:hover {
                 opacity: 1;
-
+                
                 .team-item-image {
                     transform: translateY(-50%);
                     opacity: 1;
@@ -111,67 +114,11 @@
             order: -1;
             position: relative;
             padding-right: clamp(5rem, calc(-6.375rem + 50vw), 18rem);
-            /* min: 80px, max: 288px */
-            ;
             margin-bottom: 1.8rem;
 
             img {
                 height: 18.57969rem;
             }
         }
-    }
-
-    position: relative;
-}
-
-
-.image-container-wrapper {
-    position: fixed;
-    // top: 50%;
-    // transform: translateY(-50%);
-    left: 0;
-    top: 0;
-    z-index: 250;
-    direction: ltr;
-    contain: layout style size;
-    pointer-events: none;
-
-    transition: opacity 0.3s,
-        color 0.4s;
-    will-change: opacity transform;
-
-    &.-hidden {
-        opacity: 0;
-
-        .image-container {
-            transform: translate(-50%, -50%) scale(0);
-        }
-    }
-
-
-
-    .image-container {
-        --_index: 0;
-        --_height: 26.0255rem;
-        --_gap: 0rem;
-        width: 23.375rem;
-        height: var(--_height);
-        overflow: hidden;
-        transform: translate(-50%, -50%);
-        transition: var(--transition);
-        will-change: transform;
-
-        .inner {
-            display: flex;
-            flex-direction: column;
-            // gap: var(--_gap);
-            // transition: .4s cubic-bezier(.31,.63,.4,1) .3s;
-            // transform: translateY(calc(var(--_index) * var(--_height) * -1 - (var(--_gap) * var(--_index))));
-        }
-    }
-
-    img {
-        width: 23.375rem;
-        height: 26.0255rem;
     }
 }

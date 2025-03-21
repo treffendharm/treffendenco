@@ -36,7 +36,11 @@ if (!empty($block)) {
                 ];
 
 
-                the_video_image_output($media_data);
+                ?>
+                <div>
+                    <?php the_video_image_output($media_data); ?>
+                </div>
+                <?php
             endforeach;
         endif;
         ?>

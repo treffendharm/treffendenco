@@ -29,6 +29,10 @@
         }
     }
 
+    .intro-side{
+        margin-top: clamp(2rem, calc(0.469rem + 3.5vw), 3.75rem);
+    }
+
 
 
     @include responsive.respond-to(md) {

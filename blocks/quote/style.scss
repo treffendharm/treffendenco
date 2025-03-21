@@ -193,15 +193,20 @@
             align-items: center;
             max-width: 15rem;
             margin-inline: auto;
+            .quote-images{
+                max-width: 8rem;
+            }
         }
 
         .progress-wrapper {
-            margin-top: 2rem;
+            margin-top: 4rem;
         }
 
         .border {
             display: none;
         }
-
+        .controls{
+            margin-top: 4rem;
+        }
     }
 }

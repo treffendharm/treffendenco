@@ -353,7 +353,7 @@ function enqueue_block_scripts()
     // Enqueue Mouse Follower
     wp_enqueue_script(
         'mouse-follower',
-        'https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js',
+        'https://unpkg.com/mouse-follower@1.1.2/dist/mouse-follower.min.js',
         array('gsap'),
         '1.1.2',
         true
@@ -371,7 +371,7 @@ function enqueue_block_scripts()
     // Enqueue Swiper CSS
     wp_enqueue_style(
         'swiper',
-        'https://unpkg.com/swiper@11/swiper-bundle.min.css',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
         array(),
         '11.2.4'
     );

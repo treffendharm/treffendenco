@@ -7,6 +7,12 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 MouseFollower.registerGSAP(gsap);
 
+// if mouseFollower is not found, log an error
+if (!MouseFollower) {
+    console.error('MouseFollower is not found');
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Check if device is mobile based on screen width
     const checkIsMobile = () => window.innerWidth < 768;
@@ -25,30 +31,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to update all video states based on current mobile status
     function updateVideoStates() {
         videoElements.forEach(({ video, playButton, overlay, wrapper, alwaysMuted, isLooping, cursor }) => {
-            // Update play button visibility
-            if (isMobile && video.paused) {
-                playButton.style.display = 'flex';
-            } else if (!isMobile && video.paused) {
+            if (isMobile) {
+                // On mobile, pause video and show overlay
+                video.pause();
+                video.currentTime = 0;
+                overlay.classList.remove('is-hidden');
                 playButton.style.display = 'none';
-            }
-            
-            // Update replay button visibility if it exists
-            if (!isLooping) {
-                const replayButton = wrapper.querySelector('.video-replay-button');
-                if (replayButton) {
-                    replayButton.style.display = isMobile ? 'none' : 'block';
+                
+                // Clean up cursor
+                if (cursor) {
+                    cursor.destroy();
+                    cursor = null;
                 }
-            }
-            
-            // Clean up cursor on mobile
-            if (isMobile && cursor) {
-                cursor.destroy();
-                cursor = null;
-            }
-            
-            // Initialize cursor on desktop if needed
-            if (!isMobile && !cursor && !alwaysMuted && isElementInViewport(video)) {
-                initCursor(wrapper, video, alwaysMuted);
+            } else {
+                // On desktop, restore normal behavior
+                if (video.paused) {
+                    playButton.style.display = 'none';
+                }
+                
+                // Initialize cursor if needed
+                if (!cursor && !alwaysMuted && isElementInViewport(video)) {
+                    initCursor(wrapper, video, alwaysMuted);
+                }
             }
         });
     }
@@ -89,9 +93,12 @@ document.addEventListener('DOMContentLoaded', function () {
             playButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="60" height="61" viewBox="0 0 60 61" fill="none"><circle cx="30" cy="30.4172" r="30" fill="#D1C2FF"/><path d="M43 30.4173L24.1245 41.3151L24.1245 19.5195L43 30.4173Z" fill="black"/></svg>`;
             wrapper.appendChild(playButton);
             
-            // Show play button on mobile or when video is paused
+            // On mobile, show overlay and hide play button
             if (isMobile) {
-                playButton.style.display = 'flex';
+                video.pause();
+                video.currentTime = 0;
+                overlay.classList.remove('is-hidden');
+                playButton.style.display = 'none';
             } else {
                 playButton.style.display = 'none';
             }
@@ -218,17 +225,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Only add click listener if not always muted and not on mobile
             if (!alwaysMuted && !isMobile) {
                 video.addEventListener('click', handleVideoClick);
-            } else if (isMobile) {
-                // On mobile, clicking the video toggles play/pause
-                video.addEventListener('click', () => {
-                    if (video.paused) {
-                        video.play();
-                        playButton.style.display = 'none';
-                    } else {
-                        video.pause();
-                        playButton.style.display = 'flex';
-                    }
-                });
             }
 
             // Update cursor state on hover only if not always muted and not on mobile
@@ -278,9 +274,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                             overlay.classList.add('is-hidden');
                         } else {
-                            // On mobile, show play button instead of autoplaying
-                            playButton.style.display = 'flex';
+                            // On mobile, keep video paused and show overlay
+                            video.pause();
+                            video.currentTime = 0;
                             overlay.classList.remove('is-hidden');
+                            playButton.style.display = 'none';
                         }
 
                         if (!alwaysMuted && !isMobile && !cursor) {
@@ -301,7 +299,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                         overlay.classList.remove('is-hidden');
                         if (isMobile) {
-                            playButton.style.display = 'flex';
+                            video.currentTime = 0;
+                            playButton.style.display = 'none';
                         }
                         cleanupCursor();
                     }

@@ -1,0 +1,55 @@
+body.page-template-pacman-template {
+    header {
+        mix-blend-mode: normal;
+        color: var(--color-white);
+        --_opacity: 0;
+
+        opacity: var(--_opacity);
+        transition: opacity var(--transition);
+
+        nav {
+            --_nav-color: var(--color-white);
+
+            .button_pacman a {
+                background-color: var(--color-black);
+
+                &::before {
+                    background-color: var(--color-brand-2);
+                }
+
+                &::after {
+                    // background-color: var(--color-brand-2);
+                    filter: brightness(0) saturate(100%) invert(95%) sepia(85%) saturate(447%) hue-rotate(324deg) brightness(104%) contrast(88%);
+                }
+            }
+        }
+    }
+
+    #app {
+        opacity: 0;
+        transition: opacity var(--transition);
+    }
+
+    header .menu li.button_menu a {
+        transition: color var(--transition);
+
+        border-color: var(--color-white);
+        .button__effect {
+            background-color: var(--color-primary);
+        }
+
+        &:hover {
+            color: var(--color-black);
+            border-color: var(--color-white);
+        }
+    }
+}
+
+body:has(#app) main {
+    --_opacity: 0;
+
+    &::before {
+        transition: opacity var(--transition);
+        opacity: var(--_opacity);
+    }
+}

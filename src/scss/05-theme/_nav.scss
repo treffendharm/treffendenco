@@ -28,7 +28,7 @@ header {
         transition: padding var(--transition);
         --_nav-color: var(--color-black);
     }
-    
+
     // Logo
     // -------------------------
     .nav-logo {
@@ -96,6 +96,18 @@ header {
                 margin-left: -4rem;
                 height: 100%;
                 aspect-ratio: 1;
+                position: relative;
+                --_inset: 0;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: var(--_inset);
+                    background-color: var(--color-white);
+                    z-index: -1;
+                    transition: inset .5s var(--transition-effect);
+                    border-radius: 50%;
+                }
 
                 a {
                     @extend %btn_pacman;
@@ -288,7 +300,7 @@ header {
                         @include mixins.mask('pacman-normal');
                         background-color: var(--color-secondary);
                     }
-                
+
                     &:hover,
                     &:focus-visible {
                         &::after {
@@ -350,24 +362,25 @@ body {
     /* O element */
     .o {
         transition: transform var(--_transition-duration) var(--_transition-timing-function),
-                   opacity var(--_transition-duration) var(--_transition-timing-function);
+            opacity var(--_transition-duration) var(--_transition-timing-function);
     }
 
     /* Enc element and its clones */
     .enc,
     .enc-clone {
         transition: transform var(--_transition-duration) var(--_transition-timing-function),
-                   stroke var(--_transition-duration) var(--_transition-timing-function);
+            stroke var(--_transition-duration) var(--_transition-timing-function);
         will-change: transform;
     }
 
     /* Clone-specific styles */
     .enc-clone {
-        opacity: 0 !important; /* Hide clones by default */
+        opacity: 0 !important;
+        /* Hide clones by default */
         filter: blur(3px);
         /* Only need opacity transition for clones */
         transition: transform var(--_transition-duration) var(--_transition-timing-function),
-                   opacity 0.01s linear;
+            opacity 0.01s linear;
     }
 
     /* Active state styles */
@@ -391,12 +404,8 @@ body {
     /* Transitioning state styles */
     &.transitioning {
         & .enc-clone {
-            opacity: 0.03 !important; /* Show clones during transition */
+            opacity: 0.03 !important;
+            /* Show clones during transition */
         }
     }
-}
-
-
-body:has(.nav-logo.active) {
-    background-color: pink;
 }

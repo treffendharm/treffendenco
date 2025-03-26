@@ -375,5 +375,11 @@ function enqueue_block_scripts()
         array(),
         '11.2.4'
     );
+    wp_enqueue_style(
+        'mouse-follower',
+        'https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css',
+        array(),
+        '1.1.2'
+    );
 }
 add_action('wp_enqueue_scripts', 'enqueue_block_scripts');

@@ -2,13 +2,14 @@
     "name": "treffendenco",
     "version": "1.0.0",
     "scripts": {
-        "dev": "mix",
         "watch": "mix watch",
         "bs": "node browser-sync.js",
-        "sync": "concurrently \"npm run watch\" \"npm run bs\"",
+        "dev": "concurrently \"npm run watch\" \"npm run bs\"",
         "start": "npm i && npm run watch",
         "start:sync": "npm i && npm run sync",
-        "prod": "mix --production && npm i --production"
+        "prod": "mix --production && npm i --production",
+        "build": "mix --production",
+        "mix": "mix"
     },
     "author": "Harm van de Kraats",
     "license": "ISC",

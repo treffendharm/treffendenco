@@ -151,6 +151,7 @@
     // Custom cursor styles
     .mf-cursor {
         &::before {
+            content: '';
             transition: var(--transition);
             width: 3rem;
             height: unset;

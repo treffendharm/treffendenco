@@ -6,6 +6,8 @@ import './components/video';
 // import './components/smooth-scroll'
 
 import './load-animations/image';
+import './load-animations/pacman';
+
 
 // Include slider utilities (will be available globally via window.SliderUtils)
 import './components/slider-utils';

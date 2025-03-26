@@ -7,13 +7,33 @@
     margin-block: var(--section-spaceing);
     position: relative;
 
+    &:has(.team-item:hover){
+        .image-container-wrapper{
+            opacity: 1;
+        }
+    }
+
     .team-wrapper {
         display: flex;
         flex-direction: column;
         // gap: 2.31rem;
         border-top: 1px solid var(--color-black);
+        position: relative;
     }
 
+    .team-images-container {
+        display: none;
+
+        @include responsive.respond-from(sm) {
+            display: block;
+            width: 23.375rem;
+            height: 26.0255rem;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+            will-change: transform, opacity;
+        }
+    }
 
     .team-item {
         padding-block: 2.31rem;
@@ -23,7 +43,7 @@
             position: relative;
             padding-left: 8.31rem;
             opacity: .3;
-            transition: .2s;
+            transition: var(--transition);
 
             &::before {
                 content: '';
@@ -76,30 +96,14 @@
         }
 
         @include responsive.respond-from(sm) {
-            will-change: opacity, scale;
+            will-change: opacity;
 
             .team-item-image {
-                position: absolute;
-                right: 0;
-                transition: .2s;
-                opacity: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 23.375rem;
-                height: 26.0255rem;
-                pointer-events: none;
-                will-change: transform, opacity;
-                // clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-
+                display: none;
             }
 
             &:hover {
                 opacity: 1;
-                
-                .team-item-image {
-                    transform: translateY(-50%);
-                    opacity: 1;
-                }
             }
         }
     }
@@ -115,9 +119,37 @@
             position: relative;
             padding-right: clamp(5rem, calc(-6.375rem + 50vw), 18rem);
             margin-bottom: 1.8rem;
+            
 
             img {
                 height: 18.57969rem;
+                width: unset;
+                aspect-ratio: 467 / 520;
+
+            }
+        }
+    }
+
+    .image-container-wrapper {
+        position: absolute;
+        grid-column-end: content;
+        right: 0;
+        top: 0;
+        transform: translateY(-33.33333334%);
+        z-index: 2;
+        opacity: 0;
+        transition: opacity var(--transition);
+        pointer-events: none;
+
+        .image-container {
+            --_height: 26.0255rem;
+            width: 23.375rem;
+            height: var(--_height);
+            overflow: hidden;
+
+            .inner {
+                height: 100%;
+                width: 100%;
             }
         }
     }

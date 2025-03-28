@@ -1,5 +1,38 @@
 <?php
-class Treffend_Submenu_container extends Walker_Nav_Menu {}
+class Treffend_Submenu_container extends Walker_Nav_Menu
+{
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
+    {
+        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
+
+        // Check if this is the vacatures menu item
+        if (in_array('vacatures', $classes)) {
+            $vacancy_count = wp_count_posts('vacature')->publish;
+            // Add the count span after the link
+            // if count is 0, don't show the span
+            if ($vacancy_count > 0) {
+                $item->title .= '<span class="vacancy-count">' . $vacancy_count . '</span>';
+            }
+        }
+
+        $output .= "<li class='" . esc_attr($class_names) . "'>";
+
+        $attributes = '';
+        ! empty($item->attr_title) and $attributes .= ' title="' . esc_attr($item->attr_title) . '"';
+        ! empty($item->target) and $attributes .= ' target="' . esc_attr($item->target) . '"';
+        ! empty($item->xfn) and $attributes .= ' rel="' . esc_attr($item->xfn) . '"';
+        ! empty($item->url) and $attributes .= ' href="' . esc_attr($item->url) . '"';
+
+        $item_output = $args->before;
+        $item_output .= '<a' . $attributes . '>';
+        $item_output .= $args->link_before . $item->title . $args->link_after;
+        $item_output .= '</a>';
+        $item_output .= $args->after;
+
+        $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+    }
+}
 
 
 /**
@@ -121,7 +154,7 @@ function get_video_image_output($args = [])
             ?>
             <div class="video-wrapper file <?= $always_muted ? 'always-muted' : ''; ?>" <?= $loop ? 'data-loop' : ''; ?>>
                 <video
-                    controls
+                    
                     preload="none"
                     data-always-muted="<?= $always_muted ? 'true' : 'false' ?>"
                     <?php if ($autoplay) { ?>
@@ -135,13 +168,17 @@ function get_video_image_output($args = [])
 
                     <?php if ($thumbnail) : ?>
                     poster="<?= wp_get_attachment_image_url($thumbnail['ID'], 'full'); ?>"
-                    <?php endif; ?>>
+                    <?php endif; ?>
+                    >
+
                     <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>" decoding="async" loading="lazy">
                     Your browser does not support the video tag.
                 </video>
-                <div class="video-wrapper-overlay" style="background-color: <?= $thumbnail_color ? esc_attr($thumbnail_color) : ''; ?>">
-                    <?= $thumbnail_color ? '' : wp_get_img($thumbnail['ID'], 'large', false, ['loading' => 'eager', 'decoding' => 'sync']); ?>
-                </div>
+                <?php if ($thumbnail_color || $thumbnail) : ?>
+                    <div class="video-wrapper-overlay" style="background-color: <?= $thumbnail_color ? esc_attr($thumbnail_color) : ''; ?>">
+                        <?= $thumbnail ? wp_get_img($thumbnail['ID'], 'large', false, ['loading' => 'eager', 'decoding' => 'sync']) : ''; ?>
+                    </div>
+                <?php endif; ?>
             </div>
 
 

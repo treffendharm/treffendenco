@@ -54,6 +54,28 @@ header {
             display: flex;
             height: min-content;
 
+            // Add counter dot styling for vacatures
+            &.vacatures {
+                position: relative;
+
+                .vacancy-count {
+                    position: absolute;
+                    top: -0.4rem;
+                    left: 100%;
+                    background-color: var(--color-white);
+                    color: var(--color-black);
+                    height: 1.7em;
+                    aspect-ratio: 1;
+                    border-radius: 1em;
+                    padding: .5em;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: .7rem;
+                    font-weight: 500;
+                }
+            }
+
             // Standard menu items
             &:not(.button_menu):not(.button_pacman) {
                 a {
@@ -118,7 +140,7 @@ header {
 
     // Desktop only menu styles
     // -------------------------
-    @include responsive.respond-from(lg) {
+    @include responsive.respond-from(xl) {
         .navigation-menu-wrapper {
             width: 100%;
             display: flex;
@@ -146,7 +168,7 @@ header {
 
     // Mobile menu styles
     // -------------------------
-    @include responsive.respond-to(lg) {
+    @include responsive.respond-to(xl) {
         color: var(--color-white);
 
         .navigation-menu-wrapper {
@@ -226,7 +248,7 @@ header {
 
 // Mobile menu
 // -------------------------
-@include responsive.respond-from(1161) {
+@include responsive.respond-from(xl) {
 
     .mobile-menu,
     .mobile-menu[data-open=true] {
@@ -274,6 +296,26 @@ header {
         justify-content: center;
 
         li {
+
+            &.vacatures {
+                position: relative;
+
+                .vacancy-count {
+                    position: absolute;
+                    top: 0.5rem;
+                    right: -1.5rem;
+                    background-color: var(--color-black);
+                    color: var(--color-white);
+                    width: 1.3rem;
+                    height: 1.3rem;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                }
+            }
 
             a {
 
@@ -347,25 +389,21 @@ body {
     --_transition-timing-function: cubic-bezier(0.6, 0.03, 0.28, 0.98);
     --_transition-duration: 0.4s;
 
-    /* Base transitions for all paths */
     path {
         transition: var(--_transition-duration) var(--_transition-timing-function);
     }
 
-    /* Treffend text */
     .treffend {
         --_offset: 100%;
         clip-path: polygon(0 0, var(--_offset) 0, var(--_offset) 100%, 0% 100%);
         transition: clip-path var(--_transition-duration) var(--_transition-timing-function);
     }
 
-    /* O element */
     .o {
         transition: transform var(--_transition-duration) var(--_transition-timing-function),
             opacity var(--_transition-duration) var(--_transition-timing-function);
     }
 
-    /* Enc element and its clones */
     .enc,
     .enc-clone {
         transition: transform var(--_transition-duration) var(--_transition-timing-function),
@@ -373,17 +411,13 @@ body {
         will-change: transform;
     }
 
-    /* Clone-specific styles */
     .enc-clone {
         opacity: 0 !important;
-        /* Hide clones by default */
         filter: blur(3px);
-        /* Only need opacity transition for clones */
         transition: transform var(--_transition-duration) var(--_transition-timing-function),
             opacity 0.01s linear;
     }
 
-    /* Active state styles */
     &.active {
         & .o {
             transform: translateX(-67%);
@@ -401,11 +435,9 @@ body {
         }
     }
 
-    /* Transitioning state styles */
     &.transitioning {
         & .enc-clone {
             opacity: 0.03 !important;
-            /* Show clones during transition */
         }
     }
 }

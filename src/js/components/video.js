@@ -1,4 +1,3 @@
-// Initialize MouseFollower with GSAP
 import MouseFollower from 'mouse-follower';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -13,176 +12,210 @@ if (!MouseFollower) {
 }
 
 
+const mobileQuery = window.matchMedia('(max-width: 767px)');
+let isMobile = mobileQuery.matches;
+const observerThreshold = 0.7;
+const fadeDuration = 500;
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Check if device is mobile based on screen width
-    const checkIsMobile = () => window.innerWidth < 768;
-    let isMobile = checkIsMobile();
-    
-    // Update isMobile on resize
-    window.addEventListener('resize', () => {
-        isMobile = checkIsMobile();
-        updateVideoStates();
+    const videos = getAllVideos();
+    // Create Maps to store instances for each video wrapper
+    const cursorMap = new Map();
+    const observerMap = new Map();
+    const desktopClickListenerMap = new Map();
+    const mobileClickListenerMap = new Map();  // Store mobile click listeners
+
+    handleVideoFormat(isMobile, videos);
+
+    mobileQuery.addEventListener('change', () => {
+        isMobile = mobileQuery.matches;
+        handleVideoFormat(isMobile, videos);
     });
-    
-    // Get all media row blocks
-    const mediaRows = document.querySelectorAll('.media-wrapper');
-    const videoElements = [];
 
-    // Function to update all video states based on current mobile status
-    function updateVideoStates() {
-        videoElements.forEach(({ video, playButton, overlay, wrapper, alwaysMuted, isLooping, cursor }) => {
-            if (isMobile) {
-                // On mobile, pause video and show overlay
-                video.pause();
-                video.currentTime = 0;
-                overlay.classList.remove('is-hidden');
-                playButton.style.display = 'none';
-                
-                // Clean up cursor
-                if (cursor) {
-                    cursor.destroy();
-                    cursor = null;
-                }
-            } else {
-                // On desktop, restore normal behavior
-                if (video.paused) {
-                    playButton.style.display = 'none';
-                }
-                
-                // Initialize cursor if needed
-                if (!cursor && !alwaysMuted && isElementInViewport(video)) {
-                    initCursor(wrapper, video, alwaysMuted);
-                }
+    function handleVideoFormat(isMobile, videos) {
+        if (isMobile) {
+            handleVideoForMobile(videos, cursorMap);
+        } else {
+            handleVideoForDesktop(videos, cursorMap);
+        }
+    }
+
+    function handleVideoForMobile(videos, cursorMap) {
+        videos.forEach(wrapper => {
+            // Destroy cursor if it exists
+            const cursor = cursorMap.get(wrapper);
+            if (cursor) {
+                cursor.destroy();
+                cursorMap.delete(wrapper);
             }
-        });
-    }
-    
-    // Helper function to check if element is in viewport
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
 
-    mediaRows.forEach(mediaRow => {
-        // Find all video wrappers within this media row
-        const videoWrappers = mediaRow.querySelectorAll('.video-wrapper');
+            // Disconnect observer if it exists
+            const observer = observerMap.get(wrapper);
+            if (observer) {
+                observer.disconnect();
+                observerMap.delete(wrapper);
+            }
 
-        videoWrappers.forEach(wrapper => {
+            // Remove desktop click listener if it exists
             const video = wrapper.querySelector('video');
+            const desktopClickListener = desktopClickListenerMap.get(wrapper);
+            if (desktopClickListener && video) {
+                video.removeEventListener('click', desktopClickListener);
+                desktopClickListenerMap.delete(wrapper);
+            }
+
             const overlay = wrapper.querySelector('.video-wrapper-overlay');
+            if (!video || !overlay) return; // If there is no video overlay, the video will always play muted on repeat. so no extra logic is needed.
 
-            if (!video || !overlay) return;
-
-            const alwaysMuted = video.dataset.alwaysMuted === 'true';
-            const isLooping = video.hasAttribute('loop');
-            let cursor = null;
-
-            // Disable fullscreen mode
             video.setAttribute('disablePictureInPicture', 'true');
-            video.setAttribute('controlsList', 'nodownload nofullscreen');
-            
-            // Add play button for mobile
+            video.setAttribute('controlsList', 'nodownload');
+            video.controls = false;
+
             const playButton = document.createElement('button');
             playButton.className = 'video-play-button';
             playButton.setAttribute('aria-label', 'Play video');
             playButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="60" height="61" viewBox="0 0 60 61" fill="none"><circle cx="30" cy="30.4172" r="30" fill="#D1C2FF"/><path d="M43 30.4173L24.1245 41.3151L24.1245 19.5195L43 30.4173Z" fill="black"/></svg>`;
             wrapper.appendChild(playButton);
-            
-            // On mobile, show overlay and hide play button
-            if (isMobile) {
+
+            if (!video.paused) {
                 video.pause();
-                video.currentTime = 0;
+                playButton.style.display = 'flex';
                 overlay.classList.remove('is-hidden');
-                playButton.style.display = 'none';
-            } else {
-                playButton.style.display = 'none';
             }
-            
-            // Store video elements for later updates
-            videoElements.push({
-                video,
-                playButton,
-                overlay,
-                wrapper,
-                alwaysMuted,
-                isLooping,
-                cursor
+
+            // Store mobile click handlers
+            const mobileVideoClickHandler = () => {
+                if (video.paused) {
+                    video.play();
+                    video.muted = false;
+                    playButton.style.display = 'none';
+                    overlay.classList.add('is-hidden');
+                } else {
+                    video.pause();
+                    playButton.style.display = 'flex';
+                    overlay.classList.remove('is-hidden');
+                }
+            };
+
+            const mobilePlayButtonClickHandler = () => {
+                video.play();
+                video.muted = false;
+                playButton.style.display = 'none';
+                overlay.classList.add('is-hidden');
+            };
+
+            // Store both handlers in the Map as an object
+            mobileClickListenerMap.set(wrapper, {
+                videoClick: mobileVideoClickHandler,
+                playButtonClick: mobilePlayButtonClickHandler
             });
 
-            // Initialize cursor for this specific video
-            function initCursor(wrapper, video, alwaysMuted) {
-                if (alwaysMuted || isMobile) return null;
+            playButton.addEventListener('click', mobilePlayButtonClickHandler);
+            video.addEventListener('click', mobileVideoClickHandler);
+        });
+    }
 
-                const videoRect = video.getBoundingClientRect();
-                const centerX = videoRect.left + (videoRect.width / 2);
-                const centerY = videoRect.top + (videoRect.height / 2) + window.scrollY;
+    function handleVideoForDesktop(videos, cursorMap) {
+        videos.forEach(wrapper => {
+            // Remove mobile click listeners if they exist
+            const mobileListeners = mobileClickListenerMap.get(wrapper);
+            if (mobileListeners) {
+                const video = wrapper.querySelector('video');
+                const playButton = wrapper.querySelector('.video-play-button');
 
-                const newCursor = new MouseFollower({
-                    container: wrapper,
-                    speed: 0.55,
-                    ease: 'expo.out',
-                    skewing: 0,
-                    className: 'mf-cursor',
-                    hideOnLeave: true,
-                    hiddenState: '-hidden',
-                    visible: true,
-                    initialPos: [centerX, centerY]
-                });
-                
-                return newCursor;
+                if (video) {
+                    video.removeEventListener('click', mobileListeners.videoClick);
+                }
+                if (playButton) {
+                    playButton.removeEventListener('click', mobileListeners.playButtonClick);
+                }
+                mobileClickListenerMap.delete(wrapper);
             }
 
-            // Hide default controls
+            // Remove play button if it exists
+            const existingPlayButton = wrapper.querySelector('.video-play-button');
+            if (existingPlayButton) {
+                existingPlayButton.remove();
+            }
+
+            const video = wrapper.querySelector('video');
+            const overlay = wrapper.querySelector('.video-wrapper-overlay');
+            if (!video || !overlay) return; // If there is no video overlay, the video will always play muted on repeat. so no extra logic is needed.
+
+            video.setAttribute('disablePictureInPicture', 'true');
+            video.setAttribute('controlsList', 'nodownload nofullscreen');
             video.controls = false;
 
-            // Only add replay button if video is not looping
+            const alwaysMuted = video.dataset.alwaysMuted === 'true';
+            const isLooping = video.hasAttribute('loop');
+            let cursor = null;
+
+
+
+
+            // Let add some controls for the video, like is it not always muted add a cursor, if it is not looping add a replay button.
+            function createCursor(wrapper, video, alwaysMuted) {
+                if (alwaysMuted === false) { // Only create a cursor if the video is not always muted.
+                    const videoRect = video.getBoundingClientRect();
+                    const centerX = videoRect.left + (videoRect.width / 2);
+                    const centerY = videoRect.top + (videoRect.height / 2) + window.scrollY;
+
+                    const cursor = new MouseFollower({
+                        container: wrapper,
+                        speed: 0.55,
+                        ease: 'expo.out',
+                        skewing: 0,
+                        className: 'mf-cursor',
+                        hideOnLeave: true,
+                        hiddenState: '-hidden',
+                        visible: true,
+                        initialPos: [centerX, centerY]
+                    });
+
+                    // Store the cursor instance in the Map
+                    cursorMap.set(wrapper, cursor);
+                    return cursor;
+                }
+
+                return null;
+            }
+
             if (!isLooping) {
                 const replayButton = document.createElement('button');
                 replayButton.className = 'video-replay-button';
                 replayButton.setAttribute('aria-label', 'Replay video');
                 wrapper.appendChild(replayButton);
-                
-                // Hide replay button on mobile
-                if (isMobile) {
-                    replayButton.style.display = 'none';
-                }
-                
-                // Update replay button visibility on resize
-                window.addEventListener('resize', () => {
-                    if (checkIsMobile()) {
-                        replayButton.style.display = 'none';
-                    } else {
-                        replayButton.style.display = 'block';
-                    }
-                });
 
                 replayButton.addEventListener('click', (e) => {
                     e.stopPropagation();
                     video.currentTime = 0;
                     video.play();
-                    if (isMobile) {
+                    if (mobileQuery.matches) {
                         playButton.style.display = 'none';
                     }
                 });
             }
 
-            // Play button click handler
-            playButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                video.play().then(() => {
-                    playButton.style.display = 'none';
-                    overlay.classList.add('is-hidden');
-                }).catch(error => {
-                    console.error('Error playing video:', error);
-                });
-            });
+            function handleVideoClick() {
+                console.log('handleVideoClick');
+                if (alwaysMuted) return; // If it is always muted, we do not need to check for a click, becuase we will not unmute it.
 
-            // Function to smoothly fade audio
+                if (video.muted) {
+                    video.muted = false;
+                    video.volume = 0; // Set to 0, so we can fade the audio in.
+                    fadeAudio(0, 1, fadeDuration);
+                    cursor.addState('-unmuted');
+                    cursor.removeState('-muted');
+                } else {
+                    fadeAudio(video.volume, 0, fadeDuration, () => {
+                        video.muted = true;
+                        video.volume = 1;
+                    });
+                    cursor.addState('-muted');
+                    cursor.removeState('-unmuted');
+                }
+            }
+
             function fadeAudio(from, to, duration, callback) {
                 const start = performance.now();
 
@@ -202,115 +235,68 @@ document.addEventListener('DOMContentLoaded', function () {
                 requestAnimationFrame(updateVolume);
             }
 
-            // Handle click on video for mute/unmute
-            function handleVideoClick() {
-                if (!cursor || alwaysMuted || isMobile) return;
 
-                if (video.muted) {
-                    video.muted = false;
-                    video.volume = 0;
-                    fadeAudio(0, 1, FADE_DURATION);
-                    cursor.addState('-unmuted');
-                    cursor.removeState('-muted');
-                } else {
-                    fadeAudio(video.volume, 0, FADE_DURATION, () => {
-                        video.muted = true;
-                        video.volume = 1;
-                    });
-                    cursor.addState('-muted');
-                    cursor.removeState('-unmuted');
-                }
-            }
-
-            // Only add click listener if not always muted and not on mobile
-            if (!alwaysMuted && !isMobile) {
-                video.addEventListener('click', handleVideoClick);
-            }
-
-            // Update cursor state on hover only if not always muted and not on mobile
-            if (!alwaysMuted && !isMobile) {
-                video.addEventListener('mouseenter', () => {
-                    if (!cursor) return;
-                    cursor.addState('-muted');
-                });
-
-                video.addEventListener('mouseleave', () => {
-                    if (!cursor) return;
-                    cursor.removeState('-muted');
-                    cursor.removeState('-unmuted');
-                });
-            }
-
-            // Show play button when video ends
-            video.addEventListener('ended', () => {
-                if (isMobile && !isLooping) {
-                    playButton.style.display = 'flex';
-                }
-            });
-
-            // Cleanup cursor when video is out of view
-            function cleanupCursor() {
-                if (cursor) {
-                    cursor.destroy();
-                    cursor = null;
-                }
-            }
-
-            const THRESHOLD = 0.7;
-            const FADE_DURATION = 500;
-
-            // Create an intersection observer for each video
+            // Check if the video is in the viewport, if it is, we play the video and hide the overlay if there is one.
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting && entry.intersectionRatio >= THRESHOLD) {
+                    if (entry.isIntersecting && entry.intersectionRatio >= observerThreshold) {
                         video.volume = 1;
                         video.muted = true;
-                        
-                        // Only autoplay on desktop, not on mobile
-                        if (!isMobile) {
-                            video.play().catch(() => {
-                                // Handle autoplay failure
-                                console.log('Autoplay prevented');
-                            });
-                            overlay.classList.add('is-hidden');
-                        } else {
-                            // On mobile, keep video paused and show overlay
-                            video.pause();
-                            video.currentTime = 0;
-                            overlay.classList.remove('is-hidden');
-                            playButton.style.display = 'none';
-                        }
 
-                        if (!alwaysMuted && !isMobile && !cursor) {
-                            cursor = initCursor(wrapper, video, alwaysMuted);
-                        }
-                        if (cursor && !alwaysMuted && !isMobile) {
+                        video.play().catch(() => {
+                            // Handle autoplay failure
+                            console.log('Autoplay prevented');
+                        });
+                        overlay.classList.add('is-hidden');
+                        if (!cursor) { // If there is no cursor yet, we create one.
+                            cursor = createCursor(wrapper, video, alwaysMuted);
                             cursor.addState('-muted');
                         }
                     } else {
                         if (!video.muted) {
-                            fadeAudio(video.volume, 0, FADE_DURATION, () => {
+                            fadeAudio(video.volume, 0, fadeDuration, () => {
                                 video.pause();
                                 video.volume = 1;
                                 video.muted = true;
                             });
+                            setTimeout(() => {
+                                cursor.addState('-muted');
+                                cursor.removeState('-unmuted');
+                            }, 200);
                         } else {
                             video.pause();
                         }
                         overlay.classList.remove('is-hidden');
-                        if (isMobile) {
-                            video.currentTime = 0;
-                            playButton.style.display = 'none';
-                        }
-                        cleanupCursor();
                     }
                 });
             }, {
-                threshold: THRESHOLD,
+                threshold: observerThreshold,
                 rootMargin: '0px'
             });
 
+            // Store the observer instance in the Map
+            observerMap.set(wrapper, observer);
             observer.observe(video);
+
+            // Store the desktop click listener
+            desktopClickListenerMap.set(wrapper, handleVideoClick);
+            video.addEventListener('click', handleVideoClick);
         });
-    });
+    }
+
+
+
+
+    // Helper functions
+    function getAllVideos() {
+        const mediaRows = document.querySelectorAll('.media-wrapper');
+        const videoWrappers = [];
+        mediaRows.forEach(mediaRow => {
+            const videos = mediaRow.querySelectorAll('.video-wrapper');
+            videos.forEach(video => {
+                videoWrappers.push(video);
+            });
+        });
+        return videoWrappers;
+    }
 });

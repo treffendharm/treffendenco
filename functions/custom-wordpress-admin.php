@@ -189,3 +189,21 @@ function change_admin_bar_menu($wp_admin_bar)
     }
 }
 add_action('admin_bar_menu', 'change_admin_bar_menu', 999);
+
+
+function change_wordpress_footer_text($text)
+{
+    $logo_url = 'https://treffend.trefdev.nl/wp-content/themes/treffendenco/dist/images/svg/logo.svg';
+    // some styling to make the logo smaller
+    return 'Website gemaakt door <a href="https://treffendenco.nl" target="_blank"><img src="' . $logo_url . '" alt="Treffend&Co Logo" style="height: 1em;"></a>';
+}
+add_filter('admin_footer_text', 'change_wordpress_footer_text');
+
+// Change the wordpress login logo to the Treffend logo
+function change_wordpress_login_logo()
+{
+    // $logo_url = 'https://treffendenco.nl/wp-content/themes/treffendenco/dist/images/svg/logo.svg';
+    $logo_url = 'https://treffend.trefdev.nl/wp-content/themes/treffendenco/dist/images/svg/logo.svg';
+    echo '<style type="text/css">.login h1 a { background-image:url(' . $logo_url . ') !important; background-size: 100% 100% !important; width: 100% !important; height: 100% !important; background-position: center !important; background-repeat: no-repeat !important; filter: brightness(0)}</style>';
+}
+add_action('login_head', 'change_wordpress_login_logo');

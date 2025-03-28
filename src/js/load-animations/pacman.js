@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const href = pacmanButtonLink.href;
 
             main.style.opacity = 0;
+            // Add transition to every li elemenrt inside the header that does not have the class .button_pacman
+            header.querySelectorAll('li:not(.button_pacman)').forEach(li => {
+                li.style.transition = 'opacity 0.3s ease-in-out';
+            });
+            header.querySelectorAll('li:not(.button_pacman)').forEach(li => {
+                li.style.opacity = 0;
+            });
 
 
             // I wanna make this animation, when we click the button, the inset property of the before element of the pacmanButton changes to -150svw

@@ -1,4 +1,5 @@
 @use '../../src/scss/01-grid/responsive';
+
 .block-slider {
    position: relative;
    margin-block: var(--section-spaceing);
@@ -12,7 +13,7 @@
 
    .swiper {
       overflow: visible;
-      padding: 0 1rem;
+      // padding: 0 1rem;
       padding-right: calc(1rem + 100px);
    }
 
@@ -33,7 +34,9 @@
       flex: 0 0 auto;
       display: grid;
       grid-template-rows: auto auto;
-      gap: clamp(0.5rem, calc(0.063rem + 1vw), 1rem); /* min: 8px, max: 16px */;
+      gap: clamp(0.5rem, calc(0.063rem + 1vw), 1rem);
+      /* min: 8px, max: 16px */
+      ;
       height: auto;
 
       width: auto;
@@ -76,7 +79,9 @@
       }
 
       .slide-title {
-         font-size: clamp(0.875rem, calc(0.547rem + 0.75vw), 1.25rem); /* min: 14px, max: 20px */;
+         font-size: clamp(0.875rem, calc(0.547rem + 0.75vw), 1.25rem);
+         /* min: 14px, max: 20px */
+         ;
          font-weight: 600;
       }
    }

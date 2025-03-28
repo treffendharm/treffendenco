@@ -8,10 +8,15 @@
     .vacatures-wrapper {
         margin-top: var(--section-spaceing);
 
-        .vacature{
-            padding-bottom: clamp(2rem, calc(1.125rem + 2vw), 3rem); /* min: 32px, max: 48px */;
+        .vacature {
+            padding-bottom: clamp(2rem, calc(1.125rem + 2vw), 3rem);
+            /* min: 32px, max: 48px */
+            ;
             border-bottom: 1px solid var(--color-black);
 
+            &:not(:last-child) {
+                margin-bottom: clamp(2rem, calc(1.125rem + 2vw), 3rem);
+            }
         }
 
         .h5 {
@@ -29,7 +34,7 @@
         }
     }
 
-    .intro-side{
+    .intro-side {
         margin-top: clamp(2rem, calc(0.469rem + 3.5vw), 3.75rem);
     }
 

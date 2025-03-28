@@ -37,6 +37,19 @@
     @extend %button;
 }
 
+.btn_small {
+    @extend %button;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    background: linear-gradient(to right, rgba(209, 194, 255, 0.2), rgba(240, 231, 168, 0.2));
+    transition: var(--transition);
+    cursor: pointer;
+
+    &:hover {
+        transform: translate(-50%, -200%) scale(1.05);
+    }
+}
+
 .button__effect {
     position: absolute;
     top: 0;
@@ -110,15 +123,16 @@
 }
 
 
-%btn_pacman_small{
+%btn_pacman_small {
     @extend %btn_pacman;
     background-color: unset;
 
     &::before {
         background-color: var(--color-black);
     }
+
     &::after {
-        @include mixins.bg-mask('pacman-normal');   
+        @include mixins.bg-mask('pacman-normal');
     }
 
     &:hover,

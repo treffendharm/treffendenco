@@ -16,8 +16,8 @@
 // @use "03-components/button";
 @use "03-components/forms";
 
-// Blocks
-// @use "04-blocks/double";
+// Vendor
+@use "04-vendor/MouseFollower";
 
 // Theme
 @use "05-theme/cards/card-post";

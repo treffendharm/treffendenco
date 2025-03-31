@@ -16,7 +16,10 @@
     <link rel="preconnect" href="https://use.typekit.net" crossorigin>
     <link rel="preload" fetchpriority="highest" href="https://use.typekit.net/gvu7pwb.css" as="style" crossorigin> -->
     <link rel="stylesheet" fetchpriority="highest" href="https://use.typekit.net/gvu7pwb.css">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
 
+        
     <?php
     // Get header image from different possible sources
     $header_image = (get_field('hero_image') && is_front_page()) ? get_field('hero_image') : (get_field('header_image') ? get_field('header_image') : (has_post_thumbnail() ? get_post_thumbnail_id() : null));

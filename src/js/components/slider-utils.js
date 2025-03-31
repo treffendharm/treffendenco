@@ -1,5 +1,3 @@
-import Swiper from '@swiper';
-// import 'swiper/css/bundle';
 /**
  * Slider utilities for creating and managing Swiper sliders
  * Uses the globally available Swiper object

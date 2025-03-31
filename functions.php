@@ -15,6 +15,7 @@ function treffend_theme_files()
 
     // Main theme styles - with preload
     wp_enqueue_style('treffend_main_style', get_template_directory_uri() . '/dist/css/style.css', [], '1.0.0');
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
 
     // Add preload for main stylesheet
     add_action('wp_head', function () {
@@ -31,10 +32,13 @@ function treffend_theme_files()
     );
 
     // --- GSAP --- \\
-    // wp_enqueue_script('gsap-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js', array(), false, true);
-    // wp_enqueue_script('gsap-st', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js', array('gsap-js'), false, true);
-    // wp_enqueue_script('gsap-f', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/Flip.min.js', array('gsap-js'), false, true);
-    // wp_enqueue_script('lenis', 'https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js', array(), false, true);
+    wp_enqueue_script('gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js', array(), false, true);
+    wp_enqueue_script('gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js', array('gsap-js'), false, true);
+    wp_enqueue_script('gsap-f', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js', array('gsap-js'), false, true);
+    
+    
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(''), false, true);
+    wp_enqueue_script('mouse-follower', get_template_directory_uri() . '/src/js/vendor/MouseFollower.js', array(''), false, true);
 }
 add_action('wp_enqueue_scripts', 'treffend_theme_files');
 

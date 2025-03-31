@@ -27,9 +27,5 @@
         "laravel-mix": "^6.0.49",
         "sass": "^1.69.5",
         "sass-loader": "^13.3.2"
-    },
-    "dependencies": {
-        "gsap": "^3.12.7",
-        "mouse-follower": "^1.1.2"
     }
 }

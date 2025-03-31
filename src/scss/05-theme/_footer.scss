@@ -23,11 +23,20 @@ footer {
         margin-top: 3.26rem;
     }
 
+    // 13" laptops
+    @include responsive.respond-to(xl) {
+        .contact-wrapper {
+            grid-column: 1 / 5;
+        }
 
-    @include responsive.respond-to(xxl) {
+        .direct-contact-wrapper {
+            grid-column: 5 / 9;
+        }
+    }
+
+    @include responsive.respond-to(xlg) {
         .contact-wrapper {
             grid-column: 1 / 7;
-
         }
 
         .direct-contact-wrapper {
@@ -109,7 +118,7 @@ footer {
         grid-template-columns: min-content auto;
         grid-template-rows: auto;
         align-items: center;
-        transform: translateZ(0); 
+        transform: translateZ(0);
     }
 
     .name {
@@ -139,7 +148,7 @@ footer {
         aspect-ratio: 1;
         overflow: clip;
         min-width: 0;
-        min-height: auto; 
+        min-height: auto;
 
         img {
             scale: 1.9;

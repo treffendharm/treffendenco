@@ -302,7 +302,6 @@ add_filter('get_the_excerpt', function ($excerpt, $post) {
 
 
 
-
 // Function to get critical CSS
 function get_critical_css()
 {
@@ -314,72 +313,14 @@ function get_critical_css()
 }
 
 
-
-add_action('after_setup_theme', 'wpdocs_theme_setup');
-function wpdocs_theme_setup()
-{
-    add_image_size('showreel', 1500, 0, true);
-}
-
-function enqueue_block_scripts()
-{
-    // Enqueue GSAP
+function enqueue_block_scripts() {
+    // Only enqueue the bundled file
     wp_enqueue_script(
-        'gsap',
-        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+        'bundle',
+        get_template_directory_uri() . '/dist/js/bundle.js',
         array(),
-        '3.12.5',
+        '1.0.0',
         true
-    );
-
-    // Add Draggable plugin
-    wp_enqueue_script(
-        'gsap-draggable',
-        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js',
-        array('gsap'),
-        '3.12.5',
-        true
-    );
-
-    // Enqueue ScrollTrigger
-    wp_enqueue_script(
-        'gsap-scrolltrigger',
-        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js',
-        array('gsap'),
-        '3.12.5',
-        true
-    );
-
-    // Enqueue Mouse Follower
-    wp_enqueue_script(
-        'mouse-follower',
-        'https://unpkg.com/mouse-follower@1.1.2/dist/mouse-follower.min.js',
-        array('gsap'),
-        '1.1.2',
-        true
-    );
-
-    // Enqueue Swiper
-    wp_enqueue_script(
-        'swiper',
-        'https://unpkg.com/swiper@11/swiper-bundle.min.js',
-        array(),
-        '11.2.4',
-        true
-    );
-
-    // Enqueue Swiper CSS
-    wp_enqueue_style(
-        'swiper',
-        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
-        array(),
-        '11.2.4'
-    );
-    wp_enqueue_style(
-        'mouse-follower',
-        'https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css',
-        array(),
-        '1.1.2'
     );
 }
 add_action('wp_enqueue_scripts', 'enqueue_block_scripts');

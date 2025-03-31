@@ -2,12 +2,13 @@
 @use "../../src/scss/01-grid/responsive";
 
 .block-hero {
-    height: 72svh;
+    min-height: 72svh;
     align-items: center;
+    padding-bottom: 1.5rem;
 
     .hero-wrapper {
         grid-auto-rows: min-content;
-        margin-top: 3rem;
+        margin-top: 1.5rem;
         position: relative;
         // column-gap: 1.5rem;
     }

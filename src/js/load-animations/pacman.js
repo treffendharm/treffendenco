@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // After .5s go to the href page
             setTimeout(() => {
                 window.location.href = href;
-            }, 200);
+            }, 500);
         });
     }
 

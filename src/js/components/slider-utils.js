@@ -1,3 +1,5 @@
+import Swiper from '@swiper';
+// import 'swiper/css/bundle';
 /**
  * Slider utilities for creating and managing Swiper sliders
  * Uses the globally available Swiper object
@@ -46,6 +48,7 @@ function createSlider(container, options = {}) {
         refreshLoadAnimations();
         return swiper;
     } catch (error) {
+        console.error('Failed to initialize slider:', error);
         return null;
     }
 }

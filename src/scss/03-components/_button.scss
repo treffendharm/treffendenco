@@ -37,6 +37,19 @@
     @extend %button;
 }
 
+.btn_black {
+    @extend %button;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    transition: var(--transition);
+
+    &:hover,
+    &:focus-visible {
+        background-color: transparent;
+        color: var(--color-black);
+    }
+}
+
 .btn_small {
     @extend %button;
     padding: 0.5rem 1rem;

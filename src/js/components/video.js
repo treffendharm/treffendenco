@@ -250,7 +250,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         overlay.classList.add('is-hidden');
                         if (!cursor) { // If there is no cursor yet, we create one.
                             cursor = createCursor(wrapper, video, alwaysMuted);
-                            cursor.addState('-muted');
+                            if (!alwaysMuted) {
+                                cursor.addState('-muted');
+                            }
                         }
                     } else {
                         if (!video.muted) {

@@ -51,11 +51,6 @@ function initializeSliderBlocks() {
 
             // Initialize Swiper using our utility function
             const swiper = SliderUtils.createSlider(swiperContainer, {
-                // Add navigation if buttons exist
-                navigation: prevButton && nextButton ? {
-                    nextEl: nextButton,
-                    prevEl: prevButton
-                } : undefined
             });
 
             if (!swiper) return null;

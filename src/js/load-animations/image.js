@@ -2,7 +2,7 @@
 
 function loadInImages() {
     const images = document.querySelectorAll(".load-in");
-    if (images) {
+    if (images.length > 0) { // Check if .load-in exists on the page
         // Set initial state for all images
         gsap.set(images, {
             clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",

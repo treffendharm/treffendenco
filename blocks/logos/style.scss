@@ -4,15 +4,15 @@
     margin-block: var(--section-spaceing);
 
     .logos-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3.5rem 9rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+        gap: 3.5rem 12rem;
         justify-content: space-between;
         padding-top: 4.5rem;
         border-top: 1px solid var(--color-black);
 
         .logo {
-            height: 2rem;
+            height: 3rem;
             flex: 1 0 auto;
             display: flex;
             justify-content: center;
@@ -23,34 +23,31 @@
             max-height: 100%;
         }
 
-        @include responsive.respond-to(xl) {
-            gap: 2rem;
-            flex-wrap: nowrap;
-            overflow: hidden;
+        @include responsive.respond-to(1750) {
+            gap: 3.5rem 8rem;
+        }
+
+        @include responsive.respond-to(1410) {
+            gap: 3.5rem 6rem;
+
+        }
+
+        @include responsive.respond-to(1233) {
+            gap: 3.5rem 3rem;
+
+        }
+
+        @include responsive.respond-to(1080) {
+            grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+            gap: 3rem;
 
             .logo {
-                height: 3rem;
-
-                &:nth-child(n+10) {
-                    display: none;
-                }
+                height: 2rem;
             }
         }
 
-        @include responsive.respond-to(lg) {
-            .logo {
-                &:nth-child(n+7) {
-                    display: none;
-                }
-            }
-        }
-
-        @include responsive.respond-to(sm) {
-            .logo {
-                &:nth-child(n+4) {
-                    display: none;
-                }
-            }
+        @include responsive.respond-to(768) {
+            grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
         }
     }
 }

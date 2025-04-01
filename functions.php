@@ -14,13 +14,28 @@ function treffend_theme_files()
     wp_dequeue_style('global-styles');
 
     // Main theme styles - with preload
-    wp_enqueue_style('treffend_main_style', get_template_directory_uri() . '/dist/css/style.css', [], '1.0.0');
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+    wp_enqueue_style('treffend_main_style', get_template_directory_uri() . '/dist/css/style.css', [], '1.0.0');
 
     // Add preload for main stylesheet
     add_action('wp_head', function () {
         echo '<link rel="preload" href="' . get_template_directory_uri() . '/dist/css/style.css" as="style">';
     }, 1);
+
+
+    // --- GSAP --- \\
+    wp_enqueue_script('gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js', array(), false, true);
+    wp_enqueue_script('gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js', array('gsap-js'), false, true);
+    wp_enqueue_script('gsap-f', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js', array('gsap-js'), false, true);
+
+
+    wp_enqueue_script('mouse-follower', get_template_directory_uri() . '/src/js/vendor/MouseFollower.js', array(''), false, true);
+    
+    // Load Swiper modules separately
+    // wp_enqueue_script('swiper-core', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-core.min.js', array(), false, true);
+    wp_enqueue_script('swiper-touch', 'https://cdn.jsdelivr.net/npm/swiper@11/modules/touch.min.js', array(), false, true);
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array( 'swiper-touch'), false, true);
+
 
     // Main script
     wp_enqueue_script(
@@ -30,15 +45,6 @@ function treffend_theme_files()
         filemtime(get_template_directory() . '/dist/js/bundle.js'),
         false
     );
-
-    // --- GSAP --- \\
-    wp_enqueue_script('gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js', array(), false, true);
-    wp_enqueue_script('gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js', array('gsap-js'), false, true);
-    wp_enqueue_script('gsap-f', 'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js', array('gsap-js'), false, true);
-    
-    
-    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(''), false, true);
-    wp_enqueue_script('mouse-follower', get_template_directory_uri() . '/src/js/vendor/MouseFollower.js', array(''), false, true);
 }
 add_action('wp_enqueue_scripts', 'treffend_theme_files');
 

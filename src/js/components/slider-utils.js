@@ -1,3 +1,5 @@
+// import Swiper from 'swiper';
+
 /**
  * Slider utilities for creating and managing Swiper sliders
  * Uses the globally available Swiper object
@@ -16,14 +18,7 @@ function createSlider(container, options = {}) {
         slidesPerView: 'auto',
         spaceBetween: 24,
         grabCursor: true,
-        freeMode: {
-            enabled: true,
-            momentum: true,
-            momentumRatio: 0.8,
-            momentumBounce: true,
-            momentumBounceRatio: 0.8,
-            minimumVelocity: 0.1
-        },
+        freeMode: true, // Simplified freeMode configuration
         resistance: true,
         resistanceRatio: 0.5,
         slidesOffsetAfter: 0,

@@ -50,6 +50,18 @@
     }
 }
 
+.btn_outline {
+    @extend %button;
+    transition: var(--transition);
+    &:hover,
+    &:focus-visible {
+        background-color: var(--color-black);
+        color: var(--color-white);
+    }
+    
+    
+}
+
 .btn_small {
     @extend %button;
     padding: 0.5rem 1rem;

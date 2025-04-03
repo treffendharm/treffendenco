@@ -33,14 +33,12 @@
    .slide {
       flex: 0 0 auto;
       display: grid;
-      grid-template-rows: auto auto;
+      grid-template-rows: 1fr min-content;
       gap: clamp(0.5rem, calc(0.063rem + 1vw), 1rem);
-      /* min: 8px, max: 16px */
-      ;
       height: auto;
-
       width: auto;
       max-width: 90vw;
+
 
       @include responsive.respond-to(sm) {
          max-width: unset;

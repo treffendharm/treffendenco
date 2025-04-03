@@ -1,25 +1,36 @@
+@use '../01-grid/responsive';
+@use '../02-base/mixins';
+
 body.page-template-pacman-template {
     header {
-        mix-blend-mode: normal;
-        color: var(--color-white);
+        // mix-blend-mode: normal;
+        // color: var(--color-white);
         --_opacity: 0;
+        // position: fixed;
 
         opacity: var(--_opacity);
         transition: opacity var(--transition);
 
         nav {
-            --_nav-color: var(--color-white);
+            // --_nav-color: var(--color-white);
 
-            .button_pacman a {
-                background-color: var(--color-black);
-
+            .button_pacman {
                 &::before {
-                    background-color: var(--color-brand-2);
+                    background-color: var(--color-black);
                 }
 
-                &::after {
-                    // background-color: var(--color-brand-2);
-                    filter: brightness(0) saturate(100%) invert(95%) sepia(85%) saturate(447%) hue-rotate(324deg) brightness(104%) contrast(88%);
+                a {
+                    background-color: var(--color-black);
+
+                    &::before {
+                        background-color: var(--color-brand-2);
+                    }
+
+                    &::after {
+                        @include mixins.bg-mask('bike-normal');
+                        // background-color: var(--color-brand-2);
+                        // filter: brightness(0) saturate(100%) invert(95%) sepia(85%) saturate(447%) hue-rotate(324deg) brightness(104%) contrast(88%);
+                    }
                 }
             }
         }
@@ -34,6 +45,7 @@ body.page-template-pacman-template {
         transition: color var(--transition);
 
         border-color: var(--color-white);
+
         .button__effect {
             background-color: var(--color-primary);
         }
@@ -41,6 +53,41 @@ body.page-template-pacman-template {
         &:hover {
             color: var(--color-black);
             border-color: var(--color-white);
+        }
+    }
+
+    .pacman-mobile {
+        display: none;
+    }
+
+    #app {
+        margin-top: 0;
+    }
+    @include responsive.respond-to(1500) {
+    }
+
+    @include responsive.respond-to(1000) {
+        overflow-x: hidden;
+        max-width: 100dvw;
+
+        &::before {
+            max-width: 100dvw !important;
+            height: unset !important;
+            aspect-ratio: 1/2;
+        }
+
+        #app .pacman {
+            display: none;
+        }
+
+        #app .pacman-mobile {
+            display: block;
+
+            .modal {
+                max-width: 100%;
+                position: static;
+                transform: none;
+            }
         }
     }
 }

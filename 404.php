@@ -1,4 +1,8 @@
 <?php
+// Redirect to home
+header('Location: ' . home_url());
+exit;
+
 get_header();
 ?>
 

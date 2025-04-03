@@ -110,7 +110,7 @@
         content: '';
         width: 20px;
         height: 23px;
-        @include mixins.bg-mask('pacman');
+        @include mixins.bg-mask('bike');
         transition: .3s var(--transition-effect);
         position: absolute;
         left: 1.28rem;
@@ -134,7 +134,6 @@
             transform: translateX(-50%);
             width: 22.90px;
             height: 23.08px;
-            @include mixins.bg-mask('pacman-closed');
         }
 
         &::before {
@@ -157,13 +156,6 @@
     }
 
     &::after {
-        @include mixins.bg-mask('pacman-normal');
-    }
-
-    &:hover,
-    &:focus-visible {
-        &::after {
-            @include mixins.bg-mask('pacman-closed-normal');
-        }
+        @include mixins.bg-mask('bike-black');
     }
 }

@@ -65,7 +65,43 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const overlay = wrapper.querySelector('.video-wrapper-overlay');
-            if (!video || !overlay) return; // If there is no video overlay, the video will always play muted on repeat. so no extra logic is needed.
+
+            if (!video){
+                return;
+            } else{
+                console.log('hmm');
+            }
+
+            // Als er geen overlay is, maar het is always-muted + autoplay: speel gewoon af
+            if (!overlay && video.dataset.alwaysMuted === 'true') {
+                console.log('hmm2');
+                video.setAttribute('disablePictureInPicture', 'true');
+                video.setAttribute('controlsList', 'nodownload');
+                video.controls = false;
+
+                // check if the autoplay is allowed
+                if (video.autoplay) {
+                    console.log('hmm4');
+                    video.play().then(() => {
+                        console.log('Video played successfully');
+                    }).catch((error) => {
+                        console.error('Autoplay prevented:', error);
+                    });
+                } else {
+                    console.log('Autoplay not enabled on video element');
+                    // Try to play anyway
+                    video.muted = true; // Ensure muted for autoplay policy
+                    video.play().then(() => {
+                        console.log('Video played successfully with mute');
+                    }).catch((error) => {
+                        console.error('Video play failed even with mute:', error);
+                    });
+                }
+
+                return;
+            } else {
+                console.log('hmm3');
+            }
 
             video.setAttribute('disablePictureInPicture', 'true');
             video.setAttribute('controlsList', 'nodownload');

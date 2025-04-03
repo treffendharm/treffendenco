@@ -154,8 +154,8 @@ function get_video_image_output($args = [])
             ?>
             <div class="video-wrapper file <?= $always_muted ? 'always-muted' : ''; ?>" <?= $loop ? 'data-loop' : ''; ?>>
                 <video
-                    
-                    preload="none"
+                    preload="auto"
+                    playsinline
                     data-always-muted="<?= $always_muted ? 'true' : 'false' ?>"
                     <?php if ($autoplay) { ?>
                     autoplay
@@ -168,10 +168,9 @@ function get_video_image_output($args = [])
 
                     <?php if ($thumbnail) : ?>
                     poster="<?= wp_get_attachment_image_url($thumbnail['ID'], 'full'); ?>"
-                    <?php endif; ?>
-                    >
+                    <?php endif; ?>>
 
-                    <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>" decoding="async" loading="lazy">
+                    <source src="<?= esc_url($video_file['url']); ?>" type="<?= esc_attr($video_file['mime_type']); ?>">
                     Your browser does not support the video tag.
                 </video>
                 <?php if ($thumbnail_color || $thumbnail) : ?>

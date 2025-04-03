@@ -2,19 +2,19 @@
 <footer class="content-grid">
    <div class="content subgrid footer-wrapper">
       <div class="col-5 contact-wrapper">
-         <h4><?= get_field('footer_title_1', 'option'); ?></h4>
+         <div class="h4"><?= get_field('footer_title_1', 'option'); ?></div>
          <ul class="contact-info">
             <li><a href="mailto:<?= get_field('email', 'option'); ?>"><?= get_field('email', 'option'); ?></a></li>
             <li><a href="tel:<?= get_field('phone', 'option'); ?>"><?= get_field('phone_text', 'option'); ?></a></li>
          </ul>
-         <h6><?= get_field('footer_title_2', 'option'); ?></h6>
+         <div class="h6"><?= get_field('footer_title_2', 'option'); ?></div>
          <a href="#" class="adres-info">
             <?= get_field('street', 'option'); ?> <br>
             <?= get_field('address', 'option'); ?>
          </a>
       </div>
       <div class="col-3 start-6 direct-contact-wrapper">
-         <h6><?= get_field('footer_title_3', 'option'); ?></h6>
+         <div class="h6"><?= get_field('footer_title_3', 'option'); ?></div>
          <ul>
             <?php foreach (get_field('team', 'option') as $team_member) : ?>
                <li>
@@ -31,7 +31,7 @@
          </ul>
       </div>
       <div class="col-2 start-9 quick-menu-wrapper">
-         <h6><?= get_field('footer_title_4', 'option'); ?></h6>
+         <div class="h6"><?= get_field('footer_title_4', 'option'); ?></div>
          <ul class="menu">
             <?php
             wp_nav_menu(array(
@@ -44,7 +44,7 @@
          </ul>
       </div>
       <div class="col-2 start-11 social-wrapper">
-         <h6><?= get_field('footer_title_5', 'option'); ?></h6>
+         <div class="h6"><?= get_field('footer_title_5', 'option'); ?></div>
          <ul>
             <?php foreach (get_field('socials', 'option') as $link) : ?>
                <li><a href="<?= $link['link']; ?>"><?= $link['title']; ?></a></li>

@@ -39,4 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }, 200);
     }
+
+    // If on this pacman page, then disable the scrolling with the arrow keys, there are used for the game
+    document.addEventListener('keydown', function (e) {
+        if (pacmanPage) {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                e.preventDefault();
+            }
+        }
+    });
 });

@@ -350,17 +350,9 @@ header {
                     }
 
                     &::after {
-                        background-image: unset;
-                        @include mixins.mask('pacman-normal');
-                        background-color: var(--color-secondary);
-                    }
-
-                    &:hover,
-                    &:focus-visible {
-                        &::after {
-                            background-image: unset;
-                            @include mixins.mask('pacman-closed-normal');
-                        }
+                        // background-image: unset;
+                        @include mixins.bg-mask('bike-normal');
+                        // background-color: var(--color-secondary);
                     }
                 }
             }

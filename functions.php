@@ -9,6 +9,13 @@ require_once __DIR__ . '/functions/autoload.php';
 
 function treffend_theme_files()
 {
+    // Remove jQuery completely from frontend
+    if (!is_admin()) {
+        wp_deregister_script('jquery');
+        wp_deregister_script('jquery-core');
+        wp_deregister_script('jquery-migrate');
+    }
+
     // no block editor
     wp_deregister_style('wp-block-library');
     wp_dequeue_style('global-styles');
@@ -33,15 +40,15 @@ function treffend_theme_files()
     
     // Load Swiper modules separately
     // wp_enqueue_script('swiper-core', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-core.min.js', array(), false, true);
-    wp_enqueue_script('swiper-touch', 'https://cdn.jsdelivr.net/npm/swiper@11/modules/touch.min.js', array(), false, true);
-    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array( 'swiper-touch'), false, true);
+    // wp_enqueue_script('swiper-touch', 'https://cdn.jsdelivr.net/npm/swiper@11/modules/touch.min.js', array(), false, true);
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), false, true);
 
 
     // Main script
     wp_enqueue_script(
         'treffend_main_script',
         get_template_directory_uri() . '/dist/js/bundle.js',
-        ['jquery'],
+        [],
         filemtime(get_template_directory() . '/dist/js/bundle.js'),
         false
     );

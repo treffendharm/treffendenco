@@ -108,8 +108,8 @@
 
     &::after {
         content: '';
-        width: 20px;
-        height: 23px;
+        width: 24px;
+        height: 38px;
         @include mixins.bg-mask('bike');
         transition: .3s var(--transition-effect);
         position: absolute;
@@ -132,8 +132,8 @@
         &::after {
             left: 50%;
             transform: translateX(-50%);
-            width: 22.90px;
-            height: 23.08px;
+            width: 24px;
+            height: 38px;
         }
 
         &::before {

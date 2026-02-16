@@ -115,6 +115,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Listen for changes
         mq.addEventListener('change', handleMediaQuery);
+
+        // Highlight team member if hash is present
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+            const target = document.getElementById(hash);
+            if (target && target.classList.contains('team-item')) {
+                // Scroll naar het element
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Start de animatie pas na scrollen/layout
+                setTimeout(() => {
+                    target.classList.add('-blink');
+                    setTimeout(() => {
+                        target.classList.remove('-blink');
+                    }, 700); // Moet overeenkomen met de animatie-duur
+                }, 400); // Wacht even tot scroll klaar is
+            }
+        }
     }
 });
 

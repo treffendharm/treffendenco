@@ -18,8 +18,15 @@
          <ul>
             <?php foreach (get_field('team', 'option') as $team_member) : ?>
                <li>
-                  <div class="image">
-                     <?= wp_get_img(get_post_thumbnail_id($team_member->ID), 'medium'); ?>
+                  <div class="image" style="--_scale: <?= get_field('footer_img_scale', $team_member->ID); ?>">
+                     <?php
+                     $footer_img_id = get_field( 'footer_img', $team_member->ID );
+                     if ( $footer_img_id ) {
+                         echo wp_get_img( $footer_img_id, 'medium' );
+                     } else {
+                         echo wp_get_img( get_post_thumbnail_id( $team_member->ID ), 'medium' );
+                     }
+                     ?>
                   </div>
                   <div class="quick-contact-info">
                      <div class="name"><?= $team_member->post_title; ?></div>

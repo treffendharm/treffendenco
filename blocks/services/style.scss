@@ -26,8 +26,6 @@
 
         .arrow {
             width: clamp(11.875rem, calc(-12.953rem + 95vw), 56.25rem);
-            /* min: 190px, max: 900px */
-            ;
             height: 9.75rem;
             @include mixins.mask('pijl-simpel');
             transition: unset;

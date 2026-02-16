@@ -154,9 +154,10 @@ footer {
         overflow: clip;
         min-width: 0;
         min-height: auto;
+        --_scale: 1.9;
 
         img {
-            scale: 1.9;
+            scale: var(--_scale);
             object-position: top;
         }
 
